@@ -1,0 +1,19 @@
+{
+  "name": "Easy JSON Formatter",
+  "version": "0.0.1",
+  "manifest_version": 3,
+  "description": "Easy JSON Formatter. Fast and minimalist for the best performance possible.",
+  "homepage_url": "https://github.com/awps/easy-json",
+  "icons": {
+    "128": "icons/128.png",
+    "48": "icons/48.png",
+    "32": "icons/32.png",
+    "16": "icons/16.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "scripting"
+  ]
+}
