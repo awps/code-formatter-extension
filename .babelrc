@@ -1,0 +1,17 @@
+{
+  "plugins": [
+    "@babel/plugin-proposal-class-properties",
+    [
+      "prismjs",
+      {
+        "languages": [
+          "json"
+        ],
+        "plugins": [
+          "autolinker"
+        ],
+        "theme": "twilight"
+      }
+    ]
+  ]
+}

@@ -1,8 +1,8 @@
 {
-  "name": "Nice JSON",
+  "name": "Nice JSON Formatter",
   "version": "0.0.1",
   "manifest_version": 3,
-  "description": "Easy JSON Formatter. Fast and minimalist for the best performance possible.",
+  "description": "Easy JSON Formatter is designed to be fast and minimalist for the best performance possible.",
   "homepage_url": "https://github.com/awps/nice-json",
   "icons": {
     "128": "icons/128.png",
@@ -14,6 +14,12 @@
     "service_worker": "background.js"
   },
   "permissions": [
-    "scripting"
+    "activeTab",
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
   ]
 }

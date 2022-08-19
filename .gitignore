@@ -1,1 +1,90 @@
-.idea
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+error_log
+
+# OS generated files #
+######################
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# CodeKit Cache #
+#################
+.codekit-cache
+.sass-cache
+
+# Environment Files #
+##################
+.env
+
+# Ignore Folders #
+##################
+/log/
+/uploads/
+/upgrade/
+/upgrades/
+/mu-plugins/*
+npm-debug.log
+node_modules
+bower_components
+wp-cli/vendor/
+config.codekit
+advanced-cache.php
+wp-cache-config.php
+/cache/
+/cache/*
+/cache-/
+/cache-/*
+hars
+
+#Phantomjs data dir
+########################
+tools/phandata/*
+!tools/phandata/.keep
+tools/config.php
+
+# Allow Certain Must-Use Plugins #
+##################################
+
+.idea/*
+!.idea/scopes
+.srv
+.server
+.client
+mix.js.map
+mix-manifest.json
+*.js.map
+*.css.map
+
+*.zip
+
+/vendor/
+/src/vendor/
+/zip/

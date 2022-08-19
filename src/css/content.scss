@@ -1,0 +1,26 @@
+﻿.nice-json-is-loaded {
+    padding: 0;
+    margin: 0;
+    @import "themes/prism";
+    //@import "themes/prism-coy";
+    //@import "themes/prism-okaidia";
+    //@import "themes/prism-solarizedlight";
+    //@import "themes/prism-tomorrow";
+    //@import "themes/prism-twilight";
+
+    pre[class*="language-"]{
+        margin: 0;
+        font-size: 14px;
+    }
+
+    .nice-json-renderer {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: 0;
+        background: transparent;
+        z-index: 1;
+    }
+}

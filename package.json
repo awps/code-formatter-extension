@@ -1,0 +1,71 @@
+{
+  "name": "awps",
+  "version": "1.0.0",
+  "description": "awps",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/awps"
+  },
+  "bugs": {
+    "url": "https://github.com/awps"
+  },
+  "homepage": "https://github.com/awps",
+  "dependencies": {
+    "@pgrabovets/json-view": "^2.7.1",
+    "babel-plugin-prismjs": "^2.1.0",
+    "prism-js-fold": "^1.0.1",
+    "prism-json-fold": "^1.0.1",
+    "prismjs": "^1.28.0",
+    "react-json-view": "^1.21.3"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.16.7",
+    "@babel/preset-react": "^7.18.6",
+    "babel-loader": "^8.2.3",
+    "browser-sync": "^2.27.7",
+    "browser-sync-webpack-plugin": "^2.3.0",
+    "css-loader": "^6.6.0",
+    "cssnano": "^5.1.0",
+    "glob": "^7.2.0",
+    "laravel-mix": "^6.0.43",
+    "postcss": "^8.4",
+    "postcss-custom-properties": "^12.1.4",
+    "postcss-loader": "^6.2.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "replace-in-file": "^6.3.2",
+    "sass": "^1.49.9",
+    "sass-loader": "^12.6.0",
+    "ts-loader": "^9.2.7",
+    "typescript": "^4.6.2",
+    "webpack": "^5.69.1",
+    "webpack-cli": "^4.9.2"
+  },
+  "scripts": {
+    "development": "mix",
+    "watch": "mix watch",
+    "watch-poll": "mix watch -- --watch-options-poll=1000",
+    "hot": "mix watch --hot",
+    "production": "mix --production",
+    "zip": "./zip.sh",
+    "eslint": "npx eslint js/**/**.tsx",
+    "jslint": "npx eslint js/**/**.tsx",
+    "phplint": "./vendor/bin/phpcs"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version",
+      "last 1 ie version"
+    ]
+  },
+  "author": "Andrei Surdu",
+  "license": "ISC"
+}
