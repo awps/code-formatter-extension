@@ -1,6 +1,8 @@
 const mix = require('laravel-mix');
 const cssNano = require('cssnano');
 const postCssCustomProperties = require('postcss-custom-properties');
+const TerserPlugin = require('terser-webpack-plugin');
+
 
 mix.js('./src/background.js', './src/background.min.js');
 mix.js('./src/content.js', './src/content.min.js');
@@ -17,6 +19,13 @@ mix.sourceMaps(false, 'source-map');
 mix.options({
     processCssUrls: false,
     postCss: [cssNano(), postCssCustomProperties()],
-    includePaths: ['./node_modules']
+    includePaths: ['./node_modules'],
+    minify: false,
+});
+
+mix.webpackConfig({
+    optimization: {
+        minimize: false,
+    }
 });
 

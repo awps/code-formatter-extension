@@ -12,12 +12,21 @@
   },
   "homepage": "https://github.com/awps",
   "dependencies": {
+    "@codemirror/lang-css": "^6.2.1",
+    "@codemirror/lang-javascript": "^6.2.1",
+    "@codemirror/lang-json": "^6.0.1",
+    "@codemirror/state": "^6.3.1",
+    "@codemirror/view": "^6.22.0",
     "@pgrabovets/json-view": "^2.7.1",
     "babel-plugin-prismjs": "^2.1.0",
+    "codemirror": "^6.0.1",
+    "js-beautify": "^1.14.11",
     "prism-js-fold": "^1.0.1",
     "prism-json-fold": "^1.0.1",
     "prismjs": "^1.28.0",
-    "react-json-view": "^1.21.3"
+    "react-json-view": "^1.21.3",
+    "terser-webpack-plugin": "^5.3.9",
+    "thememirror": "^2.0.1"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.16.7",
@@ -32,6 +41,7 @@
     "postcss": "^8.4",
     "postcss-custom-properties": "^12.1.4",
     "postcss-loader": "^6.2.1",
+    "prettier": "3.1.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "replace-in-file": "^6.3.2",

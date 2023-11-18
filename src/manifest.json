@@ -1,9 +1,9 @@
 {
-  "name": "Nice JSON Formatter",
-  "version": "0.0.1",
+  "name": "Code Formatter - JSON, CSS & JavaScript",
+  "version": "1.1.0",
   "manifest_version": 3,
-  "description": "Easy JSON Formatter is designed to be fast and minimalist for the best performance possible.",
-  "homepage_url": "https://github.com/awps/nice-json",
+  "description": "Code Formatter – an all-in-one Chrome extension offering sophisticated syntax highlighting for CSS, JSON, and JavaScript.",
+  "homepage_url": "https://zerowp.com/code-formatter",
   "icons": {
     "128": "icons/128.png",
     "48": "icons/48.png",
