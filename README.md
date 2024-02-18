@@ -1,7 +1,7 @@
 # Code Formatter - JSON, CSS & JavaScript
 
 <p align="center">
-  <img width="1024" height="640" src="https://zerowp.com/wp-content/uploads/2023/11/1-1024x640.jpg">
+  <img width="830" height="auto" src="https://zerowp.com/wp-content/uploads/2023/11/1-1024x640.jpg">
 </p>
 
 ## [See it on Chrome Web Store](https://chromewebstore.google.com/detail/bhimnoepicmcjfkbmhckamllnibadfal?hl=en)
