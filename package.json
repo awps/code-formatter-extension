@@ -1,6 +1,6 @@
 {
   "name": "awps",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "awps",
   "main": "index.js",
   "repository": {
@@ -58,7 +58,6 @@
     "watch-poll": "mix watch -- --watch-options-poll=1000",
     "hot": "mix watch --hot",
     "production": "mix --production",
-    "zip": "./zip.sh",
     "eslint": "npx eslint js/**/**.tsx",
     "jslint": "npx eslint js/**/**.tsx",
     "phplint": "./vendor/bin/phpcs"
@@ -77,5 +76,16 @@
     ]
   },
   "author": "Andrei Surdu",
-  "license": "ISC"
+  "license": "ISC",
+  "tagy": {
+    "auto-release": false,
+    "replace": [
+      {
+        "files": "src/manifest.json",
+        "from": "\"version\": \"\\d+\\.\\d+\\.\\d+\"",
+        "to": "Version: __VERSION__",
+        "flags": "g"
+      }
+    ]
+  }
 }

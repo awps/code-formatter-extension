@@ -1,12 +1,10 @@
 const mix = require('laravel-mix');
 const cssNano = require('cssnano');
 const postCssCustomProperties = require('postcss-custom-properties');
-const TerserPlugin = require('terser-webpack-plugin');
 
-
-mix.js('./src/background.js', './src/background.min.js');
-mix.js('./src/content.js', './src/content.min.js');
-mix.sass('./src/css/content.scss', './src/css/content.min.css');
+mix.js(`./src/background.js`, `./src/background.min.js`);
+mix.js(`./src/content.js`, `./src/content.min.js`);
+mix.sass(`./src/css/content.scss`, `./src/css/content.min.css`);
 
 /*
 -------------------------------------------------------------------------------
