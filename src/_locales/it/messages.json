@@ -9,16 +9,16 @@
     "message": "Code Formatter"
   },
   "copy": {
-    "messaggio": "Copia"
+    "message": "Copia"
   },
   "download": {
-    "messaggio": "Scarica"
+    "message": "Scarica"
   },
   "showOriginal": {
-    "messaggio": "Mostra originale"
+    "message": "Mostra originale"
   },
   "showFormatted": {
-    "messaggio": "Mostra formattato"
+    "message": "Mostra formattato"
   },
   "networkResponseError": {
     "message": "La risposta della rete non era ok."

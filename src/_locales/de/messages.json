@@ -11,8 +11,8 @@
   "copy": {
     "message": "Kopieren"
   },
-  "Herunterladen": {
-    "Nachricht": "Herunterladen"
+  "download": {
+    "message": "Herunterladen"
   },
   "showOriginal": {
     "message": "Original anzeigen"
