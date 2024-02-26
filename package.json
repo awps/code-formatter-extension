@@ -1,6 +1,6 @@
 {
   "name": "awps",
-  "version": "1.1.2",
+  "version": "1.1.0",
   "description": "awps",
   "main": "index.js",
   "repository": {
@@ -83,7 +83,7 @@
       {
         "files": "src/manifest.json",
         "from": "\"version\": \"\\d+\\.\\d+\\.\\d+\"",
-        "to": "Version: __VERSION__",
+        "to": "version: \"__VERSION__\"",
         "flags": "g"
       }
     ]
