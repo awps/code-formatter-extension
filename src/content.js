@@ -10,7 +10,14 @@ import {dracula} from 'thememirror';
 
 const jsBeautify = beautifyJS.js;
 const cssBeautify = beautifyJS.css;
-const htmlBeautify = beautifyJS.html;
+
+const i18n = {
+    extShortName: chrome.i18n.getMessage('extShortName'),
+    copy: chrome.i18n.getMessage('copy'),
+    download: chrome.i18n.getMessage('download'),
+    showOriginal: chrome.i18n.getMessage('showOriginal'),
+    showFormatted: chrome.i18n.getMessage('showFormatted'),
+};
 
 function detectLanguage(code) {
     // JavaScript check
@@ -109,11 +116,11 @@ function init() {
         <div class="code-formatter-toolbar__logo">
             ${logo}
         </div>
-        <div class="code-formatter-toolbar__logo-text"><a href="https://zerowp.com/code-formatter/" target="_blank">Code Formatter</a></div>
+        <div class="code-formatter-toolbar__logo-text"><a href="https://zerowp.com/code-formatter/" target="_blank">${i18n.extShortName}</a></div>
         <div></div>
-        <div><button class="code-formatter-toolbar__button" id="code-formatter-switcher-button">Show original</button></div>
-        <div><button class="code-formatter-toolbar__button" id="code-formatter-toolbar-button-copy">Copy</button></div>
-        <div><button class="code-formatter-toolbar__button" id="code-formatter-toolbar-button-download">Download</button></div>
+        <div><button class="code-formatter-toolbar__button" id="code-formatter-switcher-button">${i18n.showOriginal}</button></div>
+        <div><button class="code-formatter-toolbar__button" id="code-formatter-toolbar-button-copy">${i18n.copy}</button></div>
+        <div><button class="code-formatter-toolbar__button" id="code-formatter-toolbar-button-download">${i18n.download}</button></div>
     </div>`);
 
     const switcherButton = document.getElementById('code-formatter-switcher-button');
@@ -124,14 +131,14 @@ function init() {
             firstPre.style.display = 'block';
             renderer.hidden = true;
             renderer.style.display = 'none';
-            switcherButton.innerText = 'Show formatted';
+            switcherButton.innerText = i18n.showFormatted;
             currentView = 'original';
         } else {
             firstPre.hidden = true;
             firstPre.style.display = 'none';
             renderer.hidden = false;
             renderer.style.display = 'block';
-            switcherButton.innerText = 'Show original';
+            switcherButton.innerText = i18n.showOriginal;
             currentView = 'formatted';
         }
     });

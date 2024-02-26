@@ -1,0 +1,8 @@
+Code Formatter - JSON, CSS & JavaScript.
+Code Formatter – all-in-one extension offering sophisticated syntax highlighting for CSS, JSON, and JavaScript.
+Code Formatter
+Copy
+Download
+Show original
+Show formatted
+Network response was not ok.

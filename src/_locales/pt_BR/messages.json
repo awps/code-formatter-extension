@@ -1,0 +1,26 @@
+{
+  "extName": {
+    "message": "Formatador de código - JSON, CSS e JavaScript."
+  },
+  "extDescription": {
+    "message": "Formatador de código - extensão completa que oferece sofisticado realce de sintaxe para CSS, JSON e JavaScript."
+  },
+  "extShortName": {
+    "message": "Formatador de código"
+  },
+  "copy": {
+    "message": "Copiar"
+  },
+  "download": {
+    "message": "Baixar"
+  },
+  "showOriginal": {
+    "message": "Mostrar original"
+  },
+  "showFormatted": {
+    "message": "Formatador de código"
+  },
+  "networkResponseError": {
+    "message": "A resposta da rede não estava ok."
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "extName": {
+    "message": "Code Formatter - JSON、CSS、JavaScript"
+  },
+  "extDescription": {
+    "message": "Code Formatter - CSS、JSON、JavaScriptのための洗練されたシンタックスハイライトを提供するオールインワンの拡張機能。"
+  },
+  "extShortName": {
+    "message": "Code Formatter"
+  },
+  "copy": {
+    "message": "コピー"
+  },
+  "ダウンロード": {
+    "message": "ダウンロード"
+  },
+  "showOriginal": {
+    "message": "オリジナルを表示"
+  },
+  "showFormatted": {
+    "message": "フォーマット表示"
+  },
+  "networkResponseError": {
+    "message": "ネットワーク・レスポンスは正常ではありませんでした。"
+  }
+}

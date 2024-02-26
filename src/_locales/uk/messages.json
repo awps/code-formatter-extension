@@ -1,0 +1,26 @@
+{
+  "extName": {
+    "message": "Code Formatter - JSON, CSS та JavaScript."
+  },
+  "extDescription": {
+    "message": "Code Formatter - універсальне розширення, що пропонує складне підсвічування синтаксису для CSS, JSON та JavaScript. "
+  },
+  "extShortName": {
+    "message": "Code Formatter"
+  },
+  "copy": {
+    "message": "Скопіювати"
+  },
+  "download": {
+    "message": "Завантажити"
+  },
+  "showOriginal": {
+    "message": "Показати оригінал"
+  },
+  "showFormatted": {
+    "message": "Показати відформатований "
+  },
+  "networkResponseError": {
+    "message": "Відповідь мережі не була нормальною."
+  }
+}

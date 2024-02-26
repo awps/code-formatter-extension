@@ -1,0 +1,26 @@
+{
+  "extName": {
+    "message": "代码格式化器 - JSON、CSS 和 JavaScript。"
+  },
+  "extDescription": {
+    "message": "代码格式化工具--一体化扩展，为 CSS、JSON 和 JavaScript 提供复杂的语法高亮显示。"
+  },
+  "extShortName": {
+    "message": "代码格式化"
+  },
+  "copy": {
+    "message": "复制"
+  },
+  "download": {
+    "message": "下载"
+  },
+  "showOriginal": {
+    "message": "显示原文"
+  },
+  "showFormatted": {
+    "message": "显示格式化 "
+  },
+  "networkResponseError": {
+    "message": "网络响应不确定。"
+  }
+}

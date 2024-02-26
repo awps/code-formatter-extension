@@ -5,7 +5,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
             .then(response => {
                 // Check if the response status is OK (200-299)
                 if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                    throw new Error(chrome.i18n.getMessage('networkResponseError'));
                 }
 
                 // Get the Content-Type header from the response

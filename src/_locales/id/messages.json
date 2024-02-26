@@ -1,0 +1,26 @@
+{
+  "extName": {
+    "message": "Pemformat Kode - JSON, CSS & JavaScript."
+  },
+  "extDescription": {
+    "message": "Pemformat Kode - ekstensi lengkap yang menawarkan penyorotan sintaksis canggih untuk CSS, JSON, dan JavaScript. "
+  },
+  "extShortName": {
+    "message": "Pemformat Kode"
+  },
+  "copy": {
+    "message": "Salin"
+  },
+  "download": {
+    "message": "Unduh"
+  },
+  "showOriginal": {
+    "message": "Tampilkan asli"
+  },
+  "showFormatted": {
+    "message": "Tampilkan diformat "
+  },
+  "networkResponseError": {
+    "message": "Respons jaringan tidak baik."
+  }
+}

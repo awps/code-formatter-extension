@@ -1,0 +1,26 @@
+{
+  "extName": {
+    "message": "Formator de cod - JSON, CSS și JavaScript"
+  },
+  "extDescription": {
+    "message": "Formator de cod - extensie completă care oferă o evidențiere sofisticată a sintaxei pentru CSS, JSON și JavaScript."
+  },
+  "extShortName": {
+    "message": "Formator de cod"
+  },
+  "copy": {
+    "message": "Copiați"
+  },
+  "download": {
+    "message": "Descărcați"
+  },
+  "showOriginal": {
+    "message": "Afișare original"
+  },
+  "showFormatted": {
+    "message": "Afișare formatată"
+  },
+  "networkResponseError": {
+    "message": "Răspunsul rețelei nu a fost ok."
+  }
+}
