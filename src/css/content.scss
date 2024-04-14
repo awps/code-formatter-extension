@@ -47,12 +47,12 @@
     }
 }
 
+
 .code-formatter-toolbar{
     position: fixed;
     display: grid;
     grid-template-columns: 26px auto 1fr auto auto auto;
     grid-gap: 6px;
-    z-index: 3000;
     top: 0;
     right: 0;
     left: 0;
@@ -62,6 +62,7 @@
     height: 40px;
     align-items: center;
     user-select: none;
+    z-index: 100000;
 
     &__logo{
         svg{

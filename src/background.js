@@ -1,6 +1,9 @@
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     if (changeInfo.status === 'complete' && /^http/.test(tab.url)) {
 
+        const url = new URL(tab.url);
+        const possibleExtension = url.pathname.split('.').pop();
+
         fetch(tab.url)
             .then(response => {
                 // Check if the response status is OK (200-299)
@@ -11,27 +14,36 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
                 // Get the Content-Type header from the response
                 const contentType = response.headers.get('Content-Type');
 
-                // console.log(contentType);
+                let programmingLanguage = '';
 
-                // Check if the Content-Type header has the value 'application/json'
-                if (!contentType || !(contentType.includes('application/json') || contentType.includes('application/javascript') || contentType.includes('text/css'))) {
+                if (!contentType) {
                     return;
                 }
 
+                if (contentType.includes('xml')) {
+                    programmingLanguage = 'xml';
+                } else if (contentType.includes('json')) {
+                    programmingLanguage = 'json';
+                } else if (contentType.includes('javascript')) {
+                    programmingLanguage = 'js';
+                } else if (contentType.includes('css')) {
+                    programmingLanguage = 'css';
+                }
+
+                if (!programmingLanguage) {
+                    programmingLanguage = possibleExtension;
+                }
+
                 chrome.scripting.executeScript({
-                    target: {tabId: tabId},
-                    files: [
-                        "./content.min.js",
-                    ]
-                })
-                    .then(() => {
-                        // console.log("INJECTED THE FOREGROUND SCRIPT.");
-                    })
-                    .catch(err => console.log(err));
+                    target: {tabId: tabId}, files: ["./content.min.js",]
+                }, function () {
+                    chrome.tabs.sendMessage(tab.id, {
+                        programmingLanguage: programmingLanguage
+                    });
+                });
 
                 chrome.scripting.insertCSS({
-                    target: {tabId: tabId},
-                    files: ["./css/content.min.css"]
+                    target: {tabId: tabId}, files: ["./css/content.min.css"]
                 })
                     .then(() => {
                         // console.log("INJECTED THE FOREGROUND STYLE.");

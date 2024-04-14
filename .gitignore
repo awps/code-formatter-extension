@@ -88,3 +88,6 @@ mix-manifest.json
 /vendor/
 /src/vendor/
 /zip/
+
+*.min.js
+*.min.css
