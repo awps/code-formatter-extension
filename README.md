@@ -4,7 +4,7 @@
   <img width="830" height="auto" src="https://zerowp.com/wp-content/uploads/2023/11/1-1024x640.jpg">
 </p>
 
-## [See it on Chrome Web Store](https://chromewebstore.google.com/detail/bhimnoepicmcjfkbmhckamllnibadfal?hl=en)
+## [Add to Chrome](https://chromewebstore.google.com/detail/bhimnoepicmcjfkbmhckamllnibadfal?hl=en)
 
 A Chrome extension that makes CSS, JSON, and JavaScript more readable in the browser with syntax highlighting, line numbers, and collapsible sections.
 
@@ -48,6 +48,6 @@ A treasure for developers and not only.
 
 **Private and secure** - collects no user data.
 
-## [See it on Chrome Web Store](https://chromewebstore.google.com/detail/bhimnoepicmcjfkbmhckamllnibadfal?hl=en)
+## [Get it on Chrome Web Store](https://chromewebstore.google.com/detail/bhimnoepicmcjfkbmhckamllnibadfal?hl=en)
 
 
