@@ -18,7 +18,7 @@ jobs:
     - name: Build
       run: |
         npm ci --legacy-peer-deps
-        chomd +x ./build.sh
+        chmod +x ./build.sh
         ./build.sh
     - name: Upload & release
       uses: mnao305/chrome-extension-upload@v5.0.0
