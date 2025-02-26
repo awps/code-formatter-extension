@@ -1,12 +1,12 @@
 {
   "extName": {
-    "message": "代码格式化器 - JSON、CSS 和 JavaScript。"
+    "message": "Code Formatter - JSON、CSS 和 JavaScript。"
   },
   "extDescription": {
-    "message": "代码格式化工具--一体化扩展，为 CSS、JSON 和 JavaScript 提供复杂的语法高亮显示。"
+    "message": "Code Formatter--一体化扩展，为 CSS、JSON 和 JavaScript 提供复杂的语法高亮显示。"
   },
   "extShortName": {
-    "message": "代码格式化"
+    "message": "Code Formatter"
   },
   "copy": {
     "message": "复制"

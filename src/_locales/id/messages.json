@@ -1,12 +1,12 @@
 {
   "extName": {
-    "message": "Pemformat Kode - JSON, CSS & JavaScript."
+    "message": "Code Formatter - JSON, CSS & JavaScript."
   },
   "extDescription": {
-    "message": "Pemformat Kode - ekstensi lengkap yang menawarkan penyorotan sintaksis canggih untuk CSS, JSON, dan JavaScript. "
+    "message": "Code Formatter - ekstensi lengkap yang menawarkan penyorotan sintaksis canggih untuk CSS, JSON, dan JavaScript. "
   },
   "extShortName": {
-    "message": "Pemformat Kode"
+    "message": "Code Formatter"
   },
   "copy": {
     "message": "Salin"

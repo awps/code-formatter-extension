@@ -200,13 +200,13 @@ function init() {
             </div>
             <div class="code-formatter-toolbar__logo-text"><a href="https://zerowp.com/code-formatter/" target="_blank">${i18n.extShortName}</a></div>
             <div></div>
-            <div><button class="code-formatter-toolbar__button" id="code-formatter-switcher-button">${i18n.showOriginal}</button></div>
-            <div><button class="code-formatter-toolbar__button" id="code-formatter-toolbar-button-copy">${i18n.copy}</button></div>
-            <div><button class="code-formatter-toolbar__button" id="code-formatter-toolbar-button-download">${i18n.download}</button></div>
+            <div><button class="code-formatter-toolbar__button code-formatter-toolbar__button__switch" id="code-formatter-switcher-button">${i18n.showOriginal}</button></div>
+            <div><button class="code-formatter-toolbar__button code-formatter-toolbar__button__copy" id="code-formatter-toolbar-button-copy">${i18n.copy}</button></div>
+            <div><button class="code-formatter-toolbar__button code-formatter-toolbar__button__download" id="code-formatter-toolbar-button-download">${i18n.download}</button></div>
         </div>`);
 
         firstPre.style.overflow = 'auto';
-        firstPre.style.height = 'calc(100vh - 40px)';
+        // firstPre.style.height = 'calc(100vh - 40px)';
         firstPre.style.margin = '0';
 
         const jsonFormatterContainer = document.querySelector('.json-formatter-container');

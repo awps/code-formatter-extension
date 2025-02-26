@@ -1,12 +1,12 @@
 {
   "extName": {
-    "message": "Formatador de código - JSON, CSS e JavaScript."
+    "message": "Code Formatter - JSON, CSS e JavaScript."
   },
   "extDescription": {
-    "message": "Formatador de código - extensão completa que oferece sofisticado realce de sintaxe para CSS, JSON e JavaScript."
+    "message": "Code Formatter - extensão completa que oferece sofisticado realce de sintaxe para CSS, JSON e JavaScript."
   },
   "extShortName": {
-    "message": "Formatador de código"
+    "message": "Code Formatter"
   },
   "copy": {
     "message": "Copiar"

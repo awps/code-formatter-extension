@@ -6,23 +6,47 @@
 
 ## [See it on Chrome Web Store](https://chromewebstore.google.com/detail/bhimnoepicmcjfkbmhckamllnibadfal?hl=en)
 
-Code Formatter – an all-in-one Chrome extension offering sophisticated syntax highlighting for CSS, JSON, and JavaScript.
+A Chrome extension that makes CSS, JSON, and JavaScript more readable in the browser with syntax highlighting, line numbers, and collapsible sections.
 
-Meticulously designed for simplicity and efficiency, this extension enhances the readability and aesthetics of CSS, JSON, and JavaScript without unnecessary complexity.
+You know how frustrating it is to read code that's not formatted correctly or is minified.
 
-🧑‍💻**Key Features:**
+Works directly in your browser when viewing source code. Beyond basic highlighting, it automatically detects and enhances the following code types:
 
-- ➡️Syntax Highlighting: Sophisticated syntax highlighting for CSS, JSON, and JavaScript. Easily identify and understand the structure of the code.
-- ➡️Readable Code Formats: Automatically beautifies CSS, JSON, and JavaScript, presenting them in clear and reader-friendly formats.
-- ➡️Effortless Code Management: Enjoy ultimate convenience with one-click options to download or copy the formatted code.
-- ➡️Collapsible Code Sections: Streamline code navigation with collapsible sections. Focus on relevant portions of the code, reducing clutter and enhancing overall readability.
-- ➡️Line Numbers: Keep track of the code effortlessly with integrated line numbers.
-- ➡️Auto-detect Code on Page: No need to manually specify file extensions or toggle settings. Code Formatter intuitively detects CSS, JSON, and JavaScript content on any webpage, regardless of the URL's extension.
-- ➡️Low Footprint: We believe in lightweight solutions. Code Formatter is compiled to a minimal size, ensuring that your browser's performance remains unaffected while still enjoying enhanced code readability.
+- JSON (json)
+- CSS (css)
+- JavaScript/TypeScript family (js, ts, jsx, tsx)
+- PHP (php)
+- Markdown (md)
+- XML (xml)
+- YAML (yaml, yml)
+- LESS (less)
+- SASS (sass)
+- Python (py)
+- SQL (sql)
+- Go (go)
+- C++ (cpp, cxx, cc)
+- Rust (rs)
+- Java (java)
+- C# (cs)
 
-✅**Safe and Secure:**
+A treasure for developers and not only.
 
-Ensuring your privacy and security, Code Formatter was crafted with a strong commitment to keeping your data secure. The extension does not collect any user information and maintains a protective environment, free from intrusive tracking.
+**Notable Features:**
+
+- Syntax highlighting for easy code understanding
+- Auto-beautifies code for better readability
+- One-click download or copy formatted code
+- Collapsible sections for focused viewing
+- Line numbers for easy reference
+- Auto-detects code on any webpage
+- Lightweight design that won't slow your browser
+- Is open-source and free to use
+- Fast - no waiting for code to format and instant results
+- Works offline and online
+- Supports multiple code types
+
+
+**Private and secure** - collects no user data.
 
 ## [See it on Chrome Web Store](https://chromewebstore.google.com/detail/bhimnoepicmcjfkbmhckamllnibadfal?hl=en)
 

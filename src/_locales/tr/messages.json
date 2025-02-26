@@ -1,12 +1,12 @@
 {
   "extName": {
-    "message": "Kod Biçimlendirici - JSON, CSS ve JavaScript."
+    "message": "Code Formatter - JSON, CSS ve JavaScript."
   },
   "extDescription": {
-    "message": "Kod Biçimlendirici - CSS, JSON ve JavaScript için gelişmiş sözdizimi vurgulama sunan hepsi bir arada uzantı. "
+    "message": "Code Formatter - CSS, JSON ve JavaScript için gelişmiş sözdizimi vurgulama sunan hepsi bir arada uzantı. "
   },
   "extShortName": {
-    "message": "Kod Biçimlendirici"
+    "message": "Code Formatter"
   },
   "copy": {
     "message": "Anlaşıldı"
