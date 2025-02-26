@@ -24,7 +24,7 @@ jobs:
       uses: mnao305/chrome-extension-upload@v5.0.0
       with:
         file-path: code-formatter.zip
-        extension-id: hogefuga(extension id)
+        extension-id: bhimnoepicmcjfkbmhckamllnibadfal
         client-id: ${{ secrets.CLIENT_ID }}
         client-secret: ${{ secrets.CLIENT_SECRET }}
         refresh-token: ${{ secrets.REFRESH_TOKEN }}
