@@ -1,5 +1,5 @@
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-    if (changeInfo.status === 'complete' && /^http/.test(tab.url)) {
+    if (changeInfo.status === 'complete' && /^(http|file)/.test(tab.url)) {
 
         const url = new URL(tab.url);
         const possibleExtension = url.pathname.split('.').pop();

@@ -43,6 +43,7 @@ A treasure for developers and not only.
 - Is open-source and free to use
 - Fast - no waiting for code to format and instant results
 - Works offline and online
+- Support for local files - just open a local file in the browser and see the code formatted
 - Supports multiple code types
 
 
