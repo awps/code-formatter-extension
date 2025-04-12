@@ -64,7 +64,9 @@ function init() {
 
     const length = originalCode.length;
 
-    if (length > 3e6) {
+    // Max 100mb
+    if (length > 100e6) {
+        // console.warn(`Code length (${length}) exceeds the 100 million character limit. Aborting formatting.`);
         return;
     }
 
