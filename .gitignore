@@ -82,6 +82,9 @@ mix.js.map
 mix-manifest.json
 *.js.map
 *.css.map
+*.min.js
+*.min.css
+*.min.js.*
 
 *.zip
 
@@ -89,5 +92,3 @@ mix-manifest.json
 /src/vendor/
 /zip/
 
-*.min.js
-*.min.css
