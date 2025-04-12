@@ -2,8 +2,8 @@ const mix = require('laravel-mix');
 const cssNano = require('cssnano');
 const postCssCustomProperties = require('postcss-custom-properties');
 
-mix.js(`./src/background.js`, `./src/background.min.js`);
-mix.js(`./src/content.js`, `./src/content.min.js`);
+mix.ts(`./src/background.ts`, `./src/background.min.js`)
+   .ts(`./src/content.ts`, `./src/content.min.js`);
 mix.sass(`./src/css/content.scss`, `./src/css/content.min.css`);
 
 /*
@@ -22,6 +22,18 @@ mix.options({
 });
 
 mix.webpackConfig({
+    module: {
+        rules: [
+            {
+                test: /\.tsx?$/,
+                loader: 'ts-loader',
+                exclude: /node_modules/,
+            },
+        ],
+    },
+    resolve: {
+        extensions: ['.*', '.js', '.jsx', '.ts', '.tsx'],
+    },
     optimization: {
         minimize: false,
     }

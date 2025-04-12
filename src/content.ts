@@ -20,6 +20,7 @@ import {rust} from "@codemirror/lang-rust";
 import {java} from "@codemirror/lang-java";
 import {cpp} from "@codemirror/lang-cpp";
 import {csharp} from "@replit/codemirror-lang-csharp";
+import { alternativeDetectLanguage } from './utils/alternativeDetectLanguage';
 
 const jsBeautify = beautifyJS.js;
 const cssBeautify = beautifyJS.css;
@@ -32,33 +33,7 @@ const i18n = {
     showFormatted: chrome.i18n.getMessage('showFormatted'),
 };
 
-function alternativeDetectLanguage(code) {
-    // PHP check
-    if (/^<\?php/.test(code) || /function\s+\w*\s*\(/.test(code)) {
-        return 'php';
-    }
-
-    // JSON check
-    if (/\{\s*"\w+"\s*:\s*("[^"]*"\s*|\d+\s*|\{\s*\}\s*|\[\s*\]\s*)\s*(,\s*"\w+"\s*:\s*("[^"]*"\s*|\d+\s*|\{\s*\}\s*|\[\s*\]\s*)\s*)*\}/.test(code)) {
-        return 'json';
-    }
-
-    // Improved JavaScript check
-    if (/function\s+\w*\s*\(/.test(code) || /var\s+\w*\s*=/.test(code) || /console\./.test(code) ||
-        /\w+\s*=>\s*\{/.test(code) || /let\s+\w*\s*=/.test(code) || /const\s+\w*\s*=/.test(code) ||
-        /\.\s*(map|filter|reduce|forEach)\s*\(/.test(code)) {
-        return 'js';
-    }
-
-    // CSS check
-    if (/\{\s*\}/.test(code) || /[\w\s\[\]\(\)-]+\s*\{[\w\s\[\]\(\)-:;#.'",=\/*]+\}/.test(code)) {
-        return 'css';
-    }
-
-    return 'unknown';
-}
-
-function beautify(code, language) {
+function beautify(code: string, language: string): string {
     // if language is not in array, return code
     if (!['js', 'css', 'json'].includes(language)) {
         return code;
@@ -74,9 +49,10 @@ function beautify(code, language) {
 let currentView = 'original';
 
 function init() {
-    const firstPre = document.body.firstChild;
+    const firstPre = document.querySelector('body > pre');
 
-    if (!firstPre || !firstPre.tagName || firstPre.tagName !== 'PRE') {
+    if (!(firstPre instanceof HTMLElement)) {
+        // console.log("No <pre> tag found directly under <body>.");
         return;
     }
 
@@ -100,11 +76,11 @@ function init() {
         }
 
         let programmingLanguage = request.programmingLanguage;
-        console.log(programmingLanguage + ' received');
+        // console.log(programmingLanguage + ' received');
 
         if (!programmingLanguage) {
             programmingLanguage = alternativeDetectLanguage(originalCode);
-            console.log(programmingLanguage + ' detected');
+            // console.log(programmingLanguage + ' detected');
         } else if (!programmingLanguage || programmingLanguage === 'js') {
             if (alternativeDetectLanguage(originalCode) === 'json') {
                 programmingLanguage = 'json';
@@ -164,6 +140,11 @@ function init() {
 
         const renderer = document.getElementById('code-formatter-renderer');
 
+        if (!renderer) {
+            //console.error("Could not find code-formatter-renderer element.");
+            return;
+        }
+
         const extensions = [basicSetup, dracula];
 
         firstPre.hidden = true;
@@ -215,27 +196,33 @@ function init() {
             jsonFormatterContainer.remove();
         }
 
-        document.addEventListener('click', (e) => {
-            if (e.target.id === 'code-formatter-switcher-button') {
+        document.addEventListener('click', (e: MouseEvent) => {
+            if (!e.target || !(e.target instanceof HTMLElement)) {
+                return;
+            }
+
+            const targetElement = e.target;
+
+            if (targetElement.id === 'code-formatter-switcher-button') {
                 if (firstPre.hidden) {
                     firstPre.hidden = false;
                     firstPre.style.display = 'block';
                     renderer.hidden = true;
                     renderer.style.display = 'none';
-                    e.target.innerText = i18n.showFormatted;
+                    targetElement.innerText = i18n.showFormatted;
                     currentView = 'original';
                 } else {
                     firstPre.hidden = true;
                     firstPre.style.display = 'none';
                     renderer.hidden = false;
                     renderer.style.display = 'block';
-                    e.target.innerText = i18n.showOriginal;
+                    targetElement.innerText = i18n.showOriginal;
                     currentView = 'formatted';
                 }
 
-            } else if (e.target.id === 'code-formatter-toolbar-button-copy') {
+            } else if (targetElement.id === 'code-formatter-toolbar-button-copy') {
                 navigator && navigator.clipboard && navigator.clipboard.writeText(currentView === 'original' ? originalCode : beautified);
-            } else if (e.target.id === 'code-formatter-toolbar-button-download') {
+            } else if (targetElement.id === 'code-formatter-toolbar-button-download') {
                 const a = document.createElement('a');
                 a.href = `data:text/plain;charset=utf-8,${encodeURIComponent(currentView === 'original' ? originalCode : beautified)}`;
 
