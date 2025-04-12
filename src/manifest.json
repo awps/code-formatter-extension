@@ -1,6 +1,6 @@
 {
   "name": "__MSG_extName__",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "manifest_version": 3,
   "description": "__MSG_extDescription__",
   "homepage_url": "https://zerowp.com/code-formatter",
