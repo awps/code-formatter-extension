@@ -36,7 +36,7 @@ const i18n = {
 function beautify(code: string, language: string): string {
     // if language is not in array, return code
     if (!['js', 'css', 'json'].includes(language)) {
-        return code;
+        return code;``
     }
 
     if (language === 'css') {
