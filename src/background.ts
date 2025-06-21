@@ -64,7 +64,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
         }
         
         // Always proceed - let content script make final decision
-        console.log('[Code Formatter BG] Programming language hint:', programmingLanguage, 'for URL:', tab.url);
+        // console.log('[Code Formatter BG] Programming language hint:', programmingLanguage, 'for URL:', tab.url);
 
         chrome.scripting.executeScript({
             target: {tabId: tab.id, frameIds: [0]}, files: ["./content.min.js",]

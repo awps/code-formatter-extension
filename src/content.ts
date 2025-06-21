@@ -56,35 +56,40 @@ function init() {
 }
 
 function initFormatter() {
-    // Try different selectors for finding code content
-    let firstPre = document.querySelector('body > pre') as HTMLPreElement | null;
+    // ONLY format if <pre> is the FIRST child of body
+    const firstChild = document.body.firstElementChild;
     
-    // Fallback: look for any pre tag in body
-    if (!firstPre) {
-        firstPre = document.querySelector('pre') as HTMLPreElement | null;
-    }
-    
-    // If still no pre tag, check if body contains plain text that might be code
-    if (!firstPre && document.body.children.length === 0) {
-        const bodyText = document.body.innerText.trim();
-        if (bodyText) {
-            // Check if it's JSON or other code content
-            if (bodyText.startsWith('{') || bodyText.startsWith('[') || 
-                bodyText.includes('function') || bodyText.includes('var') ||
-                bodyText.includes('const') || bodyText.includes('let')) {
-                // Create a pre tag to hold the content
-                firstPre = document.createElement('pre') as HTMLPreElement;
-                firstPre.textContent = bodyText;
-                document.body.appendChild(firstPre);
-                console.log('[Code Formatter] Created pre tag for plain text code content');
+    if (!firstChild || firstChild.tagName !== 'PRE') {
+        // Special case: body has no elements but contains plain text code
+        if (document.body.children.length === 0) {
+            const bodyText = document.body.innerText.trim();
+            if (bodyText) {
+                // Check if it's JSON or other code content
+                if (bodyText.startsWith('{') || bodyText.startsWith('[') || 
+                    bodyText.includes('function') || bodyText.includes('var') ||
+                    bodyText.includes('const') || bodyText.includes('let')) {
+                    // Create a pre tag to hold the content
+                    const firstPre = document.createElement('pre') as HTMLPreElement;
+                    firstPre.textContent = bodyText;
+                    document.body.appendChild(firstPre);
+                    // console.log('[Code Formatter] Created pre tag for plain text code content');
+                    // Continue with this new pre element
+                } else {
+                    // console.log("[Code Formatter] Body contains text but doesn't look like code");
+                    return;
+                }
+            } else {
+                // console.log("[Code Formatter] No <pre> as first child of body");
+                return;
             }
+        } else {
+            // console.log("[Code Formatter] First child of body is not <pre>, it's:", firstChild?.tagName);
+            return;
         }
     }
-
-    if (!firstPre) {
-        console.log("[Code Formatter] No <pre> tag or JSON content found.");
-        return;
-    }
+    
+    // Now we know the first child is a pre tag
+    const firstPre = document.body.firstElementChild as HTMLPreElement;
 
     let originalCode = firstPre.innerText;
 
@@ -95,8 +100,8 @@ function initFormatter() {
     const length = originalCode.length;
     
     // Debug info (uncomment to enable)
-    console.log('[Code Formatter] Page detected with code length:', length);
-    console.log('[Code Formatter] First 100 chars:', originalCode.substring(0, 100));
+    // console.log('[Code Formatter] Page detected with code length:', length);
+    // console.log('[Code Formatter] First 100 chars:', originalCode.substring(0, 100));
 
     // Max 100mb
     if (length > 100e6) {
@@ -113,7 +118,7 @@ function initFormatter() {
         }
 
         let programmingLanguage = request.programmingLanguage;
-        console.log('[Code Formatter] Language received from background:', programmingLanguage);
+        // console.log('[Code Formatter] Language received from background:', programmingLanguage);
 
         // Check if we need to decode base64
         let decodedCode = originalCode;
@@ -128,10 +133,10 @@ function initFormatter() {
                     // Try to decode if it looks like base64
                     if (/^[A-Za-z0-9+/]+=*$/.test(originalCode.replace(/\s/g, ''))) {
                         decodedCode = atob(originalCode);
-                        console.log('[Code Formatter] Decoded base64 content');
+                        // console.log('[Code Formatter] Decoded base64 content');
                     }
                 } catch (e) {
-                    console.log('[Code Formatter] Failed to decode base64:', e);
+                    // console.log('[Code Formatter] Failed to decode base64:', e);
                 }
             }
         }
@@ -139,7 +144,7 @@ function initFormatter() {
         // If no language provided or auto-detect, use content-based detection
         if (!programmingLanguage || programmingLanguage === 'auto-detect') {
             programmingLanguage = alternativeDetectLanguage(decodedCode);
-            console.log('[Code Formatter] Language detected from content:', programmingLanguage);
+            // console.log('[Code Formatter] Language detected from content:', programmingLanguage);
         }
         
         // Special check: JS files might actually be JSON
@@ -147,7 +152,7 @@ function initFormatter() {
             const detectedLang = alternativeDetectLanguage(decodedCode);
             if (detectedLang === 'json') {
                 programmingLanguage = 'json';
-                console.log('[Code Formatter] JS file re-detected as JSON based on content');
+                // console.log('[Code Formatter] JS file re-detected as JSON based on content');
             }
         }
         
@@ -159,12 +164,12 @@ function initFormatter() {
         }
 
         if (!programmingLanguage || programmingLanguage === 'unknown') {
-            console.log('[Code Formatter] No valid language detected, aborting');
+            // console.log('[Code Formatter] No valid language detected, aborting');
             sendResponse({status: 'no_language'});
             return;
         }
         
-        console.log('[Code Formatter] Final language:', programmingLanguage);
+        // console.log('[Code Formatter] Final language:', programmingLanguage);
 
 
         let pluginMode = undefined;
