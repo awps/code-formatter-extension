@@ -2,8 +2,8 @@ const mix = require('laravel-mix');
 const cssNano = require('cssnano');
 const postCssCustomProperties = require('postcss-custom-properties');
 
-mix.ts(`./src/background.ts`, `./src/background.min.js`)
-   .ts(`./src/content.ts`, `./src/content.min.js`);
+mix.ts(`./src/background/index.ts`, `./src/background.min.js`)
+   .ts(`./src/content/index.ts`, `./src/content.min.js`);
 mix.sass(`./src/css/content.scss`, `./src/css/content.min.css`);
 
 /*

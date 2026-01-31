@@ -57,6 +57,12 @@ export const themeLabels: Record<ThemeKey, string> = {
     tomorrow: 'Tomorrow',
 };
 
+export const themeKeys: ThemeKey[] = [
+    'dracula', 'amy', 'ayuLight', 'barf', 'bespin', 'birdsOfParadise',
+    'boysAndGirls', 'clouds', 'cobalt', 'coolGlow', 'espresso', 'noctisLilac',
+    'rosePineDawn', 'smoothy', 'solarizedLight', 'tomorrow'
+];
+
 export function getTheme(key: ThemeKey): Extension {
     return themeMap[key] || dracula;
 }

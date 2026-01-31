@@ -1,4 +1,4 @@
-import { defaultSettings, ThemeKey } from '../src/types/settings';
+import { defaultSettings, ThemeKey } from '../src/shared/types/settings';
 
 describe('settings types', () => {
     describe('defaultSettings', () => {

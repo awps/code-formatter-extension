@@ -1,4 +1,4 @@
-import { ThemeKey } from '../src/types/settings';
+import { ThemeKey } from '../src/shared/types/settings';
 
 // Mock thememirror since Jest can't handle ES modules
 jest.mock('thememirror', () => ({
@@ -21,7 +21,7 @@ jest.mock('thememirror', () => ({
 }));
 
 // Import after mock
-import { getTheme, themeMap, themeLabels } from '../src/utils/themes';
+import { getTheme, themeMap, themeLabels } from '../src/shared/utils/themes';
 
 describe('themes utilities', () => {
     describe('themeMap', () => {
@@ -68,8 +68,7 @@ describe('themes utilities', () => {
         });
 
         test('should return dracula as fallback for invalid keys', () => {
-            // @ts-expect-error - testing invalid input
-            expect(getTheme('nonexistent')).toBe(themeMap.dracula);
+            expect(getTheme('nonexistent' as ThemeKey)).toBe(themeMap.dracula);
         });
     });
 });

@@ -107,36 +107,18 @@ const languageChecks: LanguageCheck[] = [
     }
 ];
 
-export function alternativeDetectLanguage(code: string): string {
-    // Sort by priority (higher first)
-    const sortedChecks = [...languageChecks].sort((a, b) => (b.priority || 0) - (a.priority || 0));
-    
-    // Try to detect JSON more accurately first
-    if (isValidJson(code)) {
-        return 'json';
-    }
-    
-    for (const check of sortedChecks) {
-        if (check.pattern.test(code)) {
-            return check.language;
-        }
-    }
-    
-    return 'unknown';
-}
-
 // Helper function to validate JSON
 function isValidJson(code: string): boolean {
     try {
         // Remove potential BOM
         const cleanCode = code.replace(/^\uFEFF/, '').trim();
-        
+
         // Quick check for JSON-like structure
         if (!cleanCode) return false;
         const firstChar = cleanCode[0];
         const lastChar = cleanCode[cleanCode.length - 1];
-        
-        if ((firstChar === '{' && lastChar === '}') || 
+
+        if ((firstChar === '{' && lastChar === '}') ||
             (firstChar === '[' && lastChar === ']')) {
             JSON.parse(cleanCode);
             return true;
@@ -145,4 +127,25 @@ function isValidJson(code: string): boolean {
         // Not valid JSON
     }
     return false;
-} 
+}
+
+export function detectLanguage(code: string): string {
+    // Sort by priority (higher first)
+    const sortedChecks = [...languageChecks].sort((a, b) => (b.priority || 0) - (a.priority || 0));
+
+    // Try to detect JSON more accurately first
+    if (isValidJson(code)) {
+        return 'json';
+    }
+
+    for (const check of sortedChecks) {
+        if (check.pattern.test(code)) {
+            return check.language;
+        }
+    }
+
+    return 'unknown';
+}
+
+// Keep the old export name for backward compatibility during refactoring
+export const alternativeDetectLanguage = detectLanguage;

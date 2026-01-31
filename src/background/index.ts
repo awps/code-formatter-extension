@@ -5,19 +5,17 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     if (changeInfo.status === 'complete' && tab.url && /^(http|file|data)/.test(tab.url)) {
         // Check if tab.id exists before using it
         if (typeof tab.id === 'undefined') {
-            //console.error("Tab ID is undefined.");
             return;
         }
 
         // Check tab.url again for the URL constructor (although already checked by regex)
         if (!tab.url) {
-            //console.error("Tab URL is undefined after regex check?"); // Should not happen
             return;
         }
 
         // Enhanced language detection
         let programmingLanguage = '';
-        
+
         // Check if it's a data URL
         if (tab.url.startsWith('data:')) {
             // Parse data URL: data:[<mediatype>][;base64],<data>
@@ -25,7 +23,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
             if (dataUrlMatch) {
                 const mimeType = dataUrlMatch[1];
                 const isBase64 = !!dataUrlMatch[2];
-                
+
                 // Map common MIME types to languages
                 if (mimeType.includes('javascript') || mimeType.includes('ecmascript')) {
                     programmingLanguage = 'js';
@@ -40,7 +38,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
                 } else {
                     programmingLanguage = 'auto-detect';
                 }
-                
+
                 // Store base64 flag in the message
                 programmingLanguage = programmingLanguage + (isBase64 ? ':base64' : '');
             }
@@ -49,7 +47,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
             const url = new URL(tab.url);
             const pathname = url.pathname;
             const possibleExtension = pathname.split('.').pop() || '';
-            
+
             // Check if we have a file extension
             if (possibleExtension && pathname.includes('.')) {
                 programmingLanguage = detectLanguageWithMimeTypeKnowledge(possibleExtension);
@@ -62,19 +60,15 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
                 programmingLanguage = 'auto-detect';
             }
         }
-        
-        // Always proceed - let content script make final decision
-        // console.log('[Code Formatter BG] Programming language hint:', programmingLanguage, 'for URL:', tab.url);
 
         chrome.scripting.executeScript({
             target: {tabId: tab.id, frameIds: [0]}, files: ["./content.min.js",]
         }, function (injectionResults) {
             // Check if script was successfully injected
             if (chrome.runtime.lastError) {
-                // console.log('Script injection failed:', chrome.runtime.lastError.message);
                 return;
             }
-            
+
             // Ensure tab.id is defined and injection was successful
             if (typeof tab.id !== 'undefined' && injectionResults && injectionResults.length > 0) {
                 // Add a small delay to ensure content script is ready
@@ -85,7 +79,6 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
                         // Handle any errors in message sending
                         if (chrome.runtime.lastError) {
                             // This is normal if the content script decides not to format the page
-                            // console.log('Message sending failed:', chrome.runtime.lastError.message);
                         }
                     });
                 }, 100);
@@ -96,10 +89,10 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
             target: {tabId: tab.id, frameIds: [0]}, files: ["./css/content.min.css"]
         })
             .then(() => {
-                // console.log("CSS injected successfully");
+                // CSS injected successfully
             })
             .catch(err => {
-                // console.log("CSS injection failed:", err);
+                // CSS injection failed
             });
     }
 });

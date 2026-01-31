@@ -1,4 +1,4 @@
-import { alternativeDetectLanguage } from '../src/utils/alternativeDetectLanguage';
+import { alternativeDetectLanguage } from '../src/content/utils/languageDetection';
 
 describe('alternativeDetectLanguage', () => {
     test('should detect PHP', () => {

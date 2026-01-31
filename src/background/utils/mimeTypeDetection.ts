@@ -116,54 +116,54 @@ const extensionToMimeTypes: { [key: string]: string[] } = {
     'js': ['application/javascript', 'application/x-javascript', 'text/javascript'],
     'mjs': ['application/javascript', 'text/javascript'],
     'jsx': ['text/jsx', 'application/javascript'],
-    
+
     // TypeScript
     'ts': ['application/typescript', 'text/typescript'],
     'tsx': ['text/tsx', 'application/typescript'],
-    
+
     // JSON
     'json': ['application/json', 'text/json'],
     'jsonld': ['application/ld+json'],
     'geojson': ['application/geo+json'],
-    
+
     // CSS
     'css': ['text/css'],
     'less': ['text/less', 'text/css'],
     'sass': ['text/sass', 'text/css'],
     'scss': ['text/scss', 'text/css'],
-    
+
     // XML variations
     'xml': ['application/xml', 'text/xml'],
     'xsl': ['application/xml', 'text/xml'],
     'xslt': ['application/xslt+xml'],
     'svg': ['image/svg+xml'],
     'rss': ['application/rss+xml'],
-    
+
     // HTML
     'html': ['text/html'],
     'htm': ['text/html'],
     'xhtml': ['application/xhtml+xml'],
-    
+
     // PHP
     'php': ['application/x-httpd-php', 'text/x-php'],
     'phtml': ['application/x-httpd-php'],
-    
+
     // Python
     'py': ['text/x-python', 'application/x-python'],
     'pyw': ['text/x-python'],
-    
+
     // Ruby
     'rb': ['text/x-ruby', 'application/x-ruby'],
-    
+
     // Go
     'go': ['text/x-go', 'application/x-go'],
-    
+
     // Rust
     'rs': ['text/x-rust', 'application/x-rust'],
-    
+
     // Java
     'java': ['text/x-java', 'application/x-java'],
-    
+
     // C/C++
     'c': ['text/x-c', 'text/plain'],
     'cpp': ['text/x-c++', 'text/plain'],
@@ -171,30 +171,30 @@ const extensionToMimeTypes: { [key: string]: string[] } = {
     'cxx': ['text/x-c++', 'text/plain'],
     'h': ['text/x-c', 'text/plain'],
     'hpp': ['text/x-c++', 'text/plain'],
-    
+
     // C#
     'cs': ['text/x-csharp', 'application/x-csharp'],
-    
+
     // Shell scripts
     'sh': ['application/x-sh', 'text/x-shellscript'],
     'bash': ['application/x-sh', 'text/x-shellscript'],
-    
+
     // YAML
     'yaml': ['text/yaml', 'application/x-yaml'],
     'yml': ['text/yaml', 'application/x-yaml'],
-    
+
     // Markdown
     'md': ['text/markdown', 'text/x-markdown'],
     'markdown': ['text/markdown', 'text/x-markdown'],
-    
+
     // SQL
     'sql': ['application/sql', 'text/x-sql'],
-    
+
     // Configuration files
     'ini': ['text/plain'],
     'conf': ['text/plain'],
     'config': ['text/plain'],
-    
+
     // Other
     'txt': ['text/plain'],
     'log': ['text/plain']
@@ -228,7 +228,7 @@ export function detectLanguageFromMimeType(mimeType: string): string | null {
 export function detectLanguageWithMimeTypeKnowledge(extension: string): string {
     // First, get possible MIME types for this extension
     const possibleMimeTypes = getMimeTypesForExtension(extension);
-    
+
     // Try to detect language from each possible MIME type
     for (const mimeType of possibleMimeTypes) {
         const detectedLang = detectLanguageFromMimeType(mimeType);
@@ -236,7 +236,7 @@ export function detectLanguageWithMimeTypeKnowledge(extension: string): string {
             return detectedLang;
         }
     }
-    
+
     // If no language detected from MIME types, return the extension itself
     // This maintains backward compatibility
     return extension;
@@ -268,6 +268,6 @@ export function mightBeJsonFromUrl(url: string): boolean {
         /output=json/i,           // Output format parameter
         /type=json/i              // Type parameter
     ];
-    
+
     return jsonUrlPatterns.some(pattern => pattern.test(url));
 }

@@ -1,5 +1,5 @@
-import { loadSettings, saveSettings } from '../src/utils/storage';
-import { defaultSettings } from '../src/types/settings';
+import { loadSettings, saveSettings } from '../src/shared/utils/storage';
+import { defaultSettings } from '../src/shared/types/settings';
 
 // Mock chrome.storage.sync
 const mockStorage: Record<string, unknown> = {};
