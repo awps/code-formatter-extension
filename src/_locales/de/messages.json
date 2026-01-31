@@ -22,5 +22,17 @@
   },
   "networkResponseError": {
     "message": "Netzwerkantwort war nicht in Ordnung."
+  },
+  "theme": {
+    "message": "Design"
+  },
+  "view": {
+    "message": "Ansicht"
+  },
+  "lineNumbers": {
+    "message": "Zeilennummern"
+  },
+  "wordWrap": {
+    "message": "Zeilenumbruch"
   }
 }

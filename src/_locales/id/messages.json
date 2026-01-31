@@ -22,5 +22,17 @@
   },
   "networkResponseError": {
     "message": "Respons jaringan tidak baik."
+  },
+  "theme": {
+    "message": "Tema"
+  },
+  "view": {
+    "message": "Tampilan"
+  },
+  "lineNumbers": {
+    "message": "Nomor Baris"
+  },
+  "wordWrap": {
+    "message": "Bungkus Kata"
   }
 }

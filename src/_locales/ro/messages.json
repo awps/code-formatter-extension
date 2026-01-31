@@ -22,5 +22,17 @@
   },
   "networkResponseError": {
     "message": "Răspunsul rețelei nu a fost ok."
+  },
+  "theme": {
+    "message": "Temă"
+  },
+  "view": {
+    "message": "Vizualizare"
+  },
+  "lineNumbers": {
+    "message": "Numere de linie"
+  },
+  "wordWrap": {
+    "message": "Încadrare text"
   }
 }

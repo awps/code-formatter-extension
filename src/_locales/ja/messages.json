@@ -22,5 +22,17 @@
   },
   "networkResponseError": {
     "message": "ネットワーク・レスポンスは正常ではありませんでした。"
+  },
+  "theme": {
+    "message": "テーマ"
+  },
+  "view": {
+    "message": "表示"
+  },
+  "lineNumbers": {
+    "message": "行番号"
+  },
+  "wordWrap": {
+    "message": "折り返し"
   }
 }

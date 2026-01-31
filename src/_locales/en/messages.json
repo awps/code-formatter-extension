@@ -22,5 +22,17 @@
   },
   "networkResponseError": {
     "message": "Network response was not ok."
+  },
+  "theme": {
+    "message": "Theme"
+  },
+  "view": {
+    "message": "View"
+  },
+  "lineNumbers": {
+    "message": "Line Numbers"
+  },
+  "wordWrap": {
+    "message": "Word Wrap"
   }
 }

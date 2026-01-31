@@ -22,5 +22,17 @@
   },
   "networkResponseError": {
     "message": "网络响应不确定。"
+  },
+  "theme": {
+    "message": "主题"
+  },
+  "view": {
+    "message": "视图"
+  },
+  "lineNumbers": {
+    "message": "行号"
+  },
+  "wordWrap": {
+    "message": "自动换行"
   }
 }

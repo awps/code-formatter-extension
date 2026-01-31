@@ -22,5 +22,17 @@
   },
   "networkResponseError": {
     "message": "Ağ yanıtı iyi değildi."
+  },
+  "theme": {
+    "message": "Tema"
+  },
+  "view": {
+    "message": "Görünüm"
+  },
+  "lineNumbers": {
+    "message": "Satır Numaraları"
+  },
+  "wordWrap": {
+    "message": "Sözcük Kaydırma"
   }
 }

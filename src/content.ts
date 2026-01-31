@@ -2,8 +2,7 @@ import logo from './logo';
 import beautifyJS from 'js-beautify';
 import {basicSetup} from "codemirror";
 import {EditorView} from "@codemirror/view";
-import {EditorState} from "@codemirror/state";
-import {dracula} from 'thememirror';
+import {EditorState, Extension} from "@codemirror/state";
 import {javascript} from "@codemirror/lang-javascript";
 import {css} from "@codemirror/lang-css";
 import {json} from "@codemirror/lang-json";
@@ -21,6 +20,9 @@ import {java} from "@codemirror/lang-java";
 import {cpp} from "@codemirror/lang-cpp";
 import {csharp} from "@replit/codemirror-lang-csharp";
 import { alternativeDetectLanguage } from './utils/alternativeDetectLanguage';
+import { Settings, ThemeKey, defaultSettings } from './types/settings';
+import { loadSettings, saveSettings } from './utils/storage';
+import { getTheme, themeLabels } from './utils/themes';
 
 const jsBeautify = beautifyJS.js;
 const cssBeautify = beautifyJS.css;
@@ -31,12 +33,16 @@ const i18n = {
     download: chrome.i18n.getMessage('download'),
     showOriginal: chrome.i18n.getMessage('showOriginal'),
     showFormatted: chrome.i18n.getMessage('showFormatted'),
+    theme: chrome.i18n.getMessage('theme'),
+    view: chrome.i18n.getMessage('view'),
+    lineNumbers: chrome.i18n.getMessage('lineNumbers'),
+    wordWrap: chrome.i18n.getMessage('wordWrap'),
 };
 
 function beautify(code: string, language: string): string {
     // if language is not in array, return code
     if (!['js', 'css', 'json'].includes(language)) {
-        return code;``
+        return code;
     }
 
     if (language === 'css') {
@@ -47,6 +53,8 @@ function beautify(code: string, language: string): string {
 }
 
 let currentView = 'original';
+let currentSettings: Settings = defaultSettings;
+let editorView: EditorView | null = null;
 
 function init() {
     // Small delay to ensure content is fully loaded
@@ -172,7 +180,7 @@ function initFormatter() {
         // console.log('[Code Formatter] Final language:', programmingLanguage);
 
 
-        let pluginMode = undefined;
+        let pluginMode: (() => Extension) | undefined = undefined;
 
         if (programmingLanguage === 'json') {
             pluginMode = json;
@@ -226,95 +234,248 @@ function initFormatter() {
             return;
         }
 
-        const extensions = [basicSetup, dracula];
-
         firstPre!.hidden = true;
         firstPre!.style.display = 'none';
 
-        // if (programmingLanguage === 'json') {
-        //     document.querySelector('.json-formatter-container').remove();
-        // }
-
         document.body.classList.add('code-formatter-is-loaded');
 
-        extensions.push(pluginMode());
+        // Load settings and create editor
+        loadSettings().then((settings) => {
+            currentSettings = settings;
 
-        extensions.push(EditorState.readOnly.of(true));
-
-        const state = EditorState.create({
-            doc: beautified,
-            extensions
-        });
-
-        new EditorView({
-            parent: renderer,
-            state,
-        });
-
-        currentView = 'formatted';
-        IS_FORMATTED = true;
-        
-        // Send success response
-        sendResponse({status: 'success', language: programmingLanguage});
-
-        document.body.classList.remove(`code-formatter-is-loading`);
-
-        document.body.insertAdjacentHTML('beforeend', `<div class="code-formatter-toolbar">
-        <div class="code-formatter-toolbar__logo">
-                ${logo}
-            </div>
-            <div class="code-formatter-toolbar__logo-text"><a href="https://zerowp.com/code-formatter/" target="_blank">${i18n.extShortName}</a></div>
-            <div></div>
-            <div><button class="code-formatter-toolbar__button code-formatter-toolbar__button__switch" id="code-formatter-switcher-button">${i18n.showOriginal}</button></div>
-            <div><button class="code-formatter-toolbar__button code-formatter-toolbar__button__copy" id="code-formatter-toolbar-button-copy">${i18n.copy}</button></div>
-            <div><button class="code-formatter-toolbar__button code-formatter-toolbar__button__download" id="code-formatter-toolbar-button-download">${i18n.download}</button></div>
-        </div>`);
-
-        firstPre!.style.overflow = 'auto';
-        // firstPre!.style.height = 'calc(100vh - 40px)';
-        firstPre!.style.margin = '0';
-
-        const jsonFormatterContainer = document.querySelector('.json-formatter-container');
-
-        if (jsonFormatterContainer) {
-            jsonFormatterContainer.remove();
-        }
-
-        document.addEventListener('click', (e: MouseEvent) => {
-            if (!e.target || !(e.target instanceof HTMLElement)) {
-                return;
-            }
-
-            const targetElement = e.target;
-
-            if (targetElement.id === 'code-formatter-switcher-button') {
-                if (firstPre!.hidden) {
-                    firstPre!.hidden = false;
-                    firstPre!.style.display = 'block';
-                    renderer.hidden = true;
-                    renderer.style.display = 'none';
-                    targetElement.innerText = i18n.showFormatted;
-                    currentView = 'original';
-                } else {
-                    firstPre!.hidden = true;
-                    firstPre!.style.display = 'none';
-                    renderer.hidden = false;
-                    renderer.style.display = 'block';
-                    targetElement.innerText = i18n.showOriginal;
-                    currentView = 'formatted';
+            function createEditor() {
+                // Destroy existing editor if any
+                if (editorView) {
+                    editorView.destroy();
                 }
 
-            } else if (targetElement.id === 'code-formatter-toolbar-button-copy') {
-                navigator && navigator.clipboard && navigator.clipboard.writeText(currentView === 'original' ? originalCode : beautified);
-            } else if (targetElement.id === 'code-formatter-toolbar-button-download') {
-                const a = document.createElement('a');
-                a.href = `data:text/plain;charset=utf-8,${encodeURIComponent(currentView === 'original' ? originalCode : beautified)}`;
+                const extensions: Extension[] = [
+                    basicSetup,
+                    getTheme(currentSettings.theme),
+                    pluginMode!(),
+                    EditorState.readOnly.of(true),
+                ];
 
-                const basename = window.location.pathname.split('/').pop();
-                a.download = basename ? basename : 'code-formatter.txt';
-                a.click();
+                // Add word wrap if enabled
+                if (currentSettings.wordWrap) {
+                    extensions.push(EditorView.lineWrapping);
+                }
+
+                // Hide line numbers if disabled
+                if (!currentSettings.lineNumbers) {
+                    extensions.push(EditorView.theme({
+                        '.cm-gutters': { display: 'none' }
+                    }));
+                }
+
+                const state = EditorState.create({
+                    doc: beautified,
+                    extensions
+                });
+
+                editorView = new EditorView({
+                    parent: renderer!,
+                    state,
+                });
             }
-        });
+
+            createEditor();
+
+            currentView = 'formatted';
+            IS_FORMATTED = true;
+
+            // Send success response
+            sendResponse({status: 'success', language: programmingLanguage});
+
+            document.body.classList.remove(`code-formatter-is-loading`);
+
+            // Generate theme dropdown items HTML
+            const themeKeys: ThemeKey[] = ['dracula', 'amy', 'ayuLight', 'barf', 'bespin', 'birdsOfParadise', 'boysAndGirls', 'clouds', 'cobalt', 'coolGlow', 'espresso', 'noctisLilac', 'rosePineDawn', 'smoothy', 'solarizedLight', 'tomorrow'];
+            const themeItemsHtml = themeKeys.map(key => {
+                const isSelected = key === currentSettings.theme;
+                const selectedClass = isSelected ? ' code-formatter-toolbar__dropdown-item--selected' : '';
+                const checkMark = isSelected ? '●' : '○';
+                return `<div class="code-formatter-toolbar__dropdown-item${selectedClass}" data-theme="${key}">
+                    <span class="code-formatter-toolbar__dropdown-check">${checkMark}</span> ${themeLabels[key]}
+                </div>`;
+            }).join('');
+
+            // Generate view dropdown items HTML
+            const lineNumbersChecked = currentSettings.lineNumbers;
+            const wordWrapChecked = currentSettings.wordWrap;
+
+            document.body.insertAdjacentHTML('beforeend', `<div class="code-formatter-toolbar">
+                <div class="code-formatter-toolbar__logo">
+                    ${logo}
+                </div>
+                <div class="code-formatter-toolbar__logo-text"><a href="https://zerowp.com/code-formatter/" target="_blank">${i18n.extShortName}</a></div>
+
+                <!-- Theme Dropdown -->
+                <div class="code-formatter-toolbar__dropdown">
+                    <button class="code-formatter-toolbar__dropdown-trigger" id="theme-dropdown-trigger">
+                        ${i18n.theme} ▼
+                    </button>
+                    <div class="code-formatter-toolbar__dropdown-menu" id="theme-dropdown-menu">
+                        ${themeItemsHtml}
+                    </div>
+                </div>
+
+                <!-- View Dropdown -->
+                <div class="code-formatter-toolbar__dropdown">
+                    <button class="code-formatter-toolbar__dropdown-trigger" id="view-dropdown-trigger">
+                        ${i18n.view} ▼
+                    </button>
+                    <div class="code-formatter-toolbar__dropdown-menu" id="view-dropdown-menu">
+                        <div class="code-formatter-toolbar__dropdown-item${lineNumbersChecked ? ' code-formatter-toolbar__dropdown-item--checked' : ''}" data-setting="lineNumbers">
+                            <span class="code-formatter-toolbar__dropdown-check">${lineNumbersChecked ? '☑' : '☐'}</span> ${i18n.lineNumbers}
+                        </div>
+                        <div class="code-formatter-toolbar__dropdown-item${wordWrapChecked ? ' code-formatter-toolbar__dropdown-item--checked' : ''}" data-setting="wordWrap">
+                            <span class="code-formatter-toolbar__dropdown-check">${wordWrapChecked ? '☑' : '☐'}</span> ${i18n.wordWrap}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="code-formatter-toolbar__spacer"></div>
+                <div><button class="code-formatter-toolbar__button code-formatter-toolbar__button__switch" id="code-formatter-switcher-button">${i18n.showOriginal}</button></div>
+                <div><button class="code-formatter-toolbar__button code-formatter-toolbar__button__copy" id="code-formatter-toolbar-button-copy">${i18n.copy}</button></div>
+                <div><button class="code-formatter-toolbar__button code-formatter-toolbar__button__download" id="code-formatter-toolbar-button-download">${i18n.download}</button></div>
+            </div>`);
+
+            firstPre!.style.overflow = 'auto';
+            firstPre!.style.margin = '0';
+
+            const jsonFormatterContainer = document.querySelector('.json-formatter-container');
+
+            if (jsonFormatterContainer) {
+                jsonFormatterContainer.remove();
+            }
+
+            // Helper to update theme dropdown UI
+            function updateThemeDropdownUI(selectedTheme: ThemeKey) {
+                const themeMenu = document.getElementById('theme-dropdown-menu');
+                if (!themeMenu) return;
+
+                themeMenu.querySelectorAll('.code-formatter-toolbar__dropdown-item').forEach(item => {
+                    const itemTheme = (item as HTMLElement).dataset.theme as ThemeKey;
+                    const isSelected = itemTheme === selectedTheme;
+                    const checkSpan = item.querySelector('.code-formatter-toolbar__dropdown-check');
+
+                    item.classList.toggle('code-formatter-toolbar__dropdown-item--selected', isSelected);
+                    if (checkSpan) {
+                        checkSpan.textContent = isSelected ? '●' : '○';
+                    }
+                });
+            }
+
+            // Helper to update view dropdown UI
+            function updateViewDropdownUI(setting: 'lineNumbers' | 'wordWrap', checked: boolean) {
+                const viewMenu = document.getElementById('view-dropdown-menu');
+                if (!viewMenu) return;
+
+                const item = viewMenu.querySelector(`[data-setting="${setting}"]`);
+                if (!item) return;
+
+                const checkSpan = item.querySelector('.code-formatter-toolbar__dropdown-check');
+                item.classList.toggle('code-formatter-toolbar__dropdown-item--checked', checked);
+                if (checkSpan) {
+                    checkSpan.textContent = checked ? '☑' : '☐';
+                }
+            }
+
+            document.addEventListener('click', (e: MouseEvent) => {
+                if (!e.target || !(e.target instanceof HTMLElement)) {
+                    return;
+                }
+
+                const targetElement = e.target;
+
+                // Handle dropdown toggle
+                const trigger = targetElement.closest('.code-formatter-toolbar__dropdown-trigger');
+                if (trigger) {
+                    e.stopPropagation();
+                    const dropdown = trigger.parentElement;
+                    const menu = dropdown?.querySelector('.code-formatter-toolbar__dropdown-menu');
+
+                    // Close other dropdowns first
+                    document.querySelectorAll('.code-formatter-toolbar__dropdown-menu--open')
+                        .forEach(openMenu => {
+                            if (openMenu !== menu) {
+                                openMenu.classList.remove('code-formatter-toolbar__dropdown-menu--open');
+                            }
+                        });
+
+                    menu?.classList.toggle('code-formatter-toolbar__dropdown-menu--open');
+                    return;
+                }
+
+                // Handle theme dropdown item click
+                const themeItem = targetElement.closest('[data-theme]');
+                if (themeItem) {
+                    const newTheme = (themeItem as HTMLElement).dataset.theme as ThemeKey;
+                    if (newTheme && newTheme !== currentSettings.theme) {
+                        currentSettings.theme = newTheme;
+                        saveSettings({ theme: newTheme });
+                        updateThemeDropdownUI(newTheme);
+                        createEditor();
+                    }
+                    // Close dropdown
+                    document.querySelectorAll('.code-formatter-toolbar__dropdown-menu--open')
+                        .forEach(menu => menu.classList.remove('code-formatter-toolbar__dropdown-menu--open'));
+                    return;
+                }
+
+                // Handle view dropdown item click
+                const viewItem = targetElement.closest('[data-setting]');
+                if (viewItem) {
+                    const setting = (viewItem as HTMLElement).dataset.setting as 'lineNumbers' | 'wordWrap';
+                    if (setting) {
+                        const newValue = !currentSettings[setting];
+                        currentSettings[setting] = newValue;
+                        saveSettings({ [setting]: newValue });
+                        updateViewDropdownUI(setting, newValue);
+                        createEditor();
+                    }
+                    // Close dropdown
+                    document.querySelectorAll('.code-formatter-toolbar__dropdown-menu--open')
+                        .forEach(menu => menu.classList.remove('code-formatter-toolbar__dropdown-menu--open'));
+                    return;
+                }
+
+                // Close all dropdowns when clicking outside
+                if (!targetElement.closest('.code-formatter-toolbar__dropdown-menu')) {
+                    document.querySelectorAll('.code-formatter-toolbar__dropdown-menu--open')
+                        .forEach(menu => menu.classList.remove('code-formatter-toolbar__dropdown-menu--open'));
+                }
+
+                if (targetElement.id === 'code-formatter-switcher-button') {
+                    if (firstPre!.hidden) {
+                        firstPre!.hidden = false;
+                        firstPre!.style.display = 'block';
+                        renderer!.hidden = true;
+                        renderer!.style.display = 'none';
+                        targetElement.innerText = i18n.showFormatted;
+                        currentView = 'original';
+                    } else {
+                        firstPre!.hidden = true;
+                        firstPre!.style.display = 'none';
+                        renderer!.hidden = false;
+                        renderer!.style.display = 'block';
+                        targetElement.innerText = i18n.showOriginal;
+                        currentView = 'formatted';
+                    }
+
+                } else if (targetElement.id === 'code-formatter-toolbar-button-copy') {
+                    navigator && navigator.clipboard && navigator.clipboard.writeText(currentView === 'original' ? originalCode : beautified);
+                } else if (targetElement.id === 'code-formatter-toolbar-button-download') {
+                    const a = document.createElement('a');
+                    a.href = `data:text/plain;charset=utf-8,${encodeURIComponent(currentView === 'original' ? originalCode : beautified)}`;
+
+                    const basename = window.location.pathname.split('/').pop();
+                    a.download = basename ? basename : 'code-formatter.txt';
+                    a.click();
+                }
+            });
+        }); // closes loadSettings().then()
 
     });
 

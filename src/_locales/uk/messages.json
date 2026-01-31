@@ -22,5 +22,17 @@
   },
   "networkResponseError": {
     "message": "Відповідь мережі не була нормальною."
+  },
+  "theme": {
+    "message": "Тема"
+  },
+  "view": {
+    "message": "Вигляд"
+  },
+  "lineNumbers": {
+    "message": "Номери рядків"
+  },
+  "wordWrap": {
+    "message": "Перенесення слів"
   }
 }
