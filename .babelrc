@@ -1,22 +1,9 @@
 {
   "presets": [
     "@babel/preset-env",
-    "@babel/preset-react",
     "@babel/preset-typescript"
   ],
   "plugins": [
-    "@babel/plugin-proposal-class-properties",
-    [
-      "prismjs",
-      {
-        "languages": [
-          "json"
-        ],
-        "plugins": [
-          "autolinker"
-        ],
-        "theme": "twilight"
-      }
-    ]
+    "@babel/plugin-proposal-class-properties"
   ]
 }

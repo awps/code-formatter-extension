@@ -49,26 +49,29 @@ function initFormatter(): void {
     chrome.runtime.onMessage.addListener((request, _sender, sendResponse) => {
         if (isFormatted) {
             sendResponse({ status: 'already_formatted' });
-            return;
+            return false;
         }
 
         const result = processLanguage(request.programmingLanguage, originalCode, preElement);
         if (!result) {
             sendResponse({ status: 'no_language' });
-            return;
+            return false;
         }
 
         const { language, code, pluginMode } = result;
         if (!pluginMode) {
             sendResponse({ status: 'no_plugin' });
-            return;
+            return false;
         }
 
         originalCode = code;
         beautifiedCode = beautifyCode(originalCode, language);
 
         const renderer = createRendererElement(preElement);
-        if (!renderer) return;
+        if (!renderer) {
+            sendResponse({ status: 'no_renderer' });
+            return false;
+        }
 
         hidePreElement(preElement);
         document.body.classList.add('code-formatter-is-loaded');
@@ -89,6 +92,9 @@ function initFormatter(): void {
 
             setupUI(preElement, renderer, pluginMode);
         });
+
+        // Return true to indicate we will send response asynchronously
+        return true;
     });
 }
 
