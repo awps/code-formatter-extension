@@ -34,5 +34,14 @@
   },
   "wordWrap": {
     "message": "A capo automatico"
+  },
+  "settings": {
+    "message": "Impostazioni"
+  },
+  "popupDescription": {
+    "message": "Formatta e abbellisce il codice con evidenziazione della sintassi"
+  },
+  "learnMore": {
+    "message": "Scopri di più"
   }
 }

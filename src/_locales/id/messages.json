@@ -34,5 +34,14 @@
   },
   "wordWrap": {
     "message": "Bungkus Kata"
+  },
+  "settings": {
+    "message": "Pengaturan"
+  },
+  "popupDescription": {
+    "message": "Memformat & memperindah kode dengan penyorotan sintaksis"
+  },
+  "learnMore": {
+    "message": "Pelajari lebih lanjut"
   }
 }

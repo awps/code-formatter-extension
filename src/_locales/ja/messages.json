@@ -34,5 +34,14 @@
   },
   "wordWrap": {
     "message": "折り返し"
+  },
+  "settings": {
+    "message": "設定"
+  },
+  "popupDescription": {
+    "message": "シンタックスハイライトでコードをフォーマット・整形"
+  },
+  "learnMore": {
+    "message": "詳細を見る"
   }
 }

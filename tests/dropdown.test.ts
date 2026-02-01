@@ -86,33 +86,37 @@ describe('dropdown utilities', () => {
         test('should update selected theme in dropdown', () => {
             document.body.innerHTML = `
                 <div id="theme-menu">
-                    <div class="code-formatter-toolbar__dropdown-item" data-theme="dracula">
-                        <span class="code-formatter-toolbar__dropdown-check">○</span> Dracula
+                    <div class="code-formatter-toolbar__dropdown-item" data-theme="githubDark">
+                        <span class="code-formatter-toolbar__dropdown-check">○</span> GitHub Dark
                     </div>
-                    <div class="code-formatter-toolbar__dropdown-item" data-theme="amy">
-                        <span class="code-formatter-toolbar__dropdown-check">○</span> Amy
+                    <div class="code-formatter-toolbar__dropdown-item" data-theme="nord">
+                        <span class="code-formatter-toolbar__dropdown-check">○</span> Nord
                     </div>
                 </div>
             `;
 
-            updateThemeSelection('theme-menu', 'amy');
+            updateThemeSelection('theme-menu', 'nord');
 
-            const amyItem = document.querySelector('[data-theme="amy"]');
-            const draculaItem = document.querySelector('[data-theme="dracula"]');
+            const nordItem = document.querySelector('[data-theme="nord"]');
+            const githubDarkItem = document.querySelector('[data-theme="githubDark"]');
 
-            expect(amyItem?.classList.contains('code-formatter-toolbar__dropdown-item--selected')).toBe(true);
-            expect(draculaItem?.classList.contains('code-formatter-toolbar__dropdown-item--selected')).toBe(false);
-            expect(amyItem?.querySelector('.code-formatter-toolbar__dropdown-check')?.textContent).toBe('●');
-            expect(draculaItem?.querySelector('.code-formatter-toolbar__dropdown-check')?.textContent).toBe('○');
+            expect(nordItem?.classList.contains('code-formatter-toolbar__dropdown-item--selected')).toBe(true);
+            expect(githubDarkItem?.classList.contains('code-formatter-toolbar__dropdown-item--selected')).toBe(false);
+            expect(nordItem?.querySelector('.code-formatter-toolbar__dropdown-check')?.textContent).toBe('●');
+            expect(githubDarkItem?.querySelector('.code-formatter-toolbar__dropdown-check')?.textContent).toBe('○');
         });
     });
 
     describe('updateViewCheckbox', () => {
-        test('should update checkbox state', () => {
+        test('should update toggle state', () => {
             document.body.innerHTML = `
                 <div id="view-menu">
-                    <div class="code-formatter-toolbar__dropdown-item" data-setting="lineNumbers">
-                        <span class="code-formatter-toolbar__dropdown-check">☐</span> Line Numbers
+                    <div class="code-formatter-toolbar__dropdown-item code-formatter-toolbar__dropdown-item--toggle" data-setting="lineNumbers">
+                        <span class="code-formatter-toolbar__dropdown-label">Line Numbers</span>
+                        <span class="code-formatter-toolbar__toggle">
+                            <span class="code-formatter-toolbar__toggle-track"></span>
+                            <span class="code-formatter-toolbar__toggle-thumb"></span>
+                        </span>
                     </div>
                 </div>
             `;
@@ -120,8 +124,9 @@ describe('dropdown utilities', () => {
             updateViewCheckbox('view-menu', 'lineNumbers', true);
 
             const item = document.querySelector('[data-setting="lineNumbers"]');
+            const toggle = item?.querySelector('.code-formatter-toolbar__toggle');
             expect(item?.classList.contains('code-formatter-toolbar__dropdown-item--checked')).toBe(true);
-            expect(item?.querySelector('.code-formatter-toolbar__dropdown-check')?.textContent).toBe('☑');
+            expect(toggle?.classList.contains('code-formatter-toolbar__toggle--on')).toBe(true);
         });
     });
 

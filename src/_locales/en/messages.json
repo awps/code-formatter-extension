@@ -34,5 +34,14 @@
   },
   "wordWrap": {
     "message": "Word Wrap"
+  },
+  "settings": {
+    "message": "Settings"
+  },
+  "popupDescription": {
+    "message": "Formats & beautifies code with syntax highlighting"
+  },
+  "learnMore": {
+    "message": "Learn more"
   }
 }

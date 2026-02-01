@@ -2,8 +2,8 @@ import { defaultSettings, ThemeKey } from '../src/shared/types/settings';
 
 describe('settings types', () => {
     describe('defaultSettings', () => {
-        test('should have dracula as default theme', () => {
-            expect(defaultSettings.theme).toBe('dracula');
+        test('should have githubDark as default theme', () => {
+            expect(defaultSettings.theme).toBe('githubDark');
         });
 
         test('should have line numbers enabled by default', () => {
@@ -18,14 +18,15 @@ describe('settings types', () => {
     describe('ThemeKey type', () => {
         test('should accept valid theme keys', () => {
             const validThemes: ThemeKey[] = [
-                'dracula', 'amy', 'ayuLight', 'barf', 'bespin',
-                'birdsOfParadise', 'boysAndGirls', 'clouds', 'cobalt',
-                'coolGlow', 'espresso', 'noctisLilac', 'rosePineDawn',
-                'smoothy', 'solarizedLight', 'tomorrow'
+                'githubLight', 'githubDark', 'vsCodeLight', 'vsCodeDark', 'nord', 'monokai',
+                'materialLight', 'materialDark', 'solarizedLight', 'solarizedDark',
+                'gruvboxLight', 'gruvboxDark', 'tokyoNightDay', 'tokyoNightStorm',
+                'palenight', 'andromeda', 'abyss', 'cobalt2', 'forest', 'volcano',
+                'androidStudio', 'abcdef', 'basicDark'
             ];
 
             // This test primarily validates at compile time
-            expect(validThemes).toHaveLength(16);
+            expect(validThemes).toHaveLength(23);
         });
     });
 });

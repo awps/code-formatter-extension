@@ -34,5 +34,14 @@
   },
   "wordWrap": {
     "message": "Sözcük Kaydırma"
+  },
+  "settings": {
+    "message": "Ayarlar"
+  },
+  "popupDescription": {
+    "message": "Sözdizimi vurgulamayla kodu biçimlendirir ve güzelleştirir"
+  },
+  "learnMore": {
+    "message": "Daha fazla bilgi"
   }
 }

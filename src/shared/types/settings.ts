@@ -1,20 +1,27 @@
 export type ThemeKey =
-    | 'dracula'
-    | 'amy'
-    | 'ayuLight'
-    | 'barf'
-    | 'bespin'
-    | 'birdsOfParadise'
-    | 'boysAndGirls'
-    | 'clouds'
-    | 'cobalt'
-    | 'coolGlow'
-    | 'espresso'
-    | 'noctisLilac'
-    | 'rosePineDawn'
-    | 'smoothy'
+    | 'githubLight'
+    | 'githubDark'
+    | 'vsCodeLight'
+    | 'vsCodeDark'
+    | 'nord'
+    | 'monokai'
+    | 'materialLight'
+    | 'materialDark'
     | 'solarizedLight'
-    | 'tomorrow';
+    | 'solarizedDark'
+    | 'gruvboxLight'
+    | 'gruvboxDark'
+    | 'tokyoNightDay'
+    | 'tokyoNightStorm'
+    | 'palenight'
+    | 'andromeda'
+    | 'abyss'
+    | 'cobalt2'
+    | 'forest'
+    | 'volcano'
+    | 'androidStudio'
+    | 'abcdef'
+    | 'basicDark';
 
 export interface Settings {
     theme: ThemeKey;
@@ -23,7 +30,7 @@ export interface Settings {
 }
 
 export const defaultSettings: Settings = {
-    theme: 'dracula',
+    theme: 'githubDark',
     lineNumbers: true,
     wordWrap: false,
 };

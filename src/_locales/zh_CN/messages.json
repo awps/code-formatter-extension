@@ -34,5 +34,14 @@
   },
   "wordWrap": {
     "message": "自动换行"
+  },
+  "settings": {
+    "message": "设置"
+  },
+  "popupDescription": {
+    "message": "格式化和美化代码，带语法高亮"
+  },
+  "learnMore": {
+    "message": "了解更多"
   }
 }

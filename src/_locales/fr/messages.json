@@ -34,5 +34,14 @@
   },
   "wordWrap": {
     "message": "Retour à la ligne"
+  },
+  "settings": {
+    "message": "Paramètres"
+  },
+  "popupDescription": {
+    "message": "Formate et embellit le code avec coloration syntaxique"
+  },
+  "learnMore": {
+    "message": "En savoir plus"
   }
 }

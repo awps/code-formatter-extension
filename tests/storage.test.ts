@@ -40,24 +40,24 @@ describe('storage utilities', () => {
 
         test('should return stored settings when available', async () => {
             mockStorage['codeFormatterSettings'] = {
-                theme: 'amy',
+                theme: 'nord',
                 lineNumbers: false,
                 wordWrap: true,
             };
 
             const settings = await loadSettings();
-            expect(settings.theme).toBe('amy');
+            expect(settings.theme).toBe('nord');
             expect(settings.lineNumbers).toBe(false);
             expect(settings.wordWrap).toBe(true);
         });
 
         test('should merge stored settings with defaults', async () => {
             mockStorage['codeFormatterSettings'] = {
-                theme: 'cobalt',
+                theme: 'monokai',
             };
 
             const settings = await loadSettings();
-            expect(settings.theme).toBe('cobalt');
+            expect(settings.theme).toBe('monokai');
             expect(settings.lineNumbers).toBe(defaultSettings.lineNumbers);
             expect(settings.wordWrap).toBe(defaultSettings.wordWrap);
         });
@@ -65,29 +65,29 @@ describe('storage utilities', () => {
 
     describe('saveSettings', () => {
         test('should save partial settings', async () => {
-            const result = await saveSettings({ theme: 'barf' });
+            const result = await saveSettings({ theme: 'palenight' });
 
-            expect(result.theme).toBe('barf');
+            expect(result.theme).toBe('palenight');
             expect(result.lineNumbers).toBe(defaultSettings.lineNumbers);
             expect(result.wordWrap).toBe(defaultSettings.wordWrap);
         });
 
         test('should merge with existing settings', async () => {
             mockStorage['codeFormatterSettings'] = {
-                theme: 'dracula',
+                theme: 'githubDark',
                 lineNumbers: true,
                 wordWrap: false,
             };
 
             const result = await saveSettings({ wordWrap: true });
 
-            expect(result.theme).toBe('dracula');
+            expect(result.theme).toBe('githubDark');
             expect(result.lineNumbers).toBe(true);
             expect(result.wordWrap).toBe(true);
         });
 
         test('should call chrome.storage.sync.set', async () => {
-            await saveSettings({ theme: 'espresso' });
+            await saveSettings({ theme: 'solarizedDark' });
 
             expect(mockChrome.storage.sync.set).toHaveBeenCalled();
         });

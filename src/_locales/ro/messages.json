@@ -34,5 +34,14 @@
   },
   "wordWrap": {
     "message": "Încadrare text"
+  },
+  "settings": {
+    "message": "Setări"
+  },
+  "popupDescription": {
+    "message": "Formatează și înfrumusețează codul cu evidențiere sintaxă"
+  },
+  "learnMore": {
+    "message": "Află mai multe"
   }
 }

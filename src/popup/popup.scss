@@ -1,0 +1,192 @@
+// Catppuccin Mocha color palette
+$bg-primary: #1e1e2e;
+$bg-secondary: #313244;
+$text-primary: #cdd6f4;
+$text-secondary: #a6adc8;
+$text-muted: #6c7086;
+$accent: #89b4fa;
+$accent-hover: #b4befe;
+$border: #45475a;
+$toggle-track: #45475a;
+$toggle-track-on: rgba(137, 180, 250, 0.4);
+$toggle-thumb: #6c7086;
+$toggle-thumb-on: #89b4fa;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 320px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: $bg-primary;
+    color: $text-primary;
+}
+
+.popup {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    gap: 16px;
+
+    &__header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    &__logo {
+        flex-shrink: 0;
+
+        svg {
+            width: 40px;
+            height: 40px;
+            display: block;
+        }
+    }
+
+    &__title {
+        h1 {
+            font-size: 14px;
+            font-weight: 600;
+            color: $text-primary;
+            margin-bottom: 2px;
+        }
+
+        p {
+            font-size: 11px;
+            color: $text-secondary;
+            line-height: 1.4;
+        }
+    }
+
+    &__settings {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+        h2 {
+            font-size: 11px;
+            font-weight: 600;
+            color: $text-muted;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+    }
+
+    &__setting {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+
+        label, span {
+            font-size: 12px;
+            color: $text-secondary;
+        }
+
+        &--toggle {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 12px;
+            background: $bg-secondary;
+            border-radius: 6px;
+        }
+    }
+
+    &__select {
+        appearance: none;
+        background: $bg-secondary url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23a6adc8' d='M3 4.5L6 7.5L9 4.5'/%3E%3C/svg%3E") no-repeat right 10px center;
+        border: 1px solid $border;
+        border-radius: 6px;
+        padding: 8px 32px 8px 12px;
+        font-size: 12px;
+        color: $text-primary;
+        cursor: pointer;
+        transition: border-color 0.15s ease, box-shadow 0.15s ease;
+
+        &:hover {
+            border-color: $text-muted;
+        }
+
+        &:focus {
+            outline: none;
+            border-color: $accent;
+            box-shadow: 0 0 0 2px rgba(137, 180, 250, 0.2);
+        }
+
+        option {
+            background: $bg-secondary;
+            color: $text-primary;
+        }
+    }
+
+    &__toggle {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        width: 36px;
+        height: 20px;
+        flex-shrink: 0;
+        cursor: pointer;
+        border-radius: 10px;
+
+        &:focus {
+            outline: none;
+
+            .popup__toggle-track {
+                box-shadow: 0 0 0 2px rgba(137, 180, 250, 0.3);
+            }
+        }
+
+        &-track {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: $toggle-track;
+            border-radius: 10px;
+            transition: background 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        &-thumb {
+            position: absolute;
+            left: 2px;
+            width: 16px;
+            height: 16px;
+            background: $toggle-thumb;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+        }
+
+        &--on {
+            .popup__toggle-track {
+                background: $toggle-track-on;
+            }
+
+            .popup__toggle-thumb {
+                left: 18px;
+                background: $toggle-thumb-on;
+            }
+        }
+    }
+
+    &__footer {
+        padding-top: 8px;
+        border-top: 1px solid $border;
+        text-align: center;
+
+        a {
+            font-size: 11px;
+            color: $accent;
+            text-decoration: none;
+            transition: color 0.15s ease;
+
+            &:hover {
+                color: $accent-hover;
+                text-decoration: underline;
+            }
+        }
+    }
+}

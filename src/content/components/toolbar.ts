@@ -39,11 +39,19 @@ export function generateViewItemsHtml(settings: Settings, i18n: { lineNumbers: s
     const wordWrapChecked = settings.wordWrap;
 
     return `
-        <div class="code-formatter-toolbar__dropdown-item${lineNumbersChecked ? ' code-formatter-toolbar__dropdown-item--checked' : ''}" data-setting="lineNumbers">
-            <span class="code-formatter-toolbar__dropdown-check">${lineNumbersChecked ? '☑' : '☐'}</span> ${i18n.lineNumbers}
+        <div class="code-formatter-toolbar__dropdown-item code-formatter-toolbar__dropdown-item--toggle${lineNumbersChecked ? ' code-formatter-toolbar__dropdown-item--checked' : ''}" data-setting="lineNumbers">
+            <span class="code-formatter-toolbar__dropdown-label">${i18n.lineNumbers}</span>
+            <span class="code-formatter-toolbar__toggle${lineNumbersChecked ? ' code-formatter-toolbar__toggle--on' : ''}">
+                <span class="code-formatter-toolbar__toggle-track"></span>
+                <span class="code-formatter-toolbar__toggle-thumb"></span>
+            </span>
         </div>
-        <div class="code-formatter-toolbar__dropdown-item${wordWrapChecked ? ' code-formatter-toolbar__dropdown-item--checked' : ''}" data-setting="wordWrap">
-            <span class="code-formatter-toolbar__dropdown-check">${wordWrapChecked ? '☑' : '☐'}</span> ${i18n.wordWrap}
+        <div class="code-formatter-toolbar__dropdown-item code-formatter-toolbar__dropdown-item--toggle${wordWrapChecked ? ' code-formatter-toolbar__dropdown-item--checked' : ''}" data-setting="wordWrap">
+            <span class="code-formatter-toolbar__dropdown-label">${i18n.wordWrap}</span>
+            <span class="code-formatter-toolbar__toggle${wordWrapChecked ? ' code-formatter-toolbar__toggle--on' : ''}">
+                <span class="code-formatter-toolbar__toggle-track"></span>
+                <span class="code-formatter-toolbar__toggle-thumb"></span>
+            </span>
         </div>
     `;
 }
@@ -65,7 +73,7 @@ export function generateToolbarHtml(config: ToolbarConfig): string {
         <!-- Theme Dropdown -->
         <div class="code-formatter-toolbar__dropdown">
             <button class="code-formatter-toolbar__dropdown-trigger" id="theme-dropdown-trigger">
-                ${i18n.theme} ▼
+                ${i18n.theme}
             </button>
             <div class="code-formatter-toolbar__dropdown-menu" id="theme-dropdown-menu">
                 ${themeItemsHtml}
@@ -75,7 +83,7 @@ export function generateToolbarHtml(config: ToolbarConfig): string {
         <!-- View Dropdown -->
         <div class="code-formatter-toolbar__dropdown">
             <button class="code-formatter-toolbar__dropdown-trigger" id="view-dropdown-trigger">
-                ${i18n.view} ▼
+                ${i18n.view}
             </button>
             <div class="code-formatter-toolbar__dropdown-menu" id="view-dropdown-menu">
                 ${viewItemsHtml}

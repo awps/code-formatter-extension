@@ -34,5 +34,14 @@
   },
   "wordWrap": {
     "message": "Zeilenumbruch"
+  },
+  "settings": {
+    "message": "Einstellungen"
+  },
+  "popupDescription": {
+    "message": "Formatiert und verschönert Code mit Syntaxhervorhebung"
+  },
+  "learnMore": {
+    "message": "Mehr erfahren"
   }
 }

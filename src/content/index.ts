@@ -9,6 +9,8 @@ import { getCodeElement, extractCode, isValidCodeLength, createRendererElement, 
 import { createEditorView } from './components/editor';
 import { insertToolbar, ToolbarConfig } from './components/toolbar';
 import { createClickHandler, ClickHandlerContext } from './handlers/clickHandler';
+import { updateThemeSelection, updateViewCheckbox } from './components/dropdown';
+import { destroyEditor } from './components/editor';
 import { Settings, defaultSettings } from '../shared/types/settings';
 import { loadSettings } from '../shared/utils/storage';
 
@@ -141,6 +143,31 @@ function setupUI(preElement: HTMLPreElement, renderer: HTMLElement, pluginMode: 
     };
 
     document.addEventListener('click', createClickHandler(clickCtx));
+
+    // Listen for settings changes from popup
+    chrome.storage.onChanged.addListener((changes, areaName) => {
+        if (areaName !== 'sync' || !changes.codeFormatterSettings) return;
+
+        const newSettings = changes.codeFormatterSettings.newValue as Settings;
+        if (!newSettings) return;
+
+        // Update local state
+        currentSettings = { ...defaultSettings, ...newSettings };
+
+        // Update toolbar UI
+        updateThemeSelection('theme-dropdown-menu', currentSettings.theme);
+        updateViewCheckbox('view-dropdown-menu', 'lineNumbers', currentSettings.lineNumbers);
+        updateViewCheckbox('view-dropdown-menu', 'wordWrap', currentSettings.wordWrap);
+
+        // Recreate editor with new settings
+        destroyEditor(editorView);
+        editorView = createEditorView({
+            container: renderer,
+            code: beautifiedCode,
+            languageExtension: pluginMode,
+            settings: currentSettings
+        });
+    });
 }
 
 init();

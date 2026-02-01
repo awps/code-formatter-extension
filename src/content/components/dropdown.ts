@@ -65,7 +65,7 @@ export function updateThemeSelection(menuId: string, selectedTheme: ThemeKey): v
 }
 
 /**
- * Updates a view dropdown checkbox item.
+ * Updates a view dropdown toggle item.
  */
 export function updateViewCheckbox(menuId: string, setting: string, checked: boolean): void {
     const viewMenu = document.getElementById(menuId);
@@ -74,10 +74,10 @@ export function updateViewCheckbox(menuId: string, setting: string, checked: boo
     const item = viewMenu.querySelector(`[data-setting="${setting}"]`);
     if (!item) return;
 
-    const checkSpan = item.querySelector('.code-formatter-toolbar__dropdown-check');
+    const toggle = item.querySelector('.code-formatter-toolbar__toggle');
     item.classList.toggle(DROPDOWN_CHECKED_CLASS, checked);
-    if (checkSpan) {
-        checkSpan.textContent = checked ? '☑' : '☐';
+    if (toggle) {
+        toggle.classList.toggle('code-formatter-toolbar__toggle--on', checked);
     }
 }
 

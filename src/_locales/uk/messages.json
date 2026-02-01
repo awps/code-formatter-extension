@@ -34,5 +34,14 @@
   },
   "wordWrap": {
     "message": "Перенесення слів"
+  },
+  "settings": {
+    "message": "Налаштування"
+  },
+  "popupDescription": {
+    "message": "Форматує та прикрашає код з підсвічуванням синтаксису"
+  },
+  "learnMore": {
+    "message": "Дізнатися більше"
   }
 }

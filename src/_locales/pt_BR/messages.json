@@ -34,5 +34,14 @@
   },
   "wordWrap": {
     "message": "Quebra de linha"
+  },
+  "settings": {
+    "message": "Configurações"
+  },
+  "popupDescription": {
+    "message": "Formata e embeleza código com realce de sintaxe"
+  },
+  "learnMore": {
+    "message": "Saiba mais"
   }
 }

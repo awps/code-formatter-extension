@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Formatter</title>
+    <link rel="stylesheet" href="../css/popup.min.css">
+</head>
+<body>
+    <div class="popup">
+        <header class="popup__header">
+            <div class="popup__logo">
+                <svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="96" height="96" rx="24" fill="#1E1E2E"/>
+                    <path d="M28 32L44 48L28 64" stroke="#89B4FA" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M52 64H68" stroke="#A6E3A1" stroke-width="6" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <div class="popup__title">
+                <h1 data-i18n="extShortName">Code Formatter</h1>
+                <p data-i18n="popupDescription">Formats & beautifies code with syntax highlighting</p>
+            </div>
+        </header>
+
+        <section class="popup__settings">
+            <h2 data-i18n="settings">Settings</h2>
+
+            <div class="popup__setting">
+                <label for="theme-select" data-i18n="theme">Theme</label>
+                <select id="theme-select" class="popup__select"></select>
+            </div>
+
+            <div class="popup__setting popup__setting--toggle">
+                <span data-i18n="lineNumbers">Line Numbers</span>
+                <div class="popup__toggle" id="line-numbers-toggle" role="switch" tabindex="0" aria-checked="true">
+                    <div class="popup__toggle-track"></div>
+                    <div class="popup__toggle-thumb"></div>
+                </div>
+            </div>
+
+            <div class="popup__setting popup__setting--toggle">
+                <span data-i18n="wordWrap">Word Wrap</span>
+                <div class="popup__toggle" id="word-wrap-toggle" role="switch" tabindex="0" aria-checked="false">
+                    <div class="popup__toggle-track"></div>
+                    <div class="popup__toggle-thumb"></div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="popup__footer">
+            <a href="https://zerowp.com/code-formatter" target="_blank" rel="noopener noreferrer" data-i18n="learnMore">Learn more</a>
+        </footer>
+    </div>
+
+    <script src="popup.min.js"></script>
+</body>
+</html>

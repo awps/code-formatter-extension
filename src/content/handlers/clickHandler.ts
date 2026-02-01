@@ -164,11 +164,14 @@ function handleDownload(ctx: ClickHandlerContext): void {
     const codeToDownload = state.currentView === 'original' ? state.originalCode : state.beautifiedCode;
 
     const a = document.createElement('a');
-    a.href = `data:text/plain;charset=utf-8,${encodeURIComponent(codeToDownload)}`;
+    const blob = new Blob([codeToDownload], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    a.href = url;
 
     const basename = window.location.pathname.split('/').pop();
     a.download = basename || 'code-formatter.txt';
     a.click();
+    URL.revokeObjectURL(url);
 }
 
 /**

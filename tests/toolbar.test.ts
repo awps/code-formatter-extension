@@ -6,44 +6,49 @@ import {
 } from '../src/content/components/toolbar';
 import { Settings } from '../src/shared/types/settings';
 
-// Mock thememirror
-jest.mock('thememirror', () => ({
-    dracula: { name: 'dracula' },
-    amy: { name: 'amy' },
-    ayuLight: { name: 'ayuLight' },
-    barf: { name: 'barf' },
-    bespin: { name: 'bespin' },
-    birdsOfParadise: { name: 'birdsOfParadise' },
-    boysAndGirls: { name: 'boysAndGirls' },
-    clouds: { name: 'clouds' },
-    cobalt: { name: 'cobalt' },
-    coolGlow: { name: 'coolGlow' },
-    espresso: { name: 'espresso' },
-    noctisLilac: { name: 'noctisLilac' },
-    rosePineDawn: { name: 'rosePineDawn' },
-    smoothy: { name: 'smoothy' },
-    solarizedLight: { name: 'solarizedLight' },
-    tomorrow: { name: 'tomorrow' },
-}));
+// Mock @fsegurai theme packages
+jest.mock('@fsegurai/codemirror-theme-github-light', () => ({ githubLight: { name: 'githubLight' } }));
+jest.mock('@fsegurai/codemirror-theme-github-dark', () => ({ githubDark: { name: 'githubDark' } }));
+jest.mock('@fsegurai/codemirror-theme-vscode-light', () => ({ vsCodeLight: { name: 'vsCodeLight' } }));
+jest.mock('@fsegurai/codemirror-theme-vscode-dark', () => ({ vsCodeDark: { name: 'vsCodeDark' } }));
+jest.mock('@fsegurai/codemirror-theme-nord', () => ({ nord: { name: 'nord' } }));
+jest.mock('@fsegurai/codemirror-theme-monokai', () => ({ monokai: { name: 'monokai' } }));
+jest.mock('@fsegurai/codemirror-theme-material-light', () => ({ materialLight: { name: 'materialLight' } }));
+jest.mock('@fsegurai/codemirror-theme-material-dark', () => ({ materialDark: { name: 'materialDark' } }));
+jest.mock('@fsegurai/codemirror-theme-solarized-light', () => ({ solarizedLight: { name: 'solarizedLight' } }));
+jest.mock('@fsegurai/codemirror-theme-solarized-dark', () => ({ solarizedDark: { name: 'solarizedDark' } }));
+jest.mock('@fsegurai/codemirror-theme-gruvbox-light', () => ({ gruvboxLight: { name: 'gruvboxLight' } }));
+jest.mock('@fsegurai/codemirror-theme-gruvbox-dark', () => ({ gruvboxDark: { name: 'gruvboxDark' } }));
+jest.mock('@fsegurai/codemirror-theme-tokyo-night-day', () => ({ tokyoNightDay: { name: 'tokyoNightDay' } }));
+jest.mock('@fsegurai/codemirror-theme-tokyo-night-storm', () => ({ tokyoNightStorm: { name: 'tokyoNightStorm' } }));
+jest.mock('@fsegurai/codemirror-theme-palenight', () => ({ palenight: { name: 'palenight' } }));
+jest.mock('@fsegurai/codemirror-theme-andromeda', () => ({ andromeda: { name: 'andromeda' } }));
+jest.mock('@fsegurai/codemirror-theme-abyss', () => ({ abyss: { name: 'abyss' } }));
+jest.mock('@fsegurai/codemirror-theme-cobalt2', () => ({ cobalt2: { name: 'cobalt2' } }));
+jest.mock('@fsegurai/codemirror-theme-forest', () => ({ forest: { name: 'forest' } }));
+jest.mock('@fsegurai/codemirror-theme-volcano', () => ({ volcano: { name: 'volcano' } }));
+jest.mock('@fsegurai/codemirror-theme-android-studio', () => ({ androidStudio: { name: 'androidStudio' } }));
+jest.mock('@fsegurai/codemirror-theme-abcdef', () => ({ abcdef: { name: 'abcdef' } }));
+jest.mock('@fsegurai/codemirror-theme-basic-dark', () => ({ basicDark: { name: 'basicDark' } }));
 
 describe('toolbar component', () => {
     describe('generateThemeItemsHtml', () => {
         test('should generate HTML for all themes', () => {
-            const html = generateThemeItemsHtml('dracula');
-            expect(html).toContain('data-theme="dracula"');
-            expect(html).toContain('data-theme="amy"');
-            expect(html).toContain('data-theme="cobalt"');
+            const html = generateThemeItemsHtml('githubDark');
+            expect(html).toContain('data-theme="githubDark"');
+            expect(html).toContain('data-theme="nord"');
+            expect(html).toContain('data-theme="monokai"');
         });
 
         test('should mark current theme as selected', () => {
-            const html = generateThemeItemsHtml('amy');
-            expect(html).toContain('data-theme="amy"');
-            // Check that amy has the selected class (class comes before data-theme)
-            expect(html).toMatch(/--selected"[^>]*data-theme="amy"/);
+            const html = generateThemeItemsHtml('nord');
+            expect(html).toContain('data-theme="nord"');
+            // Check that nord has the selected class (class comes before data-theme)
+            expect(html).toMatch(/--selected"[^>]*data-theme="nord"/);
         });
 
         test('should use filled circle for selected theme', () => {
-            const html = generateThemeItemsHtml('dracula');
+            const html = generateThemeItemsHtml('githubDark');
             // The selected theme should have ● marker
             expect(html).toContain('●');
             // Non-selected themes should have ○ marker
@@ -58,7 +63,7 @@ describe('toolbar component', () => {
         };
 
         test('should generate HTML for view settings', () => {
-            const settings: Settings = { theme: 'dracula', lineNumbers: true, wordWrap: false };
+            const settings: Settings = { theme: 'githubDark', lineNumbers: true, wordWrap: false };
             const html = generateViewItemsHtml(settings, i18n);
 
             expect(html).toContain('data-setting="lineNumbers"');
@@ -68,17 +73,18 @@ describe('toolbar component', () => {
         });
 
         test('should show checked state for enabled settings', () => {
-            const settings: Settings = { theme: 'dracula', lineNumbers: true, wordWrap: false };
+            const settings: Settings = { theme: 'githubDark', lineNumbers: true, wordWrap: false };
             const html = generateViewItemsHtml(settings, i18n);
 
-            // lineNumbers is checked
-            expect(html).toContain('☑');
-            // wordWrap is unchecked
-            expect(html).toContain('☐');
+            // lineNumbers toggle is on
+            expect(html).toContain('code-formatter-toolbar__toggle--on');
+            // Verify toggle structure exists
+            expect(html).toContain('code-formatter-toolbar__toggle-track');
+            expect(html).toContain('code-formatter-toolbar__toggle-thumb');
         });
 
         test('should reflect settings state correctly', () => {
-            const settings: Settings = { theme: 'dracula', lineNumbers: false, wordWrap: true };
+            const settings: Settings = { theme: 'githubDark', lineNumbers: false, wordWrap: true };
             const html = generateViewItemsHtml(settings, i18n);
 
             // Should have checked class for wordWrap (class comes before data-setting)
@@ -101,7 +107,7 @@ describe('toolbar component', () => {
                 wordWrap: 'Word Wrap'
             },
             settings: {
-                theme: 'dracula',
+                theme: 'githubDark',
                 lineNumbers: true,
                 wordWrap: false
             }
