@@ -1,8 +1,8 @@
-# Code Formatter - JSON, CSS & JavaScript
-
 <p align="center">
   <a href="https://zerowp.com/code-formatter/" target="_blank"><img src="https://github.com/awps/code-formatter-extension/blob/a4e5eb52d72251100c8ebebbde56f0d8310e90b1/src/icons/128.png" width="128" alt="Code Formatter Logo" /></a>
 </p>
+
+# Code Formatter - JSON, CSS & JavaScript
 
 ## [Add to Chrome](https://chromewebstore.google.com/detail/bhimnoepicmcjfkbmhckamllnibadfal?hl=en)
 
