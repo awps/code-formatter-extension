@@ -241,5 +241,41 @@
   },
   "keyboardShortcuts": {
     "message": "Pintasan keyboard"
+  },
+  "appearance": {
+    "message": "Tampilan"
+  },
+  "appearanceAuto": {
+    "message": "Otomatis"
+  },
+  "appearanceLight": {
+    "message": "Terang"
+  },
+  "appearanceDark": {
+    "message": "Gelap"
+  },
+  "lightTheme": {
+    "message": "Tema terang"
+  },
+  "darkTheme": {
+    "message": "Tema gelap"
+  },
+  "popupTagline": {
+    "message": "Buka file kode apa pun di tab. File diformat otomatis."
+  },
+  "help": {
+    "message": "Bantuan"
+  },
+  "howToUseLink": {
+    "message": "Cara pakai"
+  },
+  "website": {
+    "message": "Situs web"
+  },
+  "shortcutsShort": {
+    "message": "Pintasan"
+  },
+  "reportBug": {
+    "message": "Laporkan bug"
   }
 }

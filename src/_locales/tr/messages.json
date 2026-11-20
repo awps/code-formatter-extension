@@ -241,5 +241,41 @@
   },
   "keyboardShortcuts": {
     "message": "Klavye kısayolları"
+  },
+  "appearance": {
+    "message": "Görünüm"
+  },
+  "appearanceAuto": {
+    "message": "Otomatik"
+  },
+  "appearanceLight": {
+    "message": "Açık"
+  },
+  "appearanceDark": {
+    "message": "Koyu"
+  },
+  "lightTheme": {
+    "message": "Açık tema"
+  },
+  "darkTheme": {
+    "message": "Koyu tema"
+  },
+  "popupTagline": {
+    "message": "Herhangi bir kod dosyasını sekmede açın. Otomatik olarak biçimlendirilir."
+  },
+  "help": {
+    "message": "Yardım"
+  },
+  "howToUseLink": {
+    "message": "Nasıl kullanılır"
+  },
+  "website": {
+    "message": "Web sitesi"
+  },
+  "shortcutsShort": {
+    "message": "Kısayollar"
+  },
+  "reportBug": {
+    "message": "Hata bildir"
   }
 }

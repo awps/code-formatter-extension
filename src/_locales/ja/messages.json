@@ -241,5 +241,41 @@
   },
   "keyboardShortcuts": {
     "message": "キーボードショートカット"
+  },
+  "appearance": {
+    "message": "外観"
+  },
+  "appearanceAuto": {
+    "message": "自動"
+  },
+  "appearanceLight": {
+    "message": "ライト"
+  },
+  "appearanceDark": {
+    "message": "ダーク"
+  },
+  "lightTheme": {
+    "message": "ライトテーマ"
+  },
+  "darkTheme": {
+    "message": "ダークテーマ"
+  },
+  "popupTagline": {
+    "message": "コードファイルをタブで開くだけで、自動的に整形されます。"
+  },
+  "help": {
+    "message": "ヘルプ"
+  },
+  "howToUseLink": {
+    "message": "使い方"
+  },
+  "website": {
+    "message": "ウェブサイト"
+  },
+  "shortcutsShort": {
+    "message": "ショートカット"
+  },
+  "reportBug": {
+    "message": "不具合を報告"
   }
 }

@@ -1,11 +1,12 @@
 import { EditorView } from "@codemirror/view";
-import { Settings, ThemeKey } from '../../shared/types/settings';
+import { Appearance, Settings, ThemeKey } from '../../shared/types/settings';
 import { saveSettings } from '../../shared/utils/storage';
 import {
     closeAllDropdowns,
     closeOtherDropdowns,
     toggleDropdown,
     updateThemeSelection,
+    updateAppearanceSelection,
     updateViewCheckbox,
     isInsideDropdownMenu,
     getDropdownMenuFromTrigger
@@ -34,6 +35,8 @@ export interface ClickHandlerContext {
     };
     getEditorView: () => EditorView | null;
     rebuildEditor: () => void;
+    /** Re-resolves light/dark (toolbars + code theme) */
+    applyAppearance: () => void;
     i18n: {
         copy: string;
         copied: string;
@@ -64,16 +67,32 @@ export function createClickHandler(ctx: ClickHandlerContext): (e: MouseEvent) =>
             return;
         }
 
-        // Handle theme dropdown item click
-        const themeItem = targetElement.closest('[data-theme]');
-        if (themeItem) {
-            const newTheme = (themeItem as HTMLElement).dataset.theme as ThemeKey;
+        // Auto / Light / Dark
+        const appearanceItem = targetElement.closest<HTMLElement>('[data-appearance]');
+        if (appearanceItem) {
+            const appearance = appearanceItem.dataset.appearance as Appearance;
             const state = ctx.getState();
-            if (newTheme && newTheme !== state.settings.theme) {
-                const newSettings = { ...state.settings, theme: newTheme };
+            if (appearance && appearance !== state.settings.appearance) {
+                const newSettings = { ...state.settings, appearance };
                 ctx.setState({ settings: newSettings });
-                saveSettings({ theme: newTheme });
-                updateThemeSelection('theme-dropdown-menu', newTheme);
+                saveSettings({ appearance });
+                updateAppearanceSelection(appearance);
+                ctx.applyAppearance();
+            }
+            return;
+        }
+
+        // Theme for the tone in use (light or dark list)
+        const themeItem = targetElement.closest<HTMLElement>('[data-theme]');
+        if (themeItem) {
+            const newTheme = themeItem.dataset.theme as ThemeKey;
+            const key = themeItem.dataset.tone === 'light' ? 'lightTheme' : 'darkTheme';
+            const state = ctx.getState();
+            if (newTheme && newTheme !== state.settings[key]) {
+                const newSettings = { ...state.settings, [key]: newTheme };
+                ctx.setState({ settings: newSettings });
+                saveSettings({ [key]: newTheme });
+                updateThemeSelection(`theme-dropdown-menu-${themeItem.dataset.tone}`, newTheme);
                 ctx.rebuildEditor();
             }
             // Menu stays open so themes can be tried one after another

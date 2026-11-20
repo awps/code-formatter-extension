@@ -40,24 +40,29 @@ describe('storage utilities', () => {
 
         test('should return stored settings when available', async () => {
             mockStorage['codeFormatterSettings'] = {
-                theme: 'nord',
+                appearance: 'dark',
+                lightTheme: 'githubLight',
+                darkTheme: 'nord',
                 lineNumbers: false,
                 wordWrap: true,
             };
 
             const settings = await loadSettings();
-            expect(settings.theme).toBe('nord');
+            expect(settings.appearance).toBe('dark');
+            expect(settings.darkTheme).toBe('nord');
             expect(settings.lineNumbers).toBe(false);
             expect(settings.wordWrap).toBe(true);
         });
 
-        test('should merge stored settings with defaults', async () => {
+        test('should migrate a saved single theme and keep its look', async () => {
             mockStorage['codeFormatterSettings'] = {
                 theme: 'monokai',
             };
 
             const settings = await loadSettings();
-            expect(settings.theme).toBe('monokai');
+            expect(settings.appearance).toBe('dark');
+            expect(settings.darkTheme).toBe('monokai');
+            expect(settings.lightTheme).toBe(defaultSettings.lightTheme);
             expect(settings.lineNumbers).toBe(defaultSettings.lineNumbers);
             expect(settings.wordWrap).toBe(defaultSettings.wordWrap);
         });
@@ -65,29 +70,33 @@ describe('storage utilities', () => {
 
     describe('saveSettings', () => {
         test('should save partial settings', async () => {
-            const result = await saveSettings({ theme: 'palenight' });
+            const result = await saveSettings({ darkTheme: 'palenight' });
 
-            expect(result.theme).toBe('palenight');
+            expect(result.darkTheme).toBe('palenight');
+            expect(result.appearance).toBe(defaultSettings.appearance);
             expect(result.lineNumbers).toBe(defaultSettings.lineNumbers);
             expect(result.wordWrap).toBe(defaultSettings.wordWrap);
         });
 
         test('should merge with existing settings', async () => {
             mockStorage['codeFormatterSettings'] = {
-                theme: 'githubDark',
+                appearance: 'light',
+                lightTheme: 'solarizedLight',
+                darkTheme: 'githubDark',
                 lineNumbers: true,
                 wordWrap: false,
             };
 
             const result = await saveSettings({ wordWrap: true });
 
-            expect(result.theme).toBe('githubDark');
+            expect(result.appearance).toBe('light');
+            expect(result.lightTheme).toBe('solarizedLight');
             expect(result.lineNumbers).toBe(true);
             expect(result.wordWrap).toBe(true);
         });
 
         test('should call chrome.storage.sync.set', async () => {
-            await saveSettings({ theme: 'solarizedDark' });
+            await saveSettings({ darkTheme: 'solarizedDark' });
 
             expect(mockChrome.storage.sync.set).toHaveBeenCalled();
         });

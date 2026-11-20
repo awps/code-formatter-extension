@@ -1,4 +1,4 @@
-import { Settings, ThemeKey } from '../../shared/types/settings';
+import { Appearance, Settings, ThemeKey, themeTone } from '../../shared/types/settings';
 import { themeLabels, themeKeys } from '../../shared/utils/themes';
 
 export interface ToolbarConfig {
@@ -21,6 +21,12 @@ export interface ToolbarConfig {
         viewOriginal?: string;
         settings?: string;
         settingsHint?: string;
+        appearance?: string;
+        appearanceAuto?: string;
+        appearanceLight?: string;
+        appearanceDark?: string;
+        lightTheme?: string;
+        darkTheme?: string;
         about?: string;
         aboutText?: string;
         overview?: string;
@@ -43,15 +49,49 @@ const ICONS = {
 /**
  * Generates HTML for theme dropdown items.
  */
-export function generateThemeItemsHtml(currentTheme: ThemeKey): string {
-    return themeKeys.map(key => {
+export function generateThemeItemsHtml(currentTheme: ThemeKey, keys: readonly ThemeKey[] = themeKeys): string {
+    return keys.map(key => {
         const isSelected = key === currentTheme;
         const selectedClass = isSelected ? ' code-formatter-toolbar__dropdown-item--selected' : '';
         const checkMark = isSelected ? '●' : '○';
-        return `<div class="code-formatter-toolbar__dropdown-item${selectedClass}" data-theme="${key}">
+        return `<div class="code-formatter-toolbar__dropdown-item${selectedClass}" data-theme="${key}" data-tone="${themeTone(key)}">
             <span class="code-formatter-toolbar__dropdown-check">${checkMark}</span> ${themeLabels[key]}
         </div>`;
     }).join('');
+}
+
+/**
+ * Auto / Light / Dark switch.
+ */
+export function generateAppearanceHtml(settings: Settings, i18n: ToolbarConfig['i18n']): string {
+    const options: Array<[Appearance, string]> = [
+        ['auto', i18n.appearanceAuto ?? 'Auto'],
+        ['light', i18n.appearanceLight ?? 'Light'],
+        ['dark', i18n.appearanceDark ?? 'Dark'],
+    ];
+    return `<div class="code-formatter-toolbar__appearance" role="radiogroup" aria-label="${i18n.appearance ?? 'Appearance'}">
+        ${options.map(([value, label]) => {
+            const on = settings.appearance === value;
+            return `<button type="button" role="radio" aria-checked="${on}" class="code-formatter-toolbar__appearance-option${on ? ' code-formatter-toolbar__appearance-option--active' : ''}" data-appearance="${value}">${label}</button>`;
+        }).join('')}
+    </div>`;
+}
+
+/**
+ * Two theme lists, one per tone. Only the list for the tone in use is shown
+ * (CSS, via body[data-cf-tone]), so the menu stays short.
+ */
+export function generateThemeListsHtml(settings: Settings, i18n: ToolbarConfig['i18n']): string {
+    const light = themeKeys.filter(k => themeTone(k) === 'light');
+    const dark = themeKeys.filter(k => themeTone(k) === 'dark');
+    return `<div class="code-formatter-toolbar__tone-list" data-tone-list="light">
+            <div class="code-formatter-toolbar__menu-heading">${i18n.lightTheme ?? 'Light theme'}</div>
+            <div class="code-formatter-toolbar__menu-themes" id="theme-dropdown-menu-light">${generateThemeItemsHtml(settings.lightTheme, light)}</div>
+        </div>
+        <div class="code-formatter-toolbar__tone-list" data-tone-list="dark">
+            <div class="code-formatter-toolbar__menu-heading">${i18n.darkTheme ?? 'Dark theme'}</div>
+            <div class="code-formatter-toolbar__menu-themes" id="theme-dropdown-menu-dark">${generateThemeItemsHtml(settings.darkTheme, dark)}</div>
+        </div>`;
 }
 
 /**
@@ -115,7 +155,6 @@ export function generateAboutHtml(config: ToolbarConfig): string {
 
 export function generateToolbarHtml(config: ToolbarConfig): string {
     const { logo, i18n, settings, languageLabel } = config;
-    const themeItemsHtml = generateThemeItemsHtml(settings.theme);
     const viewItemsHtml = generateViewItemsHtml(settings, i18n);
     const formattedLabel = i18n.viewFormatted ?? 'Formatted';
     const originalLabel = i18n.viewOriginal ?? 'Original';
@@ -144,8 +183,9 @@ export function generateToolbarHtml(config: ToolbarConfig): string {
                 <div class="code-formatter-toolbar__dropdown-menu code-formatter-toolbar__dropdown-menu--settings" id="settings-dropdown-menu">
                     <div class="code-formatter-toolbar__menu-heading">${i18n.view}</div>
                     <div id="view-dropdown-menu">${viewItemsHtml}</div>
-                    <div class="code-formatter-toolbar__menu-heading">${i18n.theme}</div>
-                    <div class="code-formatter-toolbar__menu-themes" id="theme-dropdown-menu">${themeItemsHtml}</div>
+                    <div class="code-formatter-toolbar__menu-heading">${i18n.appearance ?? 'Appearance'}</div>
+                    ${generateAppearanceHtml(settings, i18n)}
+                    ${generateThemeListsHtml(settings, i18n)}
                 </div>
             </div>
         </div>

@@ -241,5 +241,41 @@
   },
   "keyboardShortcuts": {
     "message": "Комбінації клавіш"
+  },
+  "appearance": {
+    "message": "Вигляд"
+  },
+  "appearanceAuto": {
+    "message": "Авто"
+  },
+  "appearanceLight": {
+    "message": "Світлий"
+  },
+  "appearanceDark": {
+    "message": "Темний"
+  },
+  "lightTheme": {
+    "message": "Світла тема"
+  },
+  "darkTheme": {
+    "message": "Темна тема"
+  },
+  "popupTagline": {
+    "message": "Відкрийте будь-який файл коду у вкладці. Він форматується автоматично."
+  },
+  "help": {
+    "message": "Довідка"
+  },
+  "howToUseLink": {
+    "message": "Як користуватися"
+  },
+  "website": {
+    "message": "Вебсайт"
+  },
+  "shortcutsShort": {
+    "message": "Скорочення"
+  },
+  "reportBug": {
+    "message": "Повідомити про помилку"
   }
 }

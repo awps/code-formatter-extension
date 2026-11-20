@@ -241,5 +241,41 @@
   },
   "keyboardShortcuts": {
     "message": "Scurtături de tastatură"
+  },
+  "appearance": {
+    "message": "Aspect"
+  },
+  "appearanceAuto": {
+    "message": "Auto"
+  },
+  "appearanceLight": {
+    "message": "Luminos"
+  },
+  "appearanceDark": {
+    "message": "Întunecat"
+  },
+  "lightTheme": {
+    "message": "Temă luminoasă"
+  },
+  "darkTheme": {
+    "message": "Temă întunecată"
+  },
+  "popupTagline": {
+    "message": "Deschide orice fișier de cod într-un tab. Este formatat automat."
+  },
+  "help": {
+    "message": "Ajutor"
+  },
+  "howToUseLink": {
+    "message": "Cum se folosește"
+  },
+  "website": {
+    "message": "Site web"
+  },
+  "shortcutsShort": {
+    "message": "Scurtături"
+  },
+  "reportBug": {
+    "message": "Raportează o eroare"
   }
 }

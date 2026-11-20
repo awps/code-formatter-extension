@@ -95,3 +95,14 @@ export function getDropdownMenuFromTrigger(trigger: Element): Element | null {
     const dropdown = trigger.parentElement;
     return dropdown?.querySelector('.code-formatter-toolbar__dropdown-menu') || null;
 }
+
+/**
+ * Marks the active Auto / Light / Dark option.
+ */
+export function updateAppearanceSelection(appearance: string): void {
+    document.querySelectorAll<HTMLElement>('[data-appearance]').forEach(btn => {
+        const on = btn.dataset.appearance === appearance;
+        btn.classList.toggle('code-formatter-toolbar__appearance-option--active', on);
+        btn.setAttribute('aria-checked', String(on));
+    });
+}

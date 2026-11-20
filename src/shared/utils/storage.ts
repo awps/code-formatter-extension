@@ -1,4 +1,4 @@
-import { Settings, defaultSettings } from '../types/settings';
+import { Settings, defaultSettings, normalizeSettings } from '../types/settings';
 
 const STORAGE_KEY = 'codeFormatterSettings';
 
@@ -19,11 +19,7 @@ export async function loadSettings(): Promise<Settings> {
                 resolve(defaultSettings);
                 return;
             }
-            if (result[STORAGE_KEY]) {
-                resolve({ ...defaultSettings, ...result[STORAGE_KEY] });
-            } else {
-                resolve(defaultSettings);
-            }
+            resolve(normalizeSettings(result[STORAGE_KEY]));
             });
         } catch {
             resolve(defaultSettings);
@@ -33,7 +29,7 @@ export async function loadSettings(): Promise<Settings> {
 
 export async function saveSettings(settings: Partial<Settings>): Promise<Settings> {
     const current = await loadSettings();
-    const updated = { ...current, ...settings };
+    const updated = normalizeSettings({ ...current, ...settings });
 
     // Check if chrome.storage is available
     if (typeof chrome === 'undefined' || !chrome.storage || !chrome.storage.sync) {

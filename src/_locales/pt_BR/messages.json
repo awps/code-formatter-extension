@@ -241,5 +241,41 @@
   },
   "keyboardShortcuts": {
     "message": "Atalhos de teclado"
+  },
+  "appearance": {
+    "message": "Aparência"
+  },
+  "appearanceAuto": {
+    "message": "Auto"
+  },
+  "appearanceLight": {
+    "message": "Claro"
+  },
+  "appearanceDark": {
+    "message": "Escuro"
+  },
+  "lightTheme": {
+    "message": "Tema claro"
+  },
+  "darkTheme": {
+    "message": "Tema escuro"
+  },
+  "popupTagline": {
+    "message": "Abra qualquer arquivo de código em uma aba. Ele é formatado automaticamente."
+  },
+  "help": {
+    "message": "Ajuda"
+  },
+  "howToUseLink": {
+    "message": "Como usar"
+  },
+  "website": {
+    "message": "Site"
+  },
+  "shortcutsShort": {
+    "message": "Atalhos"
+  },
+  "reportBug": {
+    "message": "Relatar bug"
   }
 }

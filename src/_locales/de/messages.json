@@ -241,5 +241,41 @@
   },
   "keyboardShortcuts": {
     "message": "Tastenkürzel"
+  },
+  "appearance": {
+    "message": "Darstellung"
+  },
+  "appearanceAuto": {
+    "message": "Auto"
+  },
+  "appearanceLight": {
+    "message": "Hell"
+  },
+  "appearanceDark": {
+    "message": "Dunkel"
+  },
+  "lightTheme": {
+    "message": "Helles Theme"
+  },
+  "darkTheme": {
+    "message": "Dunkles Theme"
+  },
+  "popupTagline": {
+    "message": "Öffne eine Code-Datei in einem Tab. Sie wird automatisch formatiert."
+  },
+  "help": {
+    "message": "Hilfe"
+  },
+  "howToUseLink": {
+    "message": "Anleitung"
+  },
+  "website": {
+    "message": "Website"
+  },
+  "shortcutsShort": {
+    "message": "Tastenkürzel"
+  },
+  "reportBug": {
+    "message": "Fehler melden"
   }
 }

@@ -11,8 +11,9 @@ import { insertToolbar, ToolbarConfig } from './components/toolbar';
 import { statusBarExtension, linkExtension, CodeToolsI18n } from './components/codeTools';
 import { SPONSOR_MARK, CRUSTAT_URL } from './components/sponsor';
 import { createClickHandler, ClickHandlerContext } from './handlers/clickHandler';
-import { updateThemeSelection, updateViewCheckbox } from './components/dropdown';
-import { Settings, defaultSettings } from '../shared/types/settings';
+import { updateThemeSelection, updateViewCheckbox, updateAppearanceSelection } from './components/dropdown';
+import { currentTone, watchDeviceTone } from '../shared/utils/appearance';
+import { Settings, defaultSettings, normalizeSettings } from '../shared/types/settings';
 import { loadSettings } from '../shared/utils/storage';
 
 const msg = (key: string, fallback: string) => chrome.i18n.getMessage(key) || fallback;
@@ -33,6 +34,12 @@ const i18n = {
     documentation: msg('documentation', 'Documentation'),
     keyboardShortcuts: msg('keyboardShortcuts', 'Keyboard shortcuts'),
     reportProblem: msg('guideReportIssue', 'Report a problem'),
+    appearance: msg('appearance', 'Appearance'),
+    appearanceAuto: msg('appearanceAuto', 'Auto'),
+    appearanceLight: msg('appearanceLight', 'Light'),
+    appearanceDark: msg('appearanceDark', 'Dark'),
+    lightTheme: msg('lightTheme', 'Light theme'),
+    darkTheme: msg('darkTheme', 'Dark theme'),
     viewFormatted: msg('viewFormatted', 'Formatted'),
     viewOriginal: msg('viewOriginal', 'Original'),
     settings: msg('settings', 'Settings'),
@@ -115,6 +122,7 @@ async function initFormatter(): Promise<void> {
 
     hidePreElement(preElement);
     document.body.classList.add('code-formatter-is-loaded');
+    applyTone();
     buildEditor();
     currentView = 'formatted';
 
@@ -151,6 +159,11 @@ function processLanguage(langHint: string, code: string, preElement: HTMLPreElem
     return { language, code: processedCode, pluginMode };
 }
 
+/** Light or dark toolbars, matching the code theme in use. */
+function applyTone(): void {
+    document.body.dataset.cfTone = currentTone(currentSettings);
+}
+
 function setupUI(preElement: HTMLPreElement, renderer: HTMLElement, buildEditor: () => void, languageLabel: string): void {
     let version = '';
     try { version = chrome.runtime.getManifest().version; } catch { /* context gone */ }
@@ -170,6 +183,7 @@ function setupUI(preElement: HTMLPreElement, renderer: HTMLElement, buildEditor:
         getElements: () => ({ preElement, renderer }),
         getEditorView: () => editorView,
         rebuildEditor: buildEditor,
+        applyAppearance: () => { applyTone(); buildEditor(); },
         i18n: { copied: toolsI18n.copied, copy: i18n.copy }
     };
 
@@ -182,12 +196,22 @@ function setupUI(preElement: HTMLPreElement, renderer: HTMLElement, buildEditor:
         const newSettings = changes.codeFormatterSettings.newValue as Settings;
         if (!newSettings) return;
 
-        currentSettings = { ...defaultSettings, ...newSettings };
+        currentSettings = normalizeSettings(newSettings);
 
-        updateThemeSelection('theme-dropdown-menu', currentSettings.theme);
+        updateAppearanceSelection(currentSettings.appearance);
+        updateThemeSelection('theme-dropdown-menu-light', currentSettings.lightTheme);
+        updateThemeSelection('theme-dropdown-menu-dark', currentSettings.darkTheme);
         updateViewCheckbox('view-dropdown-menu', 'lineNumbers', currentSettings.lineNumbers);
         updateViewCheckbox('view-dropdown-menu', 'wordWrap', currentSettings.wordWrap);
 
+        applyTone();
+        buildEditor();
+    });
+
+    // Auto: follow the device switching between light and dark (e.g. at sunset)
+    watchDeviceTone(() => {
+        if (currentSettings.appearance !== 'auto') return;
+        applyTone();
         buildEditor();
     });
 }

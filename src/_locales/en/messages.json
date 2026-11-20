@@ -241,5 +241,41 @@
   },
   "keyboardShortcuts": {
     "message": "Keyboard shortcuts"
+  },
+  "appearance": {
+    "message": "Appearance"
+  },
+  "appearanceAuto": {
+    "message": "Auto"
+  },
+  "appearanceLight": {
+    "message": "Light"
+  },
+  "appearanceDark": {
+    "message": "Dark"
+  },
+  "lightTheme": {
+    "message": "Light theme"
+  },
+  "darkTheme": {
+    "message": "Dark theme"
+  },
+  "popupTagline": {
+    "message": "Open any code file in a tab. It is formatted automatically."
+  },
+  "help": {
+    "message": "Help"
+  },
+  "howToUseLink": {
+    "message": "How to use"
+  },
+  "website": {
+    "message": "Website"
+  },
+  "shortcutsShort": {
+    "message": "Shortcuts"
+  },
+  "reportBug": {
+    "message": "Report a bug"
   }
 }

@@ -3,6 +3,8 @@ import { EditorView } from "@codemirror/view";
 import { EditorState, Extension } from "@codemirror/state";
 import { Settings } from '../../shared/types/settings';
 import { getTheme } from '../../shared/utils/themes';
+import { activeTheme } from '../../shared/types/settings';
+import { deviceIsDark } from '../../shared/utils/appearance';
 
 export interface EditorConfig {
     container: HTMLElement;
@@ -21,7 +23,7 @@ export function createEditorView(config: EditorConfig): EditorView {
 
     const extensions: Extension[] = [
         basicSetup,
-        getTheme(settings.theme),
+        getTheme(activeTheme(settings, deviceIsDark())),
         languageExtension(),
         EditorState.readOnly.of(true),
         ...extraExtensions,

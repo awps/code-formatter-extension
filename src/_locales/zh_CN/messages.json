@@ -241,5 +241,41 @@
   },
   "keyboardShortcuts": {
     "message": "键盘快捷键"
+  },
+  "appearance": {
+    "message": "外观"
+  },
+  "appearanceAuto": {
+    "message": "自动"
+  },
+  "appearanceLight": {
+    "message": "浅色"
+  },
+  "appearanceDark": {
+    "message": "深色"
+  },
+  "lightTheme": {
+    "message": "浅色主题"
+  },
+  "darkTheme": {
+    "message": "深色主题"
+  },
+  "popupTagline": {
+    "message": "在标签页中打开任意代码文件，会自动格式化。"
+  },
+  "help": {
+    "message": "帮助"
+  },
+  "howToUseLink": {
+    "message": "使用方法"
+  },
+  "website": {
+    "message": "网站"
+  },
+  "shortcutsShort": {
+    "message": "快捷键"
+  },
+  "reportBug": {
+    "message": "报告问题"
   }
 }
