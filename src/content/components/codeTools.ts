@@ -147,11 +147,19 @@ function sponsorLink(sponsor: SponsorLink): HTMLAnchorElement {
     link.setAttribute('aria-label', `${sponsor.label}: ${sponsor.name}. ${sponsor.text}`);
     link.innerHTML = sponsor.mark;
 
+    const name0 = document.createElement('span');
+    name0.className = 'cm-cf-status__sponsor-name';
+    name0.textContent = sponsor.name;
+    const tag = document.createElement('span');
+    tag.className = 'cm-cf-status__sponsor-tag';
+    tag.textContent = sponsor.label;
+    link.append(name0, tag);
+
     const tip = document.createElement('span');
     tip.className = 'cf-tip cf-tip--above';
     tip.setAttribute('aria-hidden', 'true');
     const name = document.createElement('strong');
-    name.textContent = `${sponsor.label}: ${sponsor.name}`;
+    name.textContent = sponsor.name;
     const text = document.createElement('span');
     text.textContent = sponsor.text;
     tip.append(name, text);
@@ -248,8 +256,10 @@ function statusPanel(i18n: CodeToolsI18n, options: StatusBarOptions) {
         };
         window.addEventListener('keydown', onKey, true);
 
-        dom.append(info, folds);
+        dom.append(info);
+        // Sponsor sits just before the fold buttons
         if (options.sponsor) dom.append(sponsorLink(options.sponsor));
+        dom.append(folds);
         render(view.state);
 
         return {

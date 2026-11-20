@@ -226,5 +226,8 @@
   },
   "sponsor": {
     "message": "Sponsor"
+  },
+  "sponsored": {
+    "message": "Bersponsor"
   }
 }

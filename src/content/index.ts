@@ -87,7 +87,7 @@ async function initFormatter(): Promise<void> {
             jsonPath: language === 'json',
             languageLabel,
             sponsor: {
-                label: msg('sponsor', 'Sponsor'),
+                label: msg('sponsored', 'Sponsored'),
                 name: 'Crustat',
                 text: 'See who visits your website. Try it free.',
                 url: CRUSTAT_URL,

@@ -226,5 +226,8 @@
   },
   "sponsor": {
     "message": "赞助商"
+  },
+  "sponsored": {
+    "message": "赞助"
   }
 }

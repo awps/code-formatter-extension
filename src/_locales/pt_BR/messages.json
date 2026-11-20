@@ -226,5 +226,8 @@
   },
   "sponsor": {
     "message": "Patrocinador"
+  },
+  "sponsored": {
+    "message": "Patrocinado"
   }
 }

@@ -610,38 +610,62 @@
         background: #313244;
     }
 
-    /* Sponsor: one small logo at the end of the bar, details in the tooltip */
+    /* Sponsor: logo + name + SPONSORED tag, just before the fold buttons.
+       Details in the tooltip. The name hides on narrow windows; the tag never does. */
     .cm-cf-status .cm-cf-status__sponsor {
         position: relative;
-        display: grid;
-        place-items: center;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
         flex: none;
-        width: 24px;
         height: 24px;
-        margin-left: 6px;
-        padding-left: 8px;
-        border-left: 1px solid #313244;
-        box-sizing: content-box;
-        opacity: 0.8;
-        transition: opacity 0.15s;
+        padding: 0 8px 0 4px;
+        border: 1px solid transparent;
+        border-radius: 5px;
+        box-sizing: border-box;
+        color: #a6adc8;
+        font-size: 11.5px;
+        text-decoration: none;
+        transition: background-color 0.15s, color 0.15s;
 
         svg {
-            width: 18px;
-            height: 18px;
+            flex: none;
+            width: 16px;
+            height: 16px;
             padding: 2px;
-            border-radius: 5px;
+            border-radius: 4px;
             background: #fbf8f1;
         }
 
         &:hover,
         &:focus-visible {
-            opacity: 1;
+            background: rgba(255, 255, 255, 0.08);
+            color: #cdd6f4;
         }
 
         &:focus-visible {
             outline: 2px solid #89b4fa;
             outline-offset: 1px;
         }
+    }
+
+    .cm-cf-status .cm-cf-status__sponsor-name {
+        display: var(--code-formatter-label-display);
+        font-weight: 600;
+    }
+
+    /* The ad label always stays visible, even when the name is hidden */
+    .cm-cf-status .cm-cf-status__sponsor-tag {
+        display: inline;
+        padding: 0 5px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.06);
+        color: #7f849c;
+        font-size: 9.5px;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        line-height: 15px;
+        text-transform: uppercase;
     }
 
     /* Icon-only buttons (collapse / expand), IDE style */
