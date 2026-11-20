@@ -1,4 +1,5 @@
 import { Appearance, Settings, ThemeKey, themeTone } from '../../shared/types/settings';
+import { siteUrl } from '../../shared/utils/links';
 import { themeLabels, themeKeys } from '../../shared/utils/themes';
 
 export interface ToolbarConfig {
@@ -37,7 +38,6 @@ export interface ToolbarConfig {
     settings: Settings;
 }
 
-const SITE = 'https://zerowp.com/code-formatter/';
 const ISSUES = 'https://github.com/awps/code-formatter-extension/issues';
 
 const ICONS = {
@@ -133,9 +133,9 @@ export function generateAboutHtml(config: ToolbarConfig): string {
     const { i18n, version } = config;
     const about = i18n.about ?? 'About';
     const links = [
-        [SITE, i18n.overview ?? 'Overview'],
-        [`${SITE}docs/`, i18n.documentation ?? 'Documentation'],
-        [`${SITE}docs/#shortcuts`, i18n.keyboardShortcuts ?? 'Keyboard shortcuts'],
+        [siteUrl('', 'viewer-about'), i18n.overview ?? 'Overview'],
+        [siteUrl('docs/', 'viewer-about'), i18n.documentation ?? 'Documentation'],
+        [siteUrl('docs/', 'viewer-about', 'shortcuts'), i18n.keyboardShortcuts ?? 'Keyboard shortcuts'],
         [ISSUES, i18n.reportProblem ?? 'Report a problem'],
     ];
     return `<div class="code-formatter-toolbar__dropdown code-formatter-toolbar__about">

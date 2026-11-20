@@ -177,7 +177,7 @@
     "message": "もう一度再生"
   },
   "guideThemeLabel": {
-    "message": "カラーテーマ"
+    "message": "外観（コードファイルとポップアップにも適用）"
   },
   "guideThemeAuto": {
     "message": "自動"

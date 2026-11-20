@@ -177,7 +177,7 @@
     "message": "重播"
   },
   "guideThemeLabel": {
-    "message": "颜色主题"
+    "message": "外观（同样用于代码文件和弹出窗口）"
   },
   "guideThemeAuto": {
     "message": "自动"

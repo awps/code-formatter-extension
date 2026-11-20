@@ -1074,8 +1074,9 @@ kbd {
 
 .footer {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 28px;
+    gap: 12px 28px;
     padding-top: 40px;
     border-top: 1px solid var(--line);
     font-size: 14px;

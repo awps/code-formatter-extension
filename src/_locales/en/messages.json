@@ -177,7 +177,7 @@
     "message": "Replay"
   },
   "guideThemeLabel": {
-    "message": "Color theme"
+    "message": "Appearance, also used for code files and the popup"
   },
   "guideThemeAuto": {
     "message": "Auto"

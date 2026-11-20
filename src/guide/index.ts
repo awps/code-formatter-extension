@@ -1,11 +1,15 @@
 import { applyI18n, openExtensionSettings } from '../shared/utils/i18n';
+import { loadSettings, saveSettings } from '../shared/utils/storage';
+import { Appearance, normalizeSettings } from '../shared/types/settings';
 
-type ThemeChoice = 'auto' | 'light' | 'dark';
-const THEME_KEY = 'codeFormatterGuideTheme';
+// The guide uses the extension's Appearance setting, so one choice covers
+// the code viewer, the popup and this page. A copy is kept in localStorage
+// only to paint the right colors before the stored setting has loaded.
+const CACHE_KEY = 'codeFormatterGuideTheme';
 
-function readTheme(): ThemeChoice {
+function cachedAppearance(): Appearance {
     try {
-        const saved = localStorage.getItem(THEME_KEY);
+        const saved = localStorage.getItem(CACHE_KEY);
         if (saved === 'light' || saved === 'dark') return saved;
     } catch {
         // storage unavailable: fall back to auto
@@ -13,26 +17,28 @@ function readTheme(): ThemeChoice {
     return 'auto';
 }
 
-function applyTheme(choice: ThemeChoice): void {
+function applyTheme(choice: Appearance): void {
     const root = document.documentElement;
+    // auto: no attribute, the CSS follows prefers-color-scheme
     if (choice === 'auto') root.removeAttribute('data-theme');
     else root.setAttribute('data-theme', choice);
 
     document.querySelectorAll<HTMLElement>('[data-theme-choice]').forEach((btn) => {
         btn.setAttribute('aria-checked', String(btn.dataset.themeChoice === choice));
     });
+    try { localStorage.setItem(CACHE_KEY, choice); } catch { /* ignore */ }
 }
 
 // Runs from <head>: set the theme before the first paint (no light/dark flash)
-applyTheme(readTheme());
+applyTheme(cachedAppearance());
 
-function setupThemeSwitch(): void {
+async function setupThemeSwitch(): Promise<void> {
     const buttons = Array.from(document.querySelectorAll<HTMLElement>('[data-theme-choice]'));
     buttons.forEach((btn, index) => {
         btn.addEventListener('click', () => {
-            const choice = btn.dataset.themeChoice as ThemeChoice;
-            try { localStorage.setItem(THEME_KEY, choice); } catch { /* ignore */ }
+            const choice = btn.dataset.themeChoice as Appearance;
             applyTheme(choice);
+            saveSettings({ appearance: choice });
         });
         // Arrow keys move between options, like a native radio group
         btn.addEventListener('keydown', (e) => {
@@ -43,7 +49,19 @@ function setupThemeSwitch(): void {
             next.click();
         });
     });
-    applyTheme(readTheme());
+
+    applyTheme(cachedAppearance());
+    applyTheme((await loadSettings()).appearance);
+
+    // Changed from the popup or a code tab while this page is open
+    try {
+        chrome.storage.onChanged.addListener((changes, area) => {
+            if (area !== 'sync' || !changes.codeFormatterSettings) return;
+            applyTheme(normalizeSettings(changes.codeFormatterSettings.newValue).appearance);
+        });
+    } catch {
+        // extension context gone: the page keeps its current colors
+    }
 }
 
 function playDemo(): void {
@@ -68,7 +86,9 @@ document.addEventListener('DOMContentLoaded', () => {
     applyI18n();
     document.querySelectorAll<HTMLElement>('[data-i18n-aria]').forEach((el) => {
         const message = chrome.i18n?.getMessage(el.dataset.i18nAria || '');
-        if (message) el.setAttribute('aria-label', message);
+        if (!message) return;
+        el.setAttribute('aria-label', message);
+        el.title = message;
     });
 
     setupThemeSwitch();

@@ -177,7 +177,7 @@
     "message": "Rejouer"
   },
   "guideThemeLabel": {
-    "message": "Thème de couleurs"
+    "message": "Apparence, aussi utilisée pour les fichiers de code et la fenêtre de l’extension"
   },
   "guideThemeAuto": {
     "message": "Auto"

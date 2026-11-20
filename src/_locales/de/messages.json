@@ -177,7 +177,7 @@
     "message": "Wiederholen"
   },
   "guideThemeLabel": {
-    "message": "Farbschema"
+    "message": "Darstellung, gilt auch für Code-Dateien und das Popup"
   },
   "guideThemeAuto": {
     "message": "Auto"
