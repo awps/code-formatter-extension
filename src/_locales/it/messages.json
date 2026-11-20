@@ -229,5 +229,20 @@
   },
   "sponsored": {
     "message": "Sponsorizzato"
+  },
+  "about": {
+    "message": "Informazioni"
+  },
+  "aboutText": {
+    "message": "Formatta i file di codice che apri in una scheda. Sola lettura, funziona interamente nel tuo browser."
+  },
+  "overview": {
+    "message": "Panoramica"
+  },
+  "documentation": {
+    "message": "Documentazione"
+  },
+  "keyboardShortcuts": {
+    "message": "Scorciatoie da tastiera"
   }
 }

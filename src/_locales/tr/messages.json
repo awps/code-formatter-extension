@@ -229,5 +229,20 @@
   },
   "sponsored": {
     "message": "Sponsorlu"
+  },
+  "about": {
+    "message": "Hakkında"
+  },
+  "aboutText": {
+    "message": "Sekmede açtığınız kod dosyalarını biçimlendirir. Salt okunur, tamamen tarayıcınızda çalışır."
+  },
+  "overview": {
+    "message": "Genel bakış"
+  },
+  "documentation": {
+    "message": "Belgeler"
+  },
+  "keyboardShortcuts": {
+    "message": "Klavye kısayolları"
   }
 }

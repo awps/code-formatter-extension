@@ -27,6 +27,12 @@ const i18n = {
     view: msg('view', 'View'),
     lineNumbers: msg('lineNumbers', 'Line Numbers'),
     wordWrap: msg('wordWrap', 'Word Wrap'),
+    about: msg('about', 'About'),
+    aboutText: msg('aboutText', 'Formats code files you open in a tab. Read-only, runs fully in your browser.'),
+    overview: msg('overview', 'Overview'),
+    documentation: msg('documentation', 'Documentation'),
+    keyboardShortcuts: msg('keyboardShortcuts', 'Keyboard shortcuts'),
+    reportProblem: msg('guideReportIssue', 'Report a problem'),
     viewFormatted: msg('viewFormatted', 'Formatted'),
     viewOriginal: msg('viewOriginal', 'Original'),
     settings: msg('settings', 'Settings'),
@@ -146,7 +152,9 @@ function processLanguage(langHint: string, code: string, preElement: HTMLPreElem
 }
 
 function setupUI(preElement: HTMLPreElement, renderer: HTMLElement, buildEditor: () => void, languageLabel: string): void {
-    const toolbarConfig: ToolbarConfig = { logo, i18n, settings: currentSettings, languageLabel };
+    let version = '';
+    try { version = chrome.runtime.getManifest().version; } catch { /* context gone */ }
+    const toolbarConfig: ToolbarConfig = { logo, i18n, settings: currentSettings, languageLabel, version };
     insertToolbar(toolbarConfig);
 
     preElement.style.overflow = 'auto';

@@ -229,5 +229,20 @@
   },
   "sponsored": {
     "message": "Gesponsert"
+  },
+  "about": {
+    "message": "Über"
+  },
+  "aboutText": {
+    "message": "Formatiert Code-Dateien, die du in einem Tab öffnest. Nur lesen, läuft komplett in deinem Browser."
+  },
+  "overview": {
+    "message": "Übersicht"
+  },
+  "documentation": {
+    "message": "Dokumentation"
+  },
+  "keyboardShortcuts": {
+    "message": "Tastenkürzel"
   }
 }

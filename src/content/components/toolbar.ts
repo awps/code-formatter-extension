@@ -5,6 +5,8 @@ export interface ToolbarConfig {
     logo: string;
     /** Display name of the detected language, e.g. "JSON" */
     languageLabel?: string;
+    /** Extension version, shown in the About popover */
+    version?: string;
     i18n: {
         extShortName: string;
         copy: string;
@@ -19,9 +21,18 @@ export interface ToolbarConfig {
         viewOriginal?: string;
         settings?: string;
         settingsHint?: string;
+        about?: string;
+        aboutText?: string;
+        overview?: string;
+        documentation?: string;
+        keyboardShortcuts?: string;
+        reportProblem?: string;
     };
     settings: Settings;
 }
+
+const SITE = 'https://zerowp.com/code-formatter/';
+const ISSUES = 'https://github.com/awps/code-formatter-extension/issues';
 
 const ICONS = {
     copy: '<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 3.5V3A1.5 1.5 0 0 0 9 1.5H4A1.5 1.5 0 0 0 2.5 3v5A1.5 1.5 0 0 0 4 9.5h.5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>',
@@ -74,6 +85,34 @@ export function generateViewItemsHtml(settings: Settings, i18n: { lineNumbers: s
  * Layout: brand + language | view switch | copy, download, settings menu.
  * Code-level actions (collapse/expand, JSON path) live in the bottom status bar.
  */
+/**
+ * "?" button with a popover: what the extension is, version, and links
+ * to the website, docs and issue tracker.
+ */
+export function generateAboutHtml(config: ToolbarConfig): string {
+    const { i18n, version } = config;
+    const about = i18n.about ?? 'About';
+    const links = [
+        [SITE, i18n.overview ?? 'Overview'],
+        [`${SITE}docs/`, i18n.documentation ?? 'Documentation'],
+        [`${SITE}docs/#shortcuts`, i18n.keyboardShortcuts ?? 'Keyboard shortcuts'],
+        [ISSUES, i18n.reportProblem ?? 'Report a problem'],
+    ];
+    return `<div class="code-formatter-toolbar__dropdown code-formatter-toolbar__about">
+        <button type="button" class="code-formatter-toolbar__dropdown-trigger code-formatter-toolbar__help" id="about-dropdown-trigger" aria-label="${about} ${i18n.extShortName}">?</button>
+        <div class="code-formatter-toolbar__dropdown-menu code-formatter-toolbar__dropdown-menu--about" id="about-dropdown-menu">
+            <div class="code-formatter-toolbar__about-head">
+                <strong>${i18n.extShortName}</strong>
+                ${version ? `<span>${version}</span>` : ''}
+            </div>
+            <p class="code-formatter-toolbar__about-text">${i18n.aboutText ?? 'Formats code files you open in a tab. Read-only, runs fully in your browser.'}</p>
+            <div class="code-formatter-toolbar__about-links">
+                ${links.map(([href, label]) => `<a href="${href}" target="_blank" rel="noopener">${label}</a>`).join('')}
+            </div>
+        </div>
+    </div>`;
+}
+
 export function generateToolbarHtml(config: ToolbarConfig): string {
     const { logo, i18n, settings, languageLabel } = config;
     const themeItemsHtml = generateThemeItemsHtml(settings.theme);
@@ -85,8 +124,8 @@ export function generateToolbarHtml(config: ToolbarConfig): string {
     return `<div class="code-formatter-toolbar">
         <div class="code-formatter-toolbar__brand">
             <div class="code-formatter-toolbar__logo">${logo}</div>
-            <div class="code-formatter-toolbar__logo-text"><a href="https://zerowp.com/code-formatter/" target="_blank">${i18n.extShortName}</a></div>
             ${languageLabel ? `<span class="code-formatter-toolbar__lang">${languageLabel}</span>` : ''}
+            ${generateAboutHtml(config)}
         </div>
 
         <div class="code-formatter-toolbar__spacer"></div>

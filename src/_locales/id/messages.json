@@ -229,5 +229,20 @@
   },
   "sponsored": {
     "message": "Bersponsor"
+  },
+  "about": {
+    "message": "Tentang"
+  },
+  "aboutText": {
+    "message": "Memformat file kode yang Anda buka di tab. Hanya baca, berjalan sepenuhnya di browser Anda."
+  },
+  "overview": {
+    "message": "Ringkasan"
+  },
+  "documentation": {
+    "message": "Dokumentasi"
+  },
+  "keyboardShortcuts": {
+    "message": "Pintasan keyboard"
   }
 }

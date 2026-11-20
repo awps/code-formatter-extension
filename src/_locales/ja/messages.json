@@ -229,5 +229,20 @@
   },
   "sponsored": {
     "message": "スポンサー"
+  },
+  "about": {
+    "message": "このツールについて"
+  },
+  "aboutText": {
+    "message": "タブで開いたコードファイルを整形します。読み取り専用で、すべてブラウザ内で動作します。"
+  },
+  "overview": {
+    "message": "概要"
+  },
+  "documentation": {
+    "message": "ドキュメント"
+  },
+  "keyboardShortcuts": {
+    "message": "キーボードショートカット"
   }
 }

@@ -229,5 +229,20 @@
   },
   "sponsored": {
     "message": "Patrocinado"
+  },
+  "about": {
+    "message": "Sobre"
+  },
+  "aboutText": {
+    "message": "Formata arquivos de código que você abre em uma aba. Somente leitura, roda inteiramente no seu navegador."
+  },
+  "overview": {
+    "message": "Visão geral"
+  },
+  "documentation": {
+    "message": "Documentação"
+  },
+  "keyboardShortcuts": {
+    "message": "Atalhos de teclado"
   }
 }

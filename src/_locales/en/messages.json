@@ -229,5 +229,20 @@
   },
   "sponsored": {
     "message": "Sponsored"
+  },
+  "about": {
+    "message": "About"
+  },
+  "aboutText": {
+    "message": "Formats code files you open in a tab. Read-only, runs fully in your browser."
+  },
+  "overview": {
+    "message": "Overview"
+  },
+  "documentation": {
+    "message": "Documentation"
+  },
+  "keyboardShortcuts": {
+    "message": "Keyboard shortcuts"
   }
 }

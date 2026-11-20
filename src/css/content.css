@@ -285,6 +285,93 @@
         display: var(--code-formatter-label-display);
     }
 
+    /* "?" button that opens the About popover */
+    &__about {
+        display: flex;
+        align-items: center;
+    }
+
+    &__dropdown-trigger&__help {
+        display: grid;
+        place-items: center;
+        box-sizing: border-box;
+        width: 18px;
+        height: 18px;
+        padding: 0;
+        margin-left: 2px;
+        border: 1.5px solid #6c7086;
+        border-radius: 50%;
+        color: #a6adc8;
+        font-size: 11px;
+        font-weight: 700;
+        line-height: 1;
+
+        &::after {
+            display: none !important;
+        }
+
+        &:hover,
+        &.code-formatter-toolbar__dropdown-trigger--open {
+            border-color: #89b4fa;
+            background: transparent;
+            color: #cdd6f4;
+        }
+    }
+
+    /* Doubled class: beats the generic dropdown-menu padding defined later */
+    &__dropdown-menu&__dropdown-menu--about {
+        width: 260px;
+        padding: 14px 16px;
+        max-height: none;
+    }
+
+    &__about-head {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        color: #cdd6f4;
+        font-size: 13px;
+
+        span {
+            color: #6c7086;
+            font-size: 11px;
+        }
+    }
+
+    &__about-text {
+        margin: 6px 0 10px;
+        color: #a6adc8;
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+    &__about-links {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        padding-top: 8px;
+        border-top: 1px solid #313244;
+
+        a {
+            padding: 5px 8px;
+            margin: 0 -8px;
+            border-radius: 4px;
+            color: #89b4fa;
+            font-size: 12px;
+            text-decoration: none;
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.06);
+                color: #b4befe;
+            }
+
+            &:focus-visible {
+                outline: 2px solid #89b4fa;
+                outline-offset: -2px;
+            }
+        }
+    }
+
     &__menu-heading {
         padding: 8px 10px 4px;
         color: #6c7086;

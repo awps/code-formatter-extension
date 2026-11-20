@@ -229,5 +229,20 @@
   },
   "sponsored": {
     "message": "赞助"
+  },
+  "about": {
+    "message": "关于"
+  },
+  "aboutText": {
+    "message": "格式化你在标签页中打开的代码文件。只读，完全在浏览器中运行。"
+  },
+  "overview": {
+    "message": "概览"
+  },
+  "documentation": {
+    "message": "文档"
+  },
+  "keyboardShortcuts": {
+    "message": "键盘快捷键"
   }
 }

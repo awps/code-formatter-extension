@@ -229,5 +229,20 @@
   },
   "sponsored": {
     "message": "Sponsorisé"
+  },
+  "about": {
+    "message": "À propos"
+  },
+  "aboutText": {
+    "message": "Met en forme les fichiers de code ouverts dans un onglet. Lecture seule, tout se passe dans votre navigateur."
+  },
+  "overview": {
+    "message": "Présentation"
+  },
+  "documentation": {
+    "message": "Documentation"
+  },
+  "keyboardShortcuts": {
+    "message": "Raccourcis clavier"
   }
 }

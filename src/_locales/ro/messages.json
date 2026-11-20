@@ -229,5 +229,20 @@
   },
   "sponsored": {
     "message": "Sponsorizat"
+  },
+  "about": {
+    "message": "Despre"
+  },
+  "aboutText": {
+    "message": "Formatează fișierele de cod pe care le deschizi într-un tab. Doar citire, rulează complet în browser."
+  },
+  "overview": {
+    "message": "Prezentare"
+  },
+  "documentation": {
+    "message": "Documentație"
+  },
+  "keyboardShortcuts": {
+    "message": "Scurtături de tastatură"
   }
 }
