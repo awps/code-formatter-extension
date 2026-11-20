@@ -8,7 +8,7 @@ const languageChecks: LanguageCheck[] = [
     // HTML check (to exclude early)
     {
         language: 'html',
-        pattern: /^\s*<!DOCTYPE\s+html|^\s*<html|^\s*<\?xml.*\?>\s*<html/i,
+        pattern: /^\s*<!DOCTYPE\s+html|^\s*<html|^\s*<\?xml.*\?>\s*<html|^\s*<(div|span|p|h[1-6]|body|head|table|ul|ol|section|article|main|header|footer|nav|a|img|form|script|style|link|meta)[\s>]/i,
         priority: 10
     },
     // JSON - Enhanced detection
@@ -33,6 +33,18 @@ const languageChecks: LanguageCheck[] = [
         pattern: /^<\?php|^<\?=/,
         priority: 8
     },
+    // C# - before JS: `class X` would otherwise match the JS pattern
+    {
+        language: 'cs',
+        pattern: /^\s*using\s+System|^\s*namespace\s+[\w.]+\s*[{;]|Console\.Write(Line)?\(/m,
+        priority: 8
+    },
+    // Java - before JS for the same reason
+    {
+        language: 'java',
+        pattern: /^package\s+[\w.]+;|^import\s+(static\s+)?[\w.*]+;|\bpublic\s+static\s+void\s+main\b|System\.(out|err)\.print/m,
+        priority: 8
+    },
     // XML
     {
         language: 'xml',
@@ -42,7 +54,7 @@ const languageChecks: LanguageCheck[] = [
     // JavaScript - More specific patterns (higher priority than C#)
     {
         language: 'js',
-        pattern: /\b(function|const|let|var|class|import|export|require)\s+[\w\(]|=>\s*[\{\(]|module\.exports|export\s+(default\s+)?[\{\w]|!function\s*\(/m,
+        pattern: /\b(function|const|let|var|class|import|export|require)\s+[\w\(]|=>\s*[\{\(]|module\.exports|export\s+(default\s+)?[\{\w]|!function\s*\(|\b(console|document|window)\.\w+\s*\(/m,
         priority: 7
     },
     // TypeScript
@@ -53,7 +65,7 @@ const languageChecks: LanguageCheck[] = [
     },
     // Python
     {
-        language: 'python',
+        language: 'py',
         pattern: /^(#!.*python|from\s+__future__|import\s+\w+|def\s+\w+|class\s+\w+|if\s+__name__\s*==)/m,
         priority: 5
     },
@@ -65,20 +77,20 @@ const languageChecks: LanguageCheck[] = [
     },
     // Rust
     {
-        language: 'rust',
+        language: 'rs',
         pattern: /\b(fn|let\s+mut|use\s+std|impl|trait|struct|enum|mod)\s+/,
         priority: 5
     },
-    // C# - More specific to avoid conflicts with JavaScript
+    // C/C++
     {
-        language: 'csharp',
-        pattern: /^\s*using\s+System|^\s*namespace\s+[\w.]+\s*\{|^\s*(public|private|protected)\s+class\s+\w+|Console\.WriteLine|string\[\]\s+args/m,
-        priority: 4
+        language: 'cpp',
+        pattern: /^\s*#include\s*[<"]|\bstd::\w+/m,
+        priority: 5
     },
-    // Java
+    // LESS variables
     {
-        language: 'java',
-        pattern: /^package\s+[\w.]+;|^import\s+[\w.*]+;|public\s+class\s+\w+|@\w+\s*(\([^)]*\))?/m,
+        language: 'less',
+        pattern: /^\s*@[\w-]+\s*:/m,
         priority: 5
     },
     // CSS

@@ -84,7 +84,7 @@ export function updateViewCheckbox(menuId: string, setting: string, checked: boo
 /**
  * Checks if an element is inside a dropdown menu.
  */
-export function isInsideDropdownMenu(element: HTMLElement): boolean {
+export function isInsideDropdownMenu(element: Element): boolean {
     return element.closest('.code-formatter-toolbar__dropdown-menu') !== null;
 }
 

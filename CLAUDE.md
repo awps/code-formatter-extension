@@ -11,7 +11,6 @@ Code Formatter Extension is a Chrome extension (Manifest v3) that formats and be
 ```bash
 # Development
 npm run watch           # Watch mode for development
-npm run hot             # Hot reload during development
 npm run development     # Single development build
 
 # Production
@@ -20,9 +19,6 @@ npm run production      # Production build (minified)
 
 # Testing
 npm run test            # Run Jest tests
-
-# Linting
-npm run eslint          # ESLint on TSX files
 ```
 
 ## Architecture
@@ -30,35 +26,40 @@ npm run eslint          # ESLint on TSX files
 ### Extension Flow
 
 ```
-Tab loads → background.ts detects language from URL/extension
-         → injects content.min.js + content.min.css
-         → sends language hint message (100ms delay)
+Tab loads → background/index.ts runs a tiny probe in the page (probePage)
+         → stops unless the page is a raw file (single <pre> / bare text, non-HTML contentType)
+         → detects language from URL extension, then document.contentType
+         → injects content.min.css, sets window.__codeFormatterLanguage, injects content.min.js
+         → file:// without permission → "!" badge on the action icon
 
-content.ts → receives language hint
-           → extracts code from <pre> or plain text
-           → detects/overrides language if needed
-           → beautifies (JS/CSS only via js-beautify)
-           → renders with CodeMirror 6 + Dracula theme
+content/index.ts → reads the language hint (guards against double injection)
+                 → extracts code from <pre> or plain text
+                 → detects/overrides language if needed
+                 → beautifies (JSON via formatJson, JS/CSS via js-beautify)
+                 → renders with CodeMirror 6 (+ JSON path bar, links, collapse/expand all)
 ```
 
 ### Key Files
 
-- `src/background.ts` - Service worker: URL-based language detection, script injection
-- `src/content.ts` - Content script: code extraction, formatting, CodeMirror rendering
-- `src/utils/mimeTypeDetection.ts` - MIME type to language mapping, URL pattern detection
-- `src/utils/alternativeDetectLanguage.ts` - Content-based language detection via regex patterns
-- `src/css/content.scss` - Extension UI styling
-- `webpack.mix.js` - Laravel Mix build configuration
+- `src/background/index.ts` - Service worker: page probe, language hint, injection, file-access badge, opens guide on install
+- `src/background/utils/mimeTypeDetection.ts` - MIME type to language mapping, URL pattern detection
+- `src/content/index.ts` - Content script entry: code extraction, formatting, editor setup
+- `src/content/utils/formatJson.ts` - Token-based JSON pretty printer (keeps numbers exact, one bracket per line)
+- `src/content/components/codeTools.ts` - JSON path bar, collapse/expand all, clickable URLs
+- `src/content/utils/languageDetection.ts` - Content-based language detection via regex patterns
+- `src/popup/` - Settings popup (+ file-access notice); `src/guide/` - How-to page
+- `src/css/content.css` - Extension UI styling (PostCSS nesting)
+- `webpack.config.js` - Webpack build configuration
 
 ### Language Detection (Two-Tier)
 
-1. **Primary (background.ts)**: File extension and MIME type from URL
-2. **Secondary (content.ts)**: Regex-based content analysis when URL detection fails
+1. **Primary (background)**: File extension from URL, then the page's real `document.contentType`
+2. **Secondary (content)**: Regex-based content analysis when the hint is missing or unsupported
 
 ### Technology Stack
 
 - TypeScript (ES2016 target)
-- Laravel Mix 6 (webpack wrapper)
+- Webpack 5 (ts-loader, PostCSS)
 - CodeMirror 6 with language-specific packages
 - js-beautify for JS/CSS formatting
 - Jest for testing
@@ -79,4 +80,4 @@ content.ts → receives language hint
 
 ## Internationalization
 
-12 locales in `src/_locales/`. Strings: `extName`, `extDescription`, `extShortName`, `copy`, `download`, `showOriginal`, `showFormatted`.
+12 locales in `src/_locales/`. English (`en`) is the source; every key must exist in all locales. Use `$$` for a literal `$` in messages. Popup and guide pages translate `[data-i18n]` elements via `src/shared/utils/i18n.ts`.

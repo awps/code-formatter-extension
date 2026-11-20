@@ -43,5 +43,188 @@
   },
   "learnMore": {
     "message": "Mehr erfahren"
+  },
+  "guideTitle": {
+    "message": "So verwenden Sie Code Formatter"
+  },
+  "guideLead": {
+    "message": "Code Formatter arbeitet von allein. Es gibt keine Schaltflächen und nichts auszuwählen: Öffnen Sie eine Code-Datei in einem Browser-Tab, und sie wird automatisch formatiert."
+  },
+  "guideStepsTitle": {
+    "message": "So funktioniert es"
+  },
+  "guideStep1Title": {
+    "message": "Code-Datei in einem Tab öffnen"
+  },
+  "guideStep1Text": {
+    "message": "Klicken Sie auf einen Link, der auf .json, .css, .js, .ts, .xml, .yaml… endet, öffnen Sie eine API-URL, die JSON liefert, oder ziehen Sie eine Datei von Ihrem Computer in Chrome."
+  },
+  "guideStep2Title": {
+    "message": "Sofort formatiert"
+  },
+  "guideStep2Text": {
+    "message": "Minimiertes JSON, CSS und JavaScript wird neu eingerückt. Jede Datei erhält Syntaxhervorhebung, Zeilennummern und Pfeile zum Einklappen von Blöcken."
+  },
+  "guideStep3Title": {
+    "message": "Die Symbolleisten nutzen"
+  },
+  "guideStep3Text": {
+    "message": "Oben: zwischen Formatiert und Original wechseln, kopieren, herunterladen und die Einstellungen für Design, Zeilennummern und Zeilenumbruch öffnen. Unten: alles einklappen oder ausklappen."
+  },
+  "guideTryJson": {
+    "message": "JSON-Beispiel öffnen"
+  },
+  "guideTryCss": {
+    "message": "CSS-Beispiel öffnen"
+  },
+  "guideFilesTitle": {
+    "message": "Dateien von Ihrem Computer"
+  },
+  "guideFilesText": {
+    "message": "Chrome erlaubt Erweiterungen nicht, lokale Dateien (file://) zu lesen, bis Sie es zulassen. Das ist ein einmaliger Schalter."
+  },
+  "guideFilesOn": {
+    "message": "Der Zugriff auf lokale Dateien ist aktiviert. Alles bereit."
+  },
+  "guideFilesOff": {
+    "message": "Der Zugriff auf lokale Dateien ist deaktiviert."
+  },
+  "guideFilesStep1": {
+    "message": "Klicken Sie unten auf die Schaltfläche, um die Einstellungen dieser Erweiterung zu öffnen."
+  },
+  "guideFilesStep2": {
+    "message": "Aktivieren Sie „Zugriff auf Datei-URLs zulassen“."
+  },
+  "guideFilesStep3": {
+    "message": "Laden Sie den Tab mit Ihrer Datei neu."
+  },
+  "fileAccessButton": {
+    "message": "Erweiterungseinstellungen öffnen"
+  },
+  "guideJsonTitle": {
+    "message": "Arbeiten mit JSON"
+  },
+  "guideJsonPath": {
+    "message": "Klicken Sie auf einen Schlüssel oder Wert: Sein Pfad (z. B. $$.users[2].email) erscheint in der Leiste unten. Mit „Pfad kopieren“ können Sie ihn kopieren."
+  },
+  "guideJsonFold": {
+    "message": "Klicken Sie auf die Pfeile neben den Zeilennummern, um ein Objekt oder Array einzuklappen. „Alle einklappen“ lässt die oberste Ebene offen, sodass Sie Ebene für Ebene vorgehen können."
+  },
+  "guideJsonLinks": {
+    "message": "Links in den Daten sind unterstrichen. Halten Sie Strg (⌘ auf dem Mac) gedrückt und klicken Sie, um sie zu öffnen."
+  },
+  "guideJsonSearch": {
+    "message": "Drücken Sie Ctrl+F (⌘+F auf dem Mac), um in der Datei zu suchen."
+  },
+  "guideLimitsTitle": {
+    "message": "Gut zu wissen"
+  },
+  "guideLimitsPages": {
+    "message": "Es funktioniert nur auf Seiten, die eine Rohdatei anzeigen. Code in normalen Websites, Foren oder Online-Editoren wird nicht verändert."
+  },
+  "guideLimitsSettings": {
+    "message": "Einstellungen, die Sie in der Symbolleiste oder im Erweiterungs-Popup ändern, gelten für alle Dateien."
+  },
+  "guideLimitsOffline": {
+    "message": "Alles läuft auf Ihrem Computer. Ihr Code wird nirgendwohin gesendet."
+  },
+  "guideLanguages": {
+    "message": "Unterstützte Sprachen"
+  },
+  "guideReportIssue": {
+    "message": "Problem melden"
+  },
+  "fileAccessOffTitle": {
+    "message": "Lokale Dateien werden noch nicht formatiert"
+  },
+  "fileAccessOffText": {
+    "message": "Um Dateien von Ihrem Computer (file://) zu formatieren, aktivieren Sie für diese Erweiterung „Zugriff auf Datei-URLs zulassen“."
+  },
+  "howToUse": {
+    "message": "Anleitung"
+  },
+  "howToUseShort": {
+    "message": "Es gibt nichts anzuklicken. Öffnen Sie eine Code-Datei in einem Tab (ein Link, der auf .json, .css, .js… endet, eine API-Antwort oder eine Datei von Ihrem Computer), und sie wird automatisch formatiert."
+  },
+  "openGuide": {
+    "message": "Vollständige Anleitung öffnen"
+  },
+  "collapseAll": {
+    "message": "Alle einklappen"
+  },
+  "expandAll": {
+    "message": "Alle ausklappen"
+  },
+  "jsonPath": {
+    "message": "JSON-Pfad"
+  },
+  "copyPath": {
+    "message": "Pfad kopieren"
+  },
+  "copied": {
+    "message": "Kopiert!"
+  },
+  "openLinkHint": {
+    "message": "Ctrl/⌘ + Klick, um den Link zu öffnen"
+  },
+  "fileAccessBadgeTitle": {
+    "message": "Lokale Datei nicht formatiert: Klicken Sie hier, um zu erfahren, wie Sie den Dateizugriff aktivieren"
+  },
+  "guideHeroTitle": {
+    "message": "Code-Datei öffnen. Sie formatiert sich selbst."
+  },
+  "guideReplay": {
+    "message": "Wiederholen"
+  },
+  "guideThemeLabel": {
+    "message": "Farbschema"
+  },
+  "guideThemeAuto": {
+    "message": "Auto"
+  },
+  "guideThemeLight": {
+    "message": "Hell"
+  },
+  "guideThemeDark": {
+    "message": "Dunkel"
+  },
+  "guideFilesSettingLabel": {
+    "message": "Zugriff auf Datei-URLs zulassen"
+  },
+  "guideFilesSettingIncognito": {
+    "message": "Im Inkognitomodus zulassen"
+  },
+  "guideFilesSettingErrors": {
+    "message": "Fehler erfassen"
+  },
+  "guideJsonPathTitle": {
+    "message": "Sehen, wo Sie sind"
+  },
+  "guideJsonFoldTitle": {
+    "message": "Ausblenden, was Sie nicht brauchen"
+  },
+  "guideJsonLinksTitle": {
+    "message": "Links öffnen"
+  },
+  "guideJsonSearchTitle": {
+    "message": "Suchen"
+  },
+  "viewFormatted": {
+    "message": "Formatiert"
+  },
+  "viewOriginal": {
+    "message": "Original"
+  },
+  "lines": {
+    "message": "Zeilen"
+  },
+  "expandSelected": {
+    "message": "Auswahl ausklappen"
+  },
+  "collapseSelected": {
+    "message": "Auswahl einklappen"
+  },
+  "sponsor": {
+    "message": "Sponsor"
   }
 }

@@ -4,26 +4,49 @@ import { Extension } from "@codemirror/state";
 import { detectLanguage } from './utils/languageDetection';
 import { beautifyCode } from './utils/beautify';
 import { isBase64, decodeBase64, parseLanguageWithBase64 } from './utils/base64';
-import { getLanguageExtension } from './utils/languagePlugin';
+import { getLanguageExtension, getLanguageLabel } from './utils/languagePlugin';
 import { getCodeElement, extractCode, isValidCodeLength, createRendererElement, hidePreElement, removeJsonFormatterContainer } from './utils/codeDetection';
-import { createEditorView } from './components/editor';
+import { createEditorView, destroyEditor } from './components/editor';
 import { insertToolbar, ToolbarConfig } from './components/toolbar';
+import { statusBarExtension, linkExtension, CodeToolsI18n } from './components/codeTools';
+import { SPONSOR_MARK, CRUSTAT_URL } from './components/sponsor';
 import { createClickHandler, ClickHandlerContext } from './handlers/clickHandler';
 import { updateThemeSelection, updateViewCheckbox } from './components/dropdown';
-import { destroyEditor } from './components/editor';
 import { Settings, defaultSettings } from '../shared/types/settings';
 import { loadSettings } from '../shared/utils/storage';
 
+const msg = (key: string, fallback: string) => chrome.i18n.getMessage(key) || fallback;
+
 const i18n = {
-    extShortName: chrome.i18n.getMessage('extShortName'),
-    copy: chrome.i18n.getMessage('copy'),
-    download: chrome.i18n.getMessage('download'),
-    showOriginal: chrome.i18n.getMessage('showOriginal'),
-    showFormatted: chrome.i18n.getMessage('showFormatted'),
-    theme: chrome.i18n.getMessage('theme'),
-    view: chrome.i18n.getMessage('view'),
-    lineNumbers: chrome.i18n.getMessage('lineNumbers'),
-    wordWrap: chrome.i18n.getMessage('wordWrap'),
+    extShortName: msg('extShortName', 'Code Formatter'),
+    copy: msg('copy', 'Copy'),
+    download: msg('download', 'Download'),
+    showOriginal: msg('showOriginal', 'Show original'),
+    showFormatted: msg('showFormatted', 'Show formatted'),
+    theme: msg('theme', 'Theme'),
+    view: msg('view', 'View'),
+    lineNumbers: msg('lineNumbers', 'Line Numbers'),
+    wordWrap: msg('wordWrap', 'Word Wrap'),
+    viewFormatted: msg('viewFormatted', 'Formatted'),
+    viewOriginal: msg('viewOriginal', 'Original'),
+    settings: msg('settings', 'Settings'),
+};
+
+const toolsI18n: CodeToolsI18n = {
+    jsonPath: msg('jsonPath', 'JSON path'),
+    copyPath: msg('copyPath', 'Copy path'),
+    copied: msg('copied', 'Copied!'),
+    openLinkHint: msg('openLinkHint', 'Ctrl/⌘ + click to open link'),
+    collapseAll: msg('collapseAll', 'Collapse all'),
+    expandAll: msg('expandAll', 'Expand all'),
+    collapseSelected: msg('collapseSelected', 'Collapse selected'),
+    expandSelected: msg('expandSelected', 'Expand selected'),
+    lines: msg('lines', 'lines'),
+};
+
+type FormatterWindow = Window & {
+    __codeFormatterLanguage?: string;
+    __codeFormatterStarted?: boolean;
 };
 
 // Formatter state
@@ -33,73 +56,67 @@ let editorView: EditorView | null = null;
 let originalCode = '';
 let beautifiedCode = '';
 
-function init(): void {
-    setTimeout(initFormatter, 50);
-}
+async function initFormatter(): Promise<void> {
+    const win = window as FormatterWindow;
+    // The background may inject again (e.g. hash change re-fires "complete")
+    if (win.__codeFormatterStarted) return;
+    win.__codeFormatterStarted = true;
 
-function initFormatter(): void {
     const preElement = getCodeElement();
     if (!preElement) return;
 
     originalCode = extractCode(preElement);
     if (!originalCode || !isValidCodeLength(originalCode.length)) return;
 
-    let isFormatted = false;
+    const result = processLanguage(win.__codeFormatterLanguage || 'auto-detect', originalCode, preElement);
+    if (!result) return;
 
-    chrome.runtime.onMessage.addListener((request, _sender, sendResponse) => {
-        if (isFormatted) {
-            sendResponse({ status: 'already_formatted' });
-            return false;
-        }
+    const { language, code, pluginMode } = result;
+    originalCode = code;
+    beautifiedCode = beautifyCode(originalCode, language);
 
-        const result = processLanguage(request.programmingLanguage, originalCode, preElement);
-        if (!result) {
-            sendResponse({ status: 'no_language' });
-            return false;
-        }
+    const renderer = createRendererElement(preElement);
+    if (!renderer) return;
 
-        const { language, code, pluginMode } = result;
-        if (!pluginMode) {
-            sendResponse({ status: 'no_plugin' });
-            return false;
-        }
+    currentSettings = await loadSettings();
 
-        originalCode = code;
-        beautifiedCode = beautifyCode(originalCode, language);
+    const languageLabel = getLanguageLabel(language);
+    const extras: Extension[] = [
+        linkExtension(toolsI18n),
+        statusBarExtension(toolsI18n, {
+            jsonPath: language === 'json',
+            languageLabel,
+            sponsor: {
+                label: msg('sponsor', 'Sponsor'),
+                name: 'Crustat',
+                text: 'See who visits your website. Try it free.',
+                url: CRUSTAT_URL,
+                mark: SPONSOR_MARK,
+            },
+        }),
+    ];
 
-        const renderer = createRendererElement(preElement);
-        if (!renderer) {
-            sendResponse({ status: 'no_renderer' });
-            return false;
-        }
-
-        hidePreElement(preElement);
-        document.body.classList.add('code-formatter-is-loaded');
-
-        loadSettings().then((settings) => {
-            currentSettings = settings;
-            editorView = createEditorView({
-                container: renderer,
-                code: beautifiedCode,
-                languageExtension: pluginMode,
-                settings: currentSettings
-            });
-
-            currentView = 'formatted';
-            isFormatted = true;
-            sendResponse({ status: 'success', language });
-            document.body.classList.remove('code-formatter-is-loading');
-
-            setupUI(preElement, renderer, pluginMode);
+    const buildEditor = () => {
+        destroyEditor(editorView);
+        editorView = createEditorView({
+            container: renderer,
+            code: beautifiedCode,
+            languageExtension: pluginMode,
+            settings: currentSettings,
+            extraExtensions: extras,
         });
+    };
 
-        // Return true to indicate we will send response asynchronously
-        return true;
-    });
+    hidePreElement(preElement);
+    document.body.classList.add('code-formatter-is-loaded');
+    buildEditor();
+    currentView = 'formatted';
+
+    setupUI(preElement, renderer, buildEditor, languageLabel);
 }
 
-function processLanguage(langHint: string, code: string, preElement: HTMLPreElement): { language: string; code: string; pluginMode: (() => Extension) | null } | null {
-    const { language: parsedLang, isBase64: hasBase64Flag } = parseLanguageWithBase64(langHint || '');
+function processLanguage(langHint: string, code: string, preElement: HTMLPreElement): { language: string; code: string; pluginMode: () => Extension } | null {
+    const { language: parsedLang, isBase64: hasBase64Flag } = parseLanguageWithBase64(langHint);
     let language = parsedLang;
     let processedCode = code;
 
@@ -112,23 +129,24 @@ function processLanguage(langHint: string, code: string, preElement: HTMLPreElem
         }
     }
 
-    // Detect language if needed
-    if (!language || language === 'auto-detect') {
+    // Unknown hint (no hint, or an extension we can't highlight like .txt): look at the content
+    if (!language || language === 'auto-detect' || !getLanguageExtension(language)) {
         language = detectLanguage(processedCode);
     }
 
-    // Check if JS file is actually JSON
+    // A .js file that is actually JSON
     if (language === 'js' && detectLanguage(processedCode) === 'json') {
         language = 'json';
     }
 
-    if (!language || language === 'unknown') return null;
+    const pluginMode = getLanguageExtension(language);
+    if (!pluginMode) return null;
 
-    return { language, code: processedCode, pluginMode: getLanguageExtension(language) };
+    return { language, code: processedCode, pluginMode };
 }
 
-function setupUI(preElement: HTMLPreElement, renderer: HTMLElement, pluginMode: () => Extension): void {
-    const toolbarConfig: ToolbarConfig = { logo, i18n, settings: currentSettings };
+function setupUI(preElement: HTMLPreElement, renderer: HTMLElement, buildEditor: () => void, languageLabel: string): void {
+    const toolbarConfig: ToolbarConfig = { logo, i18n, settings: currentSettings, languageLabel };
     insertToolbar(toolbarConfig);
 
     preElement.style.overflow = 'auto';
@@ -143,9 +161,8 @@ function setupUI(preElement: HTMLPreElement, renderer: HTMLElement, pluginMode: 
         },
         getElements: () => ({ preElement, renderer }),
         getEditorView: () => editorView,
-        setEditorView: (view) => { editorView = view; },
-        pluginMode,
-        i18n: { showOriginal: i18n.showOriginal, showFormatted: i18n.showFormatted }
+        rebuildEditor: buildEditor,
+        i18n: { copied: toolsI18n.copied, copy: i18n.copy }
     };
 
     document.addEventListener('click', createClickHandler(clickCtx));
@@ -157,23 +174,14 @@ function setupUI(preElement: HTMLPreElement, renderer: HTMLElement, pluginMode: 
         const newSettings = changes.codeFormatterSettings.newValue as Settings;
         if (!newSettings) return;
 
-        // Update local state
         currentSettings = { ...defaultSettings, ...newSettings };
 
-        // Update toolbar UI
         updateThemeSelection('theme-dropdown-menu', currentSettings.theme);
         updateViewCheckbox('view-dropdown-menu', 'lineNumbers', currentSettings.lineNumbers);
         updateViewCheckbox('view-dropdown-menu', 'wordWrap', currentSettings.wordWrap);
 
-        // Recreate editor with new settings
-        destroyEditor(editorView);
-        editorView = createEditorView({
-            container: renderer,
-            code: beautifiedCode,
-            languageExtension: pluginMode,
-            settings: currentSettings
-        });
+        buildEditor();
     });
 }
 
-init();
+initFormatter();

@@ -1,6 +1,7 @@
 import { loadSettings, saveSettings } from '../shared/utils/storage';
 import { themeLabels, themeKeys } from '../shared/utils/themes';
 import { ThemeKey } from '../shared/types/settings';
+import { applyI18n, openExtensionSettings } from '../shared/utils/i18n';
 
 class PopupController {
     private themeSelect: HTMLSelectElement | null = null;
@@ -13,7 +14,8 @@ class PopupController {
         this.wordWrapToggle = document.getElementById('word-wrap-toggle');
 
         this.populateThemeDropdown();
-        this.applyI18n();
+        applyI18n();
+        this.showFileAccessNotice();
         await this.loadAndApplySettings();
         this.bindEvents();
     }
@@ -29,17 +31,13 @@ class PopupController {
         });
     }
 
-    private applyI18n(): void {
-        const elements = document.querySelectorAll('[data-i18n]');
-        elements.forEach((el) => {
-            const key = el.getAttribute('data-i18n');
-            if (key && chrome.i18n) {
-                const message = chrome.i18n.getMessage(key);
-                if (message) {
-                    el.textContent = message;
-                }
-            }
-        });
+    private async showFileAccessNotice(): Promise<void> {
+        const notice = document.getElementById('file-access-notice');
+        if (!notice) return;
+
+        const allowed = await chrome.extension.isAllowedFileSchemeAccess();
+        notice.hidden = allowed;
+        document.getElementById('file-access-button')?.addEventListener('click', openExtensionSettings);
     }
 
     private async loadAndApplySettings(): Promise<void> {

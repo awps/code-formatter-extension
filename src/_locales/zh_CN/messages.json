@@ -18,7 +18,7 @@
     "message": "显示原文"
   },
   "showFormatted": {
-    "message": "显示格式化 "
+    "message": "显示格式化"
   },
   "networkResponseError": {
     "message": "网络响应不确定。"
@@ -43,5 +43,188 @@
   },
   "learnMore": {
     "message": "了解更多"
+  },
+  "guideTitle": {
+    "message": "如何使用 Code Formatter"
+  },
+  "guideLead": {
+    "message": "Code Formatter 会自动工作。无需点击按钮，也无需选择任何内容：在浏览器标签页中打开代码文件，它就会自动格式化。"
+  },
+  "guideStepsTitle": {
+    "message": "使用方法"
+  },
+  "guideStep1Title": {
+    "message": "在标签页中打开代码文件"
+  },
+  "guideStep1Text": {
+    "message": "点击以 .json、.css、.js、.ts、.xml、.yaml… 结尾的链接，打开返回 JSON 的 API 网址，或把电脑上的文件拖进 Chrome。"
+  },
+  "guideStep2Title": {
+    "message": "立即格式化"
+  },
+  "guideStep2Text": {
+    "message": "压缩后的 JSON、CSS 和 JavaScript 会重新缩进。每个文件都有语法高亮、行号和用于折叠代码块的箭头。"
+  },
+  "guideStep3Title": {
+    "message": "使用工具栏"
+  },
+  "guideStep3Text": {
+    "message": "顶部：在已格式化和原始之间切换、复制、下载，并打开主题、行号和自动换行的设置。底部：全部折叠或全部展开。"
+  },
+  "guideTryJson": {
+    "message": "打开 JSON 示例"
+  },
+  "guideTryCss": {
+    "message": "打开 CSS 示例"
+  },
+  "guideFilesTitle": {
+    "message": "电脑上的文件"
+  },
+  "guideFilesText": {
+    "message": "在你允许之前，Chrome 会阻止扩展程序读取本地文件（file://）。这个开关只需设置一次。"
+  },
+  "guideFilesOn": {
+    "message": "本地文件访问已开启，一切就绪。"
+  },
+  "guideFilesOff": {
+    "message": "本地文件访问已关闭。"
+  },
+  "guideFilesStep1": {
+    "message": "点击下方按钮，打开此扩展程序的设置。"
+  },
+  "guideFilesStep2": {
+    "message": "开启“允许访问文件网址”。"
+  },
+  "guideFilesStep3": {
+    "message": "重新加载包含你文件的标签页。"
+  },
+  "fileAccessButton": {
+    "message": "打开扩展程序设置"
+  },
+  "guideJsonTitle": {
+    "message": "使用 JSON"
+  },
+  "guideJsonPath": {
+    "message": "点击任意键或值：它的路径（例如 $$.users[2].email）会显示在底部栏中。使用“复制路径”即可复制。"
+  },
+  "guideJsonFold": {
+    "message": "点击行号旁边的箭头可折叠对象或数组。“全部折叠”会保持顶层展开，方便你逐层深入查看。"
+  },
+  "guideJsonLinks": {
+    "message": "数据中的链接带有下划线。按住 Ctrl（Mac 上为 ⌘）并点击即可打开。"
+  },
+  "guideJsonSearch": {
+    "message": "按 Ctrl+F（Mac 上为 ⌘+F）可在文件内搜索。"
+  },
+  "guideLimitsTitle": {
+    "message": "小提示"
+  },
+  "guideLimitsPages": {
+    "message": "仅适用于显示原始文件的页面。不会更改普通网站、论坛或在线编辑器中显示的代码。"
+  },
+  "guideLimitsSettings": {
+    "message": "你在工具栏或扩展程序弹出窗口中更改的设置，会应用于所有文件。"
+  },
+  "guideLimitsOffline": {
+    "message": "一切都在你的电脑上运行，你的代码不会被发送到任何地方。"
+  },
+  "guideLanguages": {
+    "message": "支持的语言"
+  },
+  "guideReportIssue": {
+    "message": "报告问题"
+  },
+  "fileAccessOffTitle": {
+    "message": "本地文件尚未格式化"
+  },
+  "fileAccessOffText": {
+    "message": "要格式化从电脑打开的文件（file://），请为此扩展程序开启“允许访问文件网址”。"
+  },
+  "howToUse": {
+    "message": "使用方法"
+  },
+  "howToUseShort": {
+    "message": "无需点击任何东西。在标签页中打开任意代码文件（以 .json、.css、.js… 结尾的链接、API 响应或电脑上的文件），它就会自动格式化。"
+  },
+  "openGuide": {
+    "message": "打开完整指南"
+  },
+  "collapseAll": {
+    "message": "全部折叠"
+  },
+  "expandAll": {
+    "message": "全部展开"
+  },
+  "jsonPath": {
+    "message": "JSON 路径"
+  },
+  "copyPath": {
+    "message": "复制路径"
+  },
+  "copied": {
+    "message": "已复制！"
+  },
+  "openLinkHint": {
+    "message": "按住 Ctrl/⌘ 并点击以打开链接"
+  },
+  "fileAccessBadgeTitle": {
+    "message": "本地文件未格式化：点击了解如何开启文件访问"
+  },
+  "guideHeroTitle": {
+    "message": "打开代码文件，它会自动格式化。"
+  },
+  "guideReplay": {
+    "message": "重播"
+  },
+  "guideThemeLabel": {
+    "message": "颜色主题"
+  },
+  "guideThemeAuto": {
+    "message": "自动"
+  },
+  "guideThemeLight": {
+    "message": "浅色"
+  },
+  "guideThemeDark": {
+    "message": "深色"
+  },
+  "guideFilesSettingLabel": {
+    "message": "允许访问文件网址"
+  },
+  "guideFilesSettingIncognito": {
+    "message": "在无痕模式下启用"
+  },
+  "guideFilesSettingErrors": {
+    "message": "收集错误"
+  },
+  "guideJsonPathTitle": {
+    "message": "随时知道所在位置"
+  },
+  "guideJsonFoldTitle": {
+    "message": "折叠不需要的内容"
+  },
+  "guideJsonLinksTitle": {
+    "message": "打开链接"
+  },
+  "guideJsonSearchTitle": {
+    "message": "搜索"
+  },
+  "viewFormatted": {
+    "message": "已格式化"
+  },
+  "viewOriginal": {
+    "message": "原始"
+  },
+  "lines": {
+    "message": "行"
+  },
+  "expandSelected": {
+    "message": "展开所选"
+  },
+  "collapseSelected": {
+    "message": "折叠所选"
+  },
+  "sponsor": {
+    "message": "赞助商"
   }
 }

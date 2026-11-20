@@ -10,8 +10,10 @@ module.exports = (env, argv) => ({
         'background.min': './src/background/index.ts',
         'content.min': './src/content/index.ts',
         'popup/popup.min': './src/popup/index.ts',
+        'guide/guide.min': './src/guide/index.ts',
         'css/content.min': './src/css/content.css',
         'css/popup.min': './src/popup/popup.css',
+        'css/guide.min': './src/guide/guide.css',
     },
 
     output: {

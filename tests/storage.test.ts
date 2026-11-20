@@ -93,3 +93,16 @@ describe('storage utilities', () => {
         });
     });
 });
+
+describe('storage after the extension context is invalidated', () => {
+    test('load and save resolve instead of throwing', async () => {
+        const original = (global as any).chrome;
+        const boom = () => { throw new Error('Extension context invalidated.'); };
+        (global as any).chrome = { storage: { sync: { get: boom, set: boom } }, runtime: {} };
+        const { loadSettings, saveSettings } = require('../src/shared/utils/storage');
+        const { defaultSettings } = require('../src/shared/types/settings');
+        await expect(loadSettings()).resolves.toEqual(defaultSettings);
+        await expect(saveSettings({ wordWrap: true })).resolves.toMatchObject({ wordWrap: true });
+        (global as any).chrome = original;
+    });
+});

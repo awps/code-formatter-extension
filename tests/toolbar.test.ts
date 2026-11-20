@@ -124,26 +124,39 @@ describe('toolbar component', () => {
         test('should include all buttons', () => {
             const html = generateToolbarHtml(mockConfig);
 
-            expect(html).toContain('id="code-formatter-switcher-button"');
+            expect(html).toContain('data-view="formatted"');
+            expect(html).toContain('data-view="original"');
             expect(html).toContain('id="code-formatter-toolbar-button-copy"');
             expect(html).toContain('id="code-formatter-toolbar-button-download"');
         });
 
-        test('should include dropdowns', () => {
+        test('should not include fold buttons (they live in the status bar)', () => {
+            const html = generateToolbarHtml(mockConfig);
+            expect(html).not.toContain('collapse');
+        });
+
+        test('should put theme and view settings in one settings menu', () => {
             const html = generateToolbarHtml(mockConfig);
 
-            expect(html).toContain('id="theme-dropdown-menu"');
-            expect(html).toContain('id="view-dropdown-menu"');
-            expect(html).toContain('id="theme-dropdown-trigger"');
-            expect(html).toContain('id="view-dropdown-trigger"');
+            expect(html).toContain('id="settings-dropdown-trigger"');
+            expect(html).toContain('id="settings-dropdown-menu"');
+            const menu = html.slice(html.indexOf('id="settings-dropdown-menu"'));
+            expect(menu).toContain('id="view-dropdown-menu"');
+            expect(menu).toContain('id="theme-dropdown-menu"');
+        });
+
+        test('should show the language when given', () => {
+            expect(generateToolbarHtml({ ...mockConfig, languageLabel: 'JSON' })).toContain('code-formatter-toolbar__lang">JSON<');
+            expect(generateToolbarHtml(mockConfig)).not.toContain('code-formatter-toolbar__lang');
         });
 
         test('should include i18n text', () => {
-            const html = generateToolbarHtml(mockConfig);
+            const html = generateToolbarHtml({ ...mockConfig, i18n: { ...mockConfig.i18n, viewFormatted: 'Formatiert', viewOriginal: 'Original', settings: 'Einstellungen' } });
 
             expect(html).toContain('Copy');
             expect(html).toContain('Download');
-            expect(html).toContain('Show Original');
+            expect(html).toContain('Formatiert');
+            expect(html).toContain('Einstellungen');
             expect(html).toContain('Theme');
             expect(html).toContain('View');
         });

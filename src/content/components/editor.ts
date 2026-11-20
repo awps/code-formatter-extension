@@ -9,19 +9,22 @@ export interface EditorConfig {
     code: string;
     languageExtension: () => Extension;
     settings: Settings;
+    /** Extra extensions (JSON path bar, links, ...) */
+    extraExtensions?: Extension[];
 }
 
 /**
  * Creates a CodeMirror EditorView with the specified configuration.
  */
 export function createEditorView(config: EditorConfig): EditorView {
-    const { container, code, languageExtension, settings } = config;
+    const { container, code, languageExtension, settings, extraExtensions = [] } = config;
 
     const extensions: Extension[] = [
         basicSetup,
         getTheme(settings.theme),
         languageExtension(),
         EditorState.readOnly.of(true),
+        ...extraExtensions,
     ];
 
     // Add word wrap if enabled

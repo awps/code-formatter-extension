@@ -1,5 +1,4 @@
 import { EditorView } from "@codemirror/view";
-import { Extension } from "@codemirror/state";
 import { Settings, ThemeKey } from '../../shared/types/settings';
 import { saveSettings } from '../../shared/utils/storage';
 import {
@@ -17,7 +16,6 @@ import {
     hideRendererElement,
     showRendererElement
 } from '../utils/codeDetection';
-import { createEditorView, destroyEditor } from '../components/editor';
 
 export interface ClickHandlerContext {
     getState: () => {
@@ -35,11 +33,10 @@ export interface ClickHandlerContext {
         renderer: HTMLElement;
     };
     getEditorView: () => EditorView | null;
-    setEditorView: (view: EditorView | null) => void;
-    pluginMode: () => Extension;
+    rebuildEditor: () => void;
     i18n: {
-        showOriginal: string;
-        showFormatted: string;
+        copy: string;
+        copied: string;
     };
 }
 
@@ -48,7 +45,8 @@ export interface ClickHandlerContext {
  */
 export function createClickHandler(ctx: ClickHandlerContext): (e: MouseEvent) => void {
     return (e: MouseEvent) => {
-        if (!e.target || !(e.target instanceof HTMLElement)) {
+        // Element, not HTMLElement: clicks on icons land on <svg>/<path>
+        if (!e.target || !(e.target instanceof Element)) {
             return;
         }
 
@@ -76,9 +74,9 @@ export function createClickHandler(ctx: ClickHandlerContext): (e: MouseEvent) =>
                 ctx.setState({ settings: newSettings });
                 saveSettings({ theme: newTheme });
                 updateThemeSelection('theme-dropdown-menu', newTheme);
-                recreateEditor(ctx);
+                ctx.rebuildEditor();
             }
-            closeAllDropdowns();
+            // Menu stays open so themes can be tried one after another
             return;
         }
 
@@ -93,9 +91,8 @@ export function createClickHandler(ctx: ClickHandlerContext): (e: MouseEvent) =>
                 ctx.setState({ settings: newSettings });
                 saveSettings({ [setting]: newValue });
                 updateViewCheckbox('view-dropdown-menu', setting, newValue);
-                recreateEditor(ctx);
+                ctx.rebuildEditor();
             }
-            closeAllDropdowns();
             return;
         }
 
@@ -104,20 +101,22 @@ export function createClickHandler(ctx: ClickHandlerContext): (e: MouseEvent) =>
             closeAllDropdowns();
         }
 
-        // Handle switch button click
-        if (targetElement.id === 'code-formatter-switcher-button') {
-            handleSwitchView(ctx, targetElement);
+        // Formatted | Original switch
+        const segment = targetElement.closest<HTMLElement>('.code-formatter-toolbar__segment');
+        if (segment) {
+            handleSwitchView(ctx, segment.dataset.view === 'original' ? 'original' : 'formatted');
             return;
         }
 
         // Handle copy button click
-        if (targetElement.id === 'code-formatter-toolbar-button-copy') {
-            handleCopy(ctx);
+        const copyButton = targetElement.closest<HTMLElement>('#code-formatter-toolbar-button-copy');
+        if (copyButton) {
+            handleCopy(ctx, copyButton);
             return;
         }
 
         // Handle download button click
-        if (targetElement.id === 'code-formatter-toolbar-button-download') {
+        if (targetElement.closest('#code-formatter-toolbar-button-download')) {
             handleDownload(ctx);
             return;
         }
@@ -125,34 +124,46 @@ export function createClickHandler(ctx: ClickHandlerContext): (e: MouseEvent) =>
 }
 
 /**
- * Handles switching between original and formatted view.
+ * Shows the formatted editor or the original text.
  */
-function handleSwitchView(ctx: ClickHandlerContext, button: HTMLElement): void {
+function handleSwitchView(ctx: ClickHandlerContext, target: 'original' | 'formatted'): void {
     const state = ctx.getState();
+    if (state.currentView === target) return;
     const { preElement, renderer } = ctx.getElements();
 
-    if (state.currentView === 'formatted') {
+    if (target === 'original') {
         showPreElement(preElement);
         hideRendererElement(renderer);
-        button.innerText = ctx.i18n.showFormatted;
-        ctx.setState({ currentView: 'original' });
     } else {
         hidePreElement(preElement);
         showRendererElement(renderer);
-        button.innerText = ctx.i18n.showOriginal;
-        ctx.setState({ currentView: 'formatted' });
     }
+    ctx.setState({ currentView: target });
+
+    document.querySelectorAll<HTMLElement>('.code-formatter-toolbar__segment').forEach((btn) => {
+        const active = btn.dataset.view === target;
+        btn.classList.toggle('code-formatter-toolbar__segment--active', active);
+        btn.setAttribute('aria-checked', String(active));
+    });
 }
 
 /**
  * Handles copying code to clipboard.
  */
-function handleCopy(ctx: ClickHandlerContext): void {
+function handleCopy(ctx: ClickHandlerContext, button: HTMLElement): void {
     const state = ctx.getState();
     const codeToCopy = state.currentView === 'original' ? state.originalCode : state.beautifiedCode;
 
     if (navigator?.clipboard) {
-        navigator.clipboard.writeText(codeToCopy);
+        navigator.clipboard.writeText(codeToCopy).then(() => {
+            const label = button.querySelector('.code-formatter-toolbar__label');
+            button.classList.add('code-formatter-toolbar__button--done');
+            if (label) label.textContent = ctx.i18n.copied;
+            setTimeout(() => {
+                button.classList.remove('code-formatter-toolbar__button--done');
+                if (label) label.textContent = ctx.i18n.copy;
+            }, 1200);
+        });
     }
 }
 
@@ -172,23 +183,4 @@ function handleDownload(ctx: ClickHandlerContext): void {
     a.download = basename || 'code-formatter.txt';
     a.click();
     URL.revokeObjectURL(url);
-}
-
-/**
- * Recreates the editor with current settings.
- */
-function recreateEditor(ctx: ClickHandlerContext): void {
-    const state = ctx.getState();
-    const { renderer } = ctx.getElements();
-
-    destroyEditor(ctx.getEditorView());
-
-    const newView = createEditorView({
-        container: renderer,
-        code: state.beautifiedCode,
-        languageExtension: ctx.pluginMode,
-        settings: state.settings
-    });
-
-    ctx.setEditorView(newView);
 }

@@ -43,5 +43,188 @@
   },
   "learnMore": {
     "message": "Scopri di più"
+  },
+  "guideTitle": {
+    "message": "Come usare Code Formatter"
+  },
+  "guideLead": {
+    "message": "Code Formatter funziona da solo. Non ci sono pulsanti da premere né nulla da selezionare: apri un file di codice in una scheda del browser e viene formattato automaticamente."
+  },
+  "guideStepsTitle": {
+    "message": "Come funziona"
+  },
+  "guideStep1Title": {
+    "message": "Apri un file di codice in una scheda"
+  },
+  "guideStep1Text": {
+    "message": "Clicca su un link che termina con .json, .css, .js, .ts, .xml, .yaml…, apri un URL di API che restituisce JSON, oppure trascina un file dal tuo computer in Chrome."
+  },
+  "guideStep2Title": {
+    "message": "Viene formattato subito"
+  },
+  "guideStep2Text": {
+    "message": "JSON, CSS e JavaScript minificati vengono rientrati di nuovo. Ogni file ottiene l'evidenziazione della sintassi, i numeri di riga e le frecce per comprimere i blocchi."
+  },
+  "guideStep3Title": {
+    "message": "Usa le barre degli strumenti"
+  },
+  "guideStep3Text": {
+    "message": "In alto: passa tra Formattato e Originale, copia, scarica e apri le impostazioni per tema, numeri di riga e a capo automatico. In basso: comprimi tutto o espandi tutto."
+  },
+  "guideTryJson": {
+    "message": "Apri un esempio JSON"
+  },
+  "guideTryCss": {
+    "message": "Apri un esempio CSS"
+  },
+  "guideFilesTitle": {
+    "message": "File dal tuo computer"
+  },
+  "guideFilesText": {
+    "message": "Chrome impedisce alle estensioni di leggere i file locali (file://) finché non lo consenti. È un'impostazione da attivare una sola volta."
+  },
+  "guideFilesOn": {
+    "message": "L'accesso ai file locali è attivo. È tutto pronto."
+  },
+  "guideFilesOff": {
+    "message": "L'accesso ai file locali è disattivato."
+  },
+  "guideFilesStep1": {
+    "message": "Clicca il pulsante qui sotto per aprire le impostazioni di questa estensione."
+  },
+  "guideFilesStep2": {
+    "message": "Attiva «Consenti l'accesso agli URL dei file»."
+  },
+  "guideFilesStep3": {
+    "message": "Ricarica la scheda con il tuo file."
+  },
+  "fileAccessButton": {
+    "message": "Apri le impostazioni dell'estensione"
+  },
+  "guideJsonTitle": {
+    "message": "Lavorare con JSON"
+  },
+  "guideJsonPath": {
+    "message": "Clicca su una chiave o un valore: il suo percorso (ad esempio $$.users[2].email) appare nella barra in basso. Usa «Copia percorso» per copiarlo."
+  },
+  "guideJsonFold": {
+    "message": "Clicca sulle frecce accanto ai numeri di riga per comprimere un oggetto o un array. «Comprimi tutto» lascia aperto il livello superiore così puoi scendere un livello alla volta."
+  },
+  "guideJsonLinks": {
+    "message": "I link nei dati sono sottolineati. Tieni premuto Ctrl (⌘ su Mac) e clicca per aprirli."
+  },
+  "guideJsonSearch": {
+    "message": "Premi Ctrl+F (⌘+F su Mac) per cercare nel file."
+  },
+  "guideLimitsTitle": {
+    "message": "Da sapere"
+  },
+  "guideLimitsPages": {
+    "message": "Funziona solo sulle pagine che mostrano un file grezzo. Non modifica il codice mostrato in siti web normali, forum o editor online."
+  },
+  "guideLimitsSettings": {
+    "message": "Le impostazioni che cambi nella barra degli strumenti o nel popup dell'estensione vengono ricordate per tutti i file."
+  },
+  "guideLimitsOffline": {
+    "message": "Tutto viene eseguito sul tuo computer. Il tuo codice non viene mai inviato da nessuna parte."
+  },
+  "guideLanguages": {
+    "message": "Linguaggi supportati"
+  },
+  "guideReportIssue": {
+    "message": "Segnala un problema"
+  },
+  "fileAccessOffTitle": {
+    "message": "I file locali non sono ancora formattati"
+  },
+  "fileAccessOffText": {
+    "message": "Per formattare i file aperti dal tuo computer (file://), attiva «Consenti l'accesso agli URL dei file» per questa estensione."
+  },
+  "howToUse": {
+    "message": "Come si usa"
+  },
+  "howToUseShort": {
+    "message": "Non c'è nulla da cliccare. Apri un file di codice in una scheda (un link che termina con .json, .css, .js…, una risposta di API o un file dal tuo computer) e viene formattato automaticamente."
+  },
+  "openGuide": {
+    "message": "Apri la guida completa"
+  },
+  "collapseAll": {
+    "message": "Comprimi tutto"
+  },
+  "expandAll": {
+    "message": "Espandi tutto"
+  },
+  "jsonPath": {
+    "message": "Percorso JSON"
+  },
+  "copyPath": {
+    "message": "Copia percorso"
+  },
+  "copied": {
+    "message": "Copiato!"
+  },
+  "openLinkHint": {
+    "message": "Ctrl/⌘ + clic per aprire il link"
+  },
+  "fileAccessBadgeTitle": {
+    "message": "File locale non formattato: clicca per scoprire come attivare l'accesso ai file"
+  },
+  "guideHeroTitle": {
+    "message": "Apri un file di codice. Si formatta da solo."
+  },
+  "guideReplay": {
+    "message": "Riproduci di nuovo"
+  },
+  "guideThemeLabel": {
+    "message": "Tema colore"
+  },
+  "guideThemeAuto": {
+    "message": "Auto"
+  },
+  "guideThemeLight": {
+    "message": "Chiaro"
+  },
+  "guideThemeDark": {
+    "message": "Scuro"
+  },
+  "guideFilesSettingLabel": {
+    "message": "Consenti l'accesso agli URL dei file"
+  },
+  "guideFilesSettingIncognito": {
+    "message": "Consenti in incognito"
+  },
+  "guideFilesSettingErrors": {
+    "message": "Raccogli errori"
+  },
+  "guideJsonPathTitle": {
+    "message": "Vedi dove ti trovi"
+  },
+  "guideJsonFoldTitle": {
+    "message": "Comprimi ciò che non ti serve"
+  },
+  "guideJsonLinksTitle": {
+    "message": "Apri i link"
+  },
+  "guideJsonSearchTitle": {
+    "message": "Cerca"
+  },
+  "viewFormatted": {
+    "message": "Formattato"
+  },
+  "viewOriginal": {
+    "message": "Originale"
+  },
+  "lines": {
+    "message": "righe"
+  },
+  "expandSelected": {
+    "message": "Espandi selezione"
+  },
+  "collapseSelected": {
+    "message": "Comprimi selezione"
+  },
+  "sponsor": {
+    "message": "Sponsor"
   }
 }
