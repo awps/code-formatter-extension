@@ -1,0 +1,42 @@
+name: Keep Chrome Web Store token alive
+
+# Google cancels a refresh token that is not used for 6 months, which breaks
+# the Publish workflow. This uses the token once a month so it never expires,
+# and fails (GitHub emails you) if the token stops working.
+on:
+  schedule:
+    - cron: "17 6 1 * *" # 06:17 UTC on the 1st of every month
+  workflow_dispatch:
+
+permissions:
+  actions: write # re-enable this workflow, see the last step
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Use the refresh token
+        env:
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
+        run: |
+          set -euo pipefail
+          access_token=$(curl -sS --fail-with-body https://oauth2.googleapis.com/token \
+            --data-urlencode "client_id=$CLIENT_ID" \
+            --data-urlencode "client_secret=$CLIENT_SECRET" \
+            --data-urlencode "refresh_token=$REFRESH_TOKEN" \
+            --data-urlencode "grant_type=refresh_token" | jq -r .access_token)
+          echo "::add-mask::$access_token"
+          status=$(curl -sS -o /dev/null -w '%{http_code}' \
+            -H "Authorization: Bearer $access_token" \
+            "https://www.googleapis.com/chromewebstore/v1.1/items/bhimnoepicmcjfkbmhckamllnibadfal?projection=DRAFT")
+          echo "Chrome Web Store API: HTTP $status"
+          test "$status" = 200
+
+      # GitHub turns off scheduled workflows after 60 days without commits.
+      # Re-enabling it on every run keeps the schedule going.
+      - name: Keep this schedule enabled
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow enable keep-token-alive.yml -R "$GITHUB_REPOSITORY"
