@@ -1015,9 +1015,28 @@ kbd {
         }
     }
 
-    &__label {
-        font-size: 12px;
+    &__head {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    &__name {
+        color: var(--text-strong);
+        font-size: 13px;
+        font-weight: 650;
+    }
+
+    &__tag {
+        padding: 0 6px;
+        border-radius: 999px;
+        background: var(--raised);
         color: var(--muted);
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        line-height: 17px;
+        text-transform: uppercase;
     }
 
     &__text {
