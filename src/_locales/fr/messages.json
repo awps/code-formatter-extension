@@ -1,6 +1,6 @@
 {
   "extName": {
-    "message": "Code Formatter - JSON, CSS et JavaScript "
+    "message": "Code Formatter - JSON, CSS et JavaScript"
   },
   "extDescription": {
     "message": "Code Formatter - extension complète qui fournit une coloration syntaxique sophistiquée pour CSS, JSON et JavaScript."
@@ -9,13 +9,13 @@
     "message": "Code Formatter"
   },
   "copy": {
-    "message": " Copier "
+    "message": "Copier"
   },
   "download": {
     "message": "Télécharger"
   },
   "showOriginal": {
-    "message": " Afficher l'original "
+    "message": "Afficher l'original"
   },
   "showFormatted": {
     "message": "Affichage formaté"
@@ -43,5 +43,239 @@
   },
   "learnMore": {
     "message": "En savoir plus"
+  },
+  "guideTitle": {
+    "message": "Comment utiliser Code Formatter"
+  },
+  "guideLead": {
+    "message": "Code Formatter fonctionne tout seul. Il n'y a aucun bouton à presser ni rien à sélectionner : ouvrez un fichier de code dans un onglet et il est formaté automatiquement."
+  },
+  "guideStepsTitle": {
+    "message": "Comment ça marche"
+  },
+  "guideStep1Title": {
+    "message": "Ouvrez un fichier de code dans un onglet"
+  },
+  "guideStep1Text": {
+    "message": "Cliquez sur un lien se terminant par .json, .css, .js, .ts, .xml, .yaml…, ouvrez une URL d'API qui renvoie du JSON, ou glissez un fichier de votre ordinateur dans Chrome."
+  },
+  "guideStep2Title": {
+    "message": "Il est formaté immédiatement"
+  },
+  "guideStep2Text": {
+    "message": "Le JSON, le CSS et le JavaScript minifiés sont ré-indentés. Chaque fichier reçoit la coloration syntaxique, les numéros de ligne et des flèches pour replier les blocs."
+  },
+  "guideStep3Title": {
+    "message": "Utilisez les barres d'outils"
+  },
+  "guideStep3Text": {
+    "message": "En haut : passez de Formaté à Original, copiez, téléchargez et ouvrez les paramètres du thème, des numéros de ligne et du retour à la ligne. En bas : tout replier ou tout déplier."
+  },
+  "guideTryJson": {
+    "message": "Ouvrir un exemple JSON"
+  },
+  "guideTryCss": {
+    "message": "Ouvrir un exemple CSS"
+  },
+  "guideFilesTitle": {
+    "message": "Fichiers de votre ordinateur"
+  },
+  "guideFilesText": {
+    "message": "Chrome empêche les extensions de lire les fichiers locaux (file://) tant que vous ne l'autorisez pas. Il suffit de l'activer une seule fois."
+  },
+  "guideFilesOn": {
+    "message": "L'accès aux fichiers locaux est activé. Tout est prêt."
+  },
+  "guideFilesOff": {
+    "message": "L'accès aux fichiers locaux est désactivé."
+  },
+  "guideFilesStep1": {
+    "message": "Cliquez sur le bouton ci-dessous pour ouvrir les paramètres de cette extension."
+  },
+  "guideFilesStep2": {
+    "message": "Activez « Autoriser l'accès aux URL de fichier »."
+  },
+  "guideFilesStep3": {
+    "message": "Rechargez l'onglet contenant votre fichier."
+  },
+  "fileAccessButton": {
+    "message": "Ouvrir les paramètres de l'extension"
+  },
+  "guideJsonTitle": {
+    "message": "Travailler avec JSON"
+  },
+  "guideJsonPath": {
+    "message": "Cliquez sur une clé ou une valeur : son chemin (par exemple $$.users[2].email) s'affiche dans la barre du bas. Utilisez « Copier le chemin » pour le copier."
+  },
+  "guideJsonFold": {
+    "message": "Cliquez sur les flèches à côté des numéros de ligne pour replier un objet ou un tableau. « Tout replier » laisse le premier niveau ouvert pour explorer niveau par niveau."
+  },
+  "guideJsonLinks": {
+    "message": "Les liens dans les données sont soulignés. Maintenez Ctrl (⌘ sur Mac) et cliquez pour les ouvrir."
+  },
+  "guideJsonSearch": {
+    "message": "Appuyez sur Ctrl+F (⌘+F sur Mac) pour rechercher dans le fichier."
+  },
+  "guideLimitsTitle": {
+    "message": "Bon à savoir"
+  },
+  "guideLimitsPages": {
+    "message": "Cela ne fonctionne que sur les pages qui affichent un fichier brut. Le code affiché dans des sites web classiques, des forums ou des éditeurs en ligne n'est pas modifié."
+  },
+  "guideLimitsSettings": {
+    "message": "Les réglages modifiés dans la barre d'outils ou dans la fenêtre de l'extension sont mémorisés pour tous les fichiers."
+  },
+  "guideLimitsOffline": {
+    "message": "Tout s'exécute sur votre ordinateur. Votre code n'est jamais envoyé nulle part."
+  },
+  "guideLanguages": {
+    "message": "Langages pris en charge"
+  },
+  "guideReportIssue": {
+    "message": "Signaler un problème"
+  },
+  "fileAccessOffTitle": {
+    "message": "Les fichiers locaux ne sont pas encore formatés"
+  },
+  "fileAccessOffText": {
+    "message": "Pour formater les fichiers ouverts depuis votre ordinateur (file://), activez « Autoriser l'accès aux URL de fichier » pour cette extension."
+  },
+  "howToUse": {
+    "message": "Mode d'emploi"
+  },
+  "howToUseShort": {
+    "message": "Il n'y a rien à cliquer. Ouvrez un fichier de code dans un onglet (un lien se terminant par .json, .css, .js…, une réponse d'API ou un fichier de votre ordinateur) et il est formaté automatiquement."
+  },
+  "openGuide": {
+    "message": "Ouvrir le guide complet"
+  },
+  "collapseAll": {
+    "message": "Tout replier"
+  },
+  "expandAll": {
+    "message": "Tout déplier"
+  },
+  "jsonPath": {
+    "message": "Chemin JSON"
+  },
+  "copyPath": {
+    "message": "Copier le chemin"
+  },
+  "copied": {
+    "message": "Copié !"
+  },
+  "openLinkHint": {
+    "message": "Ctrl/⌘ + clic pour ouvrir le lien"
+  },
+  "fileAccessBadgeTitle": {
+    "message": "Fichier local non formaté : cliquez pour savoir comment activer l'accès aux fichiers"
+  },
+  "guideHeroTitle": {
+    "message": "Ouvrez un fichier de code. Il se formate tout seul."
+  },
+  "guideReplay": {
+    "message": "Rejouer"
+  },
+  "guideThemeLabel": {
+    "message": "Apparence, aussi utilisée pour les fichiers de code et la fenêtre de l’extension"
+  },
+  "guideThemeAuto": {
+    "message": "Auto"
+  },
+  "guideThemeLight": {
+    "message": "Clair"
+  },
+  "guideThemeDark": {
+    "message": "Sombre"
+  },
+  "guideFilesSettingLabel": {
+    "message": "Autoriser l'accès aux URL de fichier"
+  },
+  "guideFilesSettingIncognito": {
+    "message": "Autoriser en navigation privée"
+  },
+  "guideFilesSettingErrors": {
+    "message": "Collecter les erreurs"
+  },
+  "guideJsonPathTitle": {
+    "message": "Voyez où vous êtes"
+  },
+  "guideJsonFoldTitle": {
+    "message": "Réduisez ce qui ne sert pas"
+  },
+  "guideJsonLinksTitle": {
+    "message": "Ouvrir les liens"
+  },
+  "guideJsonSearchTitle": {
+    "message": "Rechercher"
+  },
+  "viewFormatted": {
+    "message": "Formaté"
+  },
+  "viewOriginal": {
+    "message": "Original"
+  },
+  "lines": {
+    "message": "lignes"
+  },
+  "expandSelected": {
+    "message": "Déplier la sélection"
+  },
+  "collapseSelected": {
+    "message": "Replier la sélection"
+  },
+  "sponsored": {
+    "message": "Sponsorisé"
+  },
+  "about": {
+    "message": "À propos"
+  },
+  "aboutText": {
+    "message": "Met en forme les fichiers de code ouverts dans un onglet. Lecture seule, tout se passe dans votre navigateur."
+  },
+  "overview": {
+    "message": "Présentation"
+  },
+  "documentation": {
+    "message": "Documentation"
+  },
+  "keyboardShortcuts": {
+    "message": "Raccourcis clavier"
+  },
+  "appearance": {
+    "message": "Apparence"
+  },
+  "appearanceAuto": {
+    "message": "Auto"
+  },
+  "appearanceLight": {
+    "message": "Clair"
+  },
+  "appearanceDark": {
+    "message": "Sombre"
+  },
+  "lightTheme": {
+    "message": "Thème clair"
+  },
+  "darkTheme": {
+    "message": "Thème sombre"
+  },
+  "popupTagline": {
+    "message": "Ouvrez un fichier de code dans un onglet. Il est mis en forme automatiquement."
+  },
+  "help": {
+    "message": "Aide"
+  },
+  "howToUseLink": {
+    "message": "Mode d’emploi"
+  },
+  "website": {
+    "message": "Site web"
+  },
+  "shortcutsShort": {
+    "message": "Raccourcis"
+  },
+  "reportBug": {
+    "message": "Signaler un bug"
   }
 }

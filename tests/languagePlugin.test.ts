@@ -123,3 +123,14 @@ describe('languagePlugin', () => {
         });
     });
 });
+
+describe('getLanguageLabel', () => {
+    const { getLanguageLabel } = require('../src/content/utils/languagePlugin');
+    test('maps ids and aliases to display names', () => {
+        expect(getLanguageLabel('json')).toBe('JSON');
+        expect(getLanguageLabel('js')).toBe('JavaScript');
+        expect(getLanguageLabel('python')).toBe('Python');
+        expect(getLanguageLabel('cs')).toBe('C#');
+        expect(getLanguageLabel('toml')).toBe('TOML');
+    });
+});

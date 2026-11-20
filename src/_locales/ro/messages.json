@@ -43,5 +43,239 @@
   },
   "learnMore": {
     "message": "Află mai multe"
+  },
+  "guideTitle": {
+    "message": "Cum folosești Code Formatter"
+  },
+  "guideLead": {
+    "message": "Code Formatter funcționează singur. Nu ai butoane de apăsat și nimic de selectat: deschide un fișier de cod într-o filă a browserului și este formatat automat."
+  },
+  "guideStepsTitle": {
+    "message": "Cum funcționează"
+  },
+  "guideStep1Title": {
+    "message": "Deschide un fișier de cod într-o filă"
+  },
+  "guideStep1Text": {
+    "message": "Dă clic pe un link care se termină în .json, .css, .js, .ts, .xml, .yaml…, deschide o adresă API care returnează JSON sau trage un fișier de pe calculator în Chrome."
+  },
+  "guideStep2Title": {
+    "message": "Este formatat pe loc"
+  },
+  "guideStep2Text": {
+    "message": "JSON-ul, CSS-ul și JavaScript-ul minificate sunt re-indentate. Fiecare fișier primește evidențierea sintaxei, numere de linie și săgeți pentru restrângerea blocurilor."
+  },
+  "guideStep3Title": {
+    "message": "Folosește barele de instrumente"
+  },
+  "guideStep3Text": {
+    "message": "Sus: comută între Formatat și Original, copiază, descarcă și deschide setările pentru temă, numere de linie și încadrare text. Jos: restrânge tot sau extinde tot."
+  },
+  "guideTryJson": {
+    "message": "Deschide un exemplu JSON"
+  },
+  "guideTryCss": {
+    "message": "Deschide un exemplu CSS"
+  },
+  "guideFilesTitle": {
+    "message": "Fișiere de pe calculatorul tău"
+  },
+  "guideFilesText": {
+    "message": "Chrome nu permite extensiilor să citească fișiere locale (file://) până nu le permiți tu. Este o setare care se face o singură dată."
+  },
+  "guideFilesOn": {
+    "message": "Accesul la fișierele locale este activat. Totul este gata."
+  },
+  "guideFilesOff": {
+    "message": "Accesul la fișierele locale este dezactivat."
+  },
+  "guideFilesStep1": {
+    "message": "Dă clic pe butonul de mai jos pentru a deschide setările acestei extensii."
+  },
+  "guideFilesStep2": {
+    "message": "Activează „Allow access to file URLs”."
+  },
+  "guideFilesStep3": {
+    "message": "Reîncarcă fila cu fișierul tău."
+  },
+  "fileAccessButton": {
+    "message": "Deschide setările extensiei"
+  },
+  "guideJsonTitle": {
+    "message": "Lucrul cu JSON"
+  },
+  "guideJsonPath": {
+    "message": "Dă clic pe orice cheie sau valoare: calea ei (de exemplu $$.users[2].email) apare în bara de jos. Folosește „Copiază calea” pentru a o copia."
+  },
+  "guideJsonFold": {
+    "message": "Dă clic pe săgețile de lângă numerele de linie pentru a restrânge un obiect sau o listă. „Restrânge tot” lasă deschis nivelul de sus, ca să poți coborî un nivel pe rând."
+  },
+  "guideJsonLinks": {
+    "message": "Linkurile din date sunt subliniate. Ține apăsat Ctrl (⌘ pe Mac) și dă clic pentru a le deschide."
+  },
+  "guideJsonSearch": {
+    "message": "Apasă Ctrl+F (⌘+F pe Mac) pentru a căuta în fișier."
+  },
+  "guideLimitsTitle": {
+    "message": "Bine de știut"
+  },
+  "guideLimitsPages": {
+    "message": "Funcționează doar pe paginile care afișează un fișier brut. Nu modifică codul afișat în site-uri obișnuite, forumuri sau editoare online."
+  },
+  "guideLimitsSettings": {
+    "message": "Setările pe care le schimbi în bara de instrumente sau în fereastra extensiei sunt reținute pentru toate fișierele."
+  },
+  "guideLimitsOffline": {
+    "message": "Totul rulează pe calculatorul tău. Codul tău nu este trimis nicăieri."
+  },
+  "guideLanguages": {
+    "message": "Limbaje acceptate"
+  },
+  "guideReportIssue": {
+    "message": "Raportează o problemă"
+  },
+  "fileAccessOffTitle": {
+    "message": "Fișierele locale nu sunt încă formatate"
+  },
+  "fileAccessOffText": {
+    "message": "Pentru a formata fișiere deschise de pe calculatorul tău (file://), activează „Allow access to file URLs” pentru această extensie."
+  },
+  "howToUse": {
+    "message": "Cum se folosește"
+  },
+  "howToUseShort": {
+    "message": "Nu ai nimic de apăsat. Deschide orice fișier de cod într-o filă (un link care se termină în .json, .css, .js…, un răspuns API sau un fișier de pe calculator) și este formatat automat."
+  },
+  "openGuide": {
+    "message": "Deschide ghidul complet"
+  },
+  "collapseAll": {
+    "message": "Restrânge tot"
+  },
+  "expandAll": {
+    "message": "Extinde tot"
+  },
+  "jsonPath": {
+    "message": "Cale JSON"
+  },
+  "copyPath": {
+    "message": "Copiază calea"
+  },
+  "copied": {
+    "message": "Copiat!"
+  },
+  "openLinkHint": {
+    "message": "Ctrl/⌘ + clic pentru a deschide linkul"
+  },
+  "fileAccessBadgeTitle": {
+    "message": "Fișier local neformatat: dă clic pentru a afla cum activezi accesul la fișiere"
+  },
+  "guideHeroTitle": {
+    "message": "Deschide un fișier de cod. Se formatează singur."
+  },
+  "guideReplay": {
+    "message": "Redă din nou"
+  },
+  "guideThemeLabel": {
+    "message": "Aspect, folosit și pentru fișierele de cod și fereastra extensiei"
+  },
+  "guideThemeAuto": {
+    "message": "Auto"
+  },
+  "guideThemeLight": {
+    "message": "Luminos"
+  },
+  "guideThemeDark": {
+    "message": "Întunecat"
+  },
+  "guideFilesSettingLabel": {
+    "message": "Allow access to file URLs"
+  },
+  "guideFilesSettingIncognito": {
+    "message": "Permite în modul incognito"
+  },
+  "guideFilesSettingErrors": {
+    "message": "Colectează erorile"
+  },
+  "guideJsonPathTitle": {
+    "message": "Vezi unde te afli"
+  },
+  "guideJsonFoldTitle": {
+    "message": "Restrânge ce nu îți trebuie"
+  },
+  "guideJsonLinksTitle": {
+    "message": "Deschide linkuri"
+  },
+  "guideJsonSearchTitle": {
+    "message": "Caută"
+  },
+  "viewFormatted": {
+    "message": "Formatat"
+  },
+  "viewOriginal": {
+    "message": "Original"
+  },
+  "lines": {
+    "message": "linii"
+  },
+  "expandSelected": {
+    "message": "Extinde selecția"
+  },
+  "collapseSelected": {
+    "message": "Restrânge selecția"
+  },
+  "sponsored": {
+    "message": "Sponsorizat"
+  },
+  "about": {
+    "message": "Despre"
+  },
+  "aboutText": {
+    "message": "Formatează fișierele de cod pe care le deschizi într-un tab. Doar citire, rulează complet în browser."
+  },
+  "overview": {
+    "message": "Prezentare"
+  },
+  "documentation": {
+    "message": "Documentație"
+  },
+  "keyboardShortcuts": {
+    "message": "Scurtături de tastatură"
+  },
+  "appearance": {
+    "message": "Aspect"
+  },
+  "appearanceAuto": {
+    "message": "Auto"
+  },
+  "appearanceLight": {
+    "message": "Luminos"
+  },
+  "appearanceDark": {
+    "message": "Întunecat"
+  },
+  "lightTheme": {
+    "message": "Temă luminoasă"
+  },
+  "darkTheme": {
+    "message": "Temă întunecată"
+  },
+  "popupTagline": {
+    "message": "Deschide orice fișier de cod într-un tab. Este formatat automat."
+  },
+  "help": {
+    "message": "Ajutor"
+  },
+  "howToUseLink": {
+    "message": "Cum se folosește"
+  },
+  "website": {
+    "message": "Site web"
+  },
+  "shortcutsShort": {
+    "message": "Scurtături"
+  },
+  "reportBug": {
+    "message": "Raportează o eroare"
   }
 }

@@ -20,7 +20,13 @@ import { csharp } from "@replit/codemirror-lang-csharp";
  * Maps a language string to a CodeMirror language extension function.
  * Returns null if the language is not supported.
  */
+const aliases: Record<string, string> = {
+    javascript: 'js', mjs: 'js', cjs: 'js', typescript: 'ts',
+    markdown: 'md', python: 'py', rust: 'rs', csharp: 'cs', scss: 'sass',
+};
+
 export function getLanguageExtension(lang: string): (() => Extension) | null {
+    lang = aliases[lang] ?? lang;
     if (lang === 'json') {
         return json;
     }
@@ -81,3 +87,17 @@ export const supportedLanguages = [
     'yaml', 'yml', 'less', 'sass', 'py', 'sql', 'go', 'cpp', 'cxx', 'cc',
     'rs', 'java', 'cs'
 ];
+const labels: Record<string, string> = {
+    json: 'JSON', css: 'CSS', js: 'JavaScript', jsx: 'JSX', ts: 'TypeScript', tsx: 'TSX',
+    php: 'PHP', md: 'Markdown', xml: 'XML', yaml: 'YAML', yml: 'YAML', less: 'LESS',
+    sass: 'SASS', py: 'Python', sql: 'SQL', go: 'Go', cpp: 'C++', cxx: 'C++', cc: 'C++',
+    rs: 'Rust', java: 'Java', cs: 'C#',
+};
+
+/**
+ * Human-readable name for a language id ("js" -> "JavaScript").
+ */
+export function getLanguageLabel(lang: string): string {
+    const id = aliases[lang] ?? lang;
+    return labels[id] ?? id.toUpperCase();
+}

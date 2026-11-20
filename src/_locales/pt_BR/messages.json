@@ -18,7 +18,7 @@
     "message": "Mostrar original"
   },
   "showFormatted": {
-    "message": "Formatador de código"
+    "message": "Mostrar formatado"
   },
   "networkResponseError": {
     "message": "A resposta da rede não estava ok."
@@ -43,5 +43,239 @@
   },
   "learnMore": {
     "message": "Saiba mais"
+  },
+  "guideTitle": {
+    "message": "Como usar o Code Formatter"
+  },
+  "guideLead": {
+    "message": "O Code Formatter funciona sozinho. Não há botões para apertar nem nada para selecionar: abra um arquivo de código em uma aba do navegador e ele é formatado automaticamente."
+  },
+  "guideStepsTitle": {
+    "message": "Como funciona"
+  },
+  "guideStep1Title": {
+    "message": "Abra um arquivo de código em uma aba"
+  },
+  "guideStep1Text": {
+    "message": "Clique em um link que termina em .json, .css, .js, .ts, .xml, .yaml…, abra uma URL de API que retorna JSON ou arraste um arquivo do seu computador para o Chrome."
+  },
+  "guideStep2Title": {
+    "message": "Ele é formatado na hora"
+  },
+  "guideStep2Text": {
+    "message": "JSON, CSS e JavaScript minificados são reindentados. Todo arquivo recebe destaque de sintaxe, números de linha e setas para recolher blocos."
+  },
+  "guideStep3Title": {
+    "message": "Use as barras de ferramentas"
+  },
+  "guideStep3Text": {
+    "message": "No topo: alterne entre Formatado e Original, copie, baixe e abra as configurações de tema, números de linha e quebra de linha. Na parte inferior: recolha tudo ou expanda tudo."
+  },
+  "guideTryJson": {
+    "message": "Abrir um exemplo de JSON"
+  },
+  "guideTryCss": {
+    "message": "Abrir um exemplo de CSS"
+  },
+  "guideFilesTitle": {
+    "message": "Arquivos do seu computador"
+  },
+  "guideFilesText": {
+    "message": "O Chrome impede que extensões leiam arquivos locais (file://) até você permitir. É uma configuração feita uma única vez."
+  },
+  "guideFilesOn": {
+    "message": "O acesso a arquivos locais está ativado. Tudo pronto."
+  },
+  "guideFilesOff": {
+    "message": "O acesso a arquivos locais está desativado."
+  },
+  "guideFilesStep1": {
+    "message": "Clique no botão abaixo para abrir as configurações desta extensão."
+  },
+  "guideFilesStep2": {
+    "message": "Ative “Permitir acesso a URLs de arquivo”."
+  },
+  "guideFilesStep3": {
+    "message": "Recarregue a aba com o seu arquivo."
+  },
+  "fileAccessButton": {
+    "message": "Abrir configurações da extensão"
+  },
+  "guideJsonTitle": {
+    "message": "Trabalhando com JSON"
+  },
+  "guideJsonPath": {
+    "message": "Clique em qualquer chave ou valor: o caminho dele (por exemplo $$.users[2].email) aparece na barra inferior. Use “Copiar caminho” para copiá-lo."
+  },
+  "guideJsonFold": {
+    "message": "Clique nas setas ao lado dos números de linha para recolher um objeto ou array. “Recolher tudo” mantém o nível superior aberto para você explorar um nível por vez."
+  },
+  "guideJsonLinks": {
+    "message": "Os links dentro dos dados aparecem sublinhados. Segure Ctrl (⌘ no Mac) e clique para abri-los."
+  },
+  "guideJsonSearch": {
+    "message": "Pressione Ctrl+F (⌘+F no Mac) para pesquisar dentro do arquivo."
+  },
+  "guideLimitsTitle": {
+    "message": "Bom saber"
+  },
+  "guideLimitsPages": {
+    "message": "Só funciona em páginas que mostram um arquivo bruto. Não altera código exibido em sites comuns, fóruns ou editores online."
+  },
+  "guideLimitsSettings": {
+    "message": "As configurações que você altera na barra de ferramentas ou no pop-up da extensão são lembradas para todos os arquivos."
+  },
+  "guideLimitsOffline": {
+    "message": "Tudo roda no seu computador. Seu código nunca é enviado para lugar nenhum."
+  },
+  "guideLanguages": {
+    "message": "Linguagens compatíveis"
+  },
+  "guideReportIssue": {
+    "message": "Relatar um problema"
+  },
+  "fileAccessOffTitle": {
+    "message": "Arquivos locais ainda não são formatados"
+  },
+  "fileAccessOffText": {
+    "message": "Para formatar arquivos abertos do seu computador (file://), ative “Permitir acesso a URLs de arquivo” para esta extensão."
+  },
+  "howToUse": {
+    "message": "Como usar"
+  },
+  "howToUseShort": {
+    "message": "Não há nada para clicar. Abra qualquer arquivo de código em uma aba (um link que termina em .json, .css, .js…, uma resposta de API ou um arquivo do seu computador) e ele é formatado automaticamente."
+  },
+  "openGuide": {
+    "message": "Abrir o guia completo"
+  },
+  "collapseAll": {
+    "message": "Recolher tudo"
+  },
+  "expandAll": {
+    "message": "Expandir tudo"
+  },
+  "jsonPath": {
+    "message": "Caminho JSON"
+  },
+  "copyPath": {
+    "message": "Copiar caminho"
+  },
+  "copied": {
+    "message": "Copiado!"
+  },
+  "openLinkHint": {
+    "message": "Ctrl/⌘ + clique para abrir o link"
+  },
+  "fileAccessBadgeTitle": {
+    "message": "Arquivo local não formatado: clique para ver como ativar o acesso a arquivos"
+  },
+  "guideHeroTitle": {
+    "message": "Abra um arquivo de código. Ele se formata sozinho."
+  },
+  "guideReplay": {
+    "message": "Repetir"
+  },
+  "guideThemeLabel": {
+    "message": "Aparência, usada também nos arquivos de código e no popup"
+  },
+  "guideThemeAuto": {
+    "message": "Auto"
+  },
+  "guideThemeLight": {
+    "message": "Claro"
+  },
+  "guideThemeDark": {
+    "message": "Escuro"
+  },
+  "guideFilesSettingLabel": {
+    "message": "Permitir acesso a URLs de arquivo"
+  },
+  "guideFilesSettingIncognito": {
+    "message": "Permitir no modo anônimo"
+  },
+  "guideFilesSettingErrors": {
+    "message": "Coletar erros"
+  },
+  "guideJsonPathTitle": {
+    "message": "Veja onde você está"
+  },
+  "guideJsonFoldTitle": {
+    "message": "Recolha o que você não precisa"
+  },
+  "guideJsonLinksTitle": {
+    "message": "Abrir links"
+  },
+  "guideJsonSearchTitle": {
+    "message": "Pesquisar"
+  },
+  "viewFormatted": {
+    "message": "Formatado"
+  },
+  "viewOriginal": {
+    "message": "Original"
+  },
+  "lines": {
+    "message": "linhas"
+  },
+  "expandSelected": {
+    "message": "Expandir seleção"
+  },
+  "collapseSelected": {
+    "message": "Recolher seleção"
+  },
+  "sponsored": {
+    "message": "Patrocinado"
+  },
+  "about": {
+    "message": "Sobre"
+  },
+  "aboutText": {
+    "message": "Formata arquivos de código que você abre em uma aba. Somente leitura, roda inteiramente no seu navegador."
+  },
+  "overview": {
+    "message": "Visão geral"
+  },
+  "documentation": {
+    "message": "Documentação"
+  },
+  "keyboardShortcuts": {
+    "message": "Atalhos de teclado"
+  },
+  "appearance": {
+    "message": "Aparência"
+  },
+  "appearanceAuto": {
+    "message": "Auto"
+  },
+  "appearanceLight": {
+    "message": "Claro"
+  },
+  "appearanceDark": {
+    "message": "Escuro"
+  },
+  "lightTheme": {
+    "message": "Tema claro"
+  },
+  "darkTheme": {
+    "message": "Tema escuro"
+  },
+  "popupTagline": {
+    "message": "Abra qualquer arquivo de código em uma aba. Ele é formatado automaticamente."
+  },
+  "help": {
+    "message": "Ajuda"
+  },
+  "howToUseLink": {
+    "message": "Como usar"
+  },
+  "website": {
+    "message": "Site"
+  },
+  "shortcutsShort": {
+    "message": "Atalhos"
+  },
+  "reportBug": {
+    "message": "Relatar bug"
   }
 }

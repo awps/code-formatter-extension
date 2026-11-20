@@ -3,34 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
     <title>Code Formatter</title>
     <link rel="stylesheet" href="../css/popup.min.css">
 </head>
 <body>
     <div class="popup">
         <header class="popup__header">
-            <div class="popup__logo">
-                <svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="96" height="96" rx="24" fill="#1E1E2E"/>
-                    <path d="M28 32L44 48L28 64" stroke="#89B4FA" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M52 64H68" stroke="#A6E3A1" stroke-width="6" stroke-linecap="round"/>
-                </svg>
-            </div>
-            <div class="popup__title">
-                <h1 data-i18n="extShortName">Code Formatter</h1>
-                <p data-i18n="popupDescription">Formats & beautifies code with syntax highlighting</p>
+            <svg class="popup__logo" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect width="96" height="96" rx="24" fill="#1E1E2E"/>
+                <path d="M28 32L44 48L28 64" stroke="#89B4FA" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M52 64H68" stroke="#A6E3A1" stroke-width="6" stroke-linecap="round"/>
+            </svg>
+            <div>
+                <h1><span data-i18n="extShortName">Code Formatter</span> <span class="popup__version" id="version"></span></h1>
+                <p data-i18n="popupTagline">Open any code file in a tab. It is formatted automatically.</p>
             </div>
         </header>
 
-        <section class="popup__settings">
-            <h2 data-i18n="settings">Settings</h2>
+        <section class="popup__notice" id="file-access-notice" hidden>
+            <strong data-i18n="fileAccessOffTitle">Local files are not formatted yet</strong>
+            <p data-i18n="fileAccessOffText">To format files opened from your computer (file://), turn on “Allow access to file URLs” for this extension.</p>
+            <button type="button" class="popup__notice-button" id="file-access-button" data-i18n="fileAccessButton">Open extension settings</button>
+        </section>
 
-            <div class="popup__setting">
-                <label for="theme-select" data-i18n="theme">Theme</label>
-                <select id="theme-select" class="popup__select"></select>
+        <section class="popup__group" aria-labelledby="settings-title">
+            <h2 id="settings-title" data-i18n="settings">Settings</h2>
+
+            <div class="popup__row">
+                <span data-i18n="appearance">Appearance</span>
+                <div class="popup__segmented" role="radiogroup" aria-label="Appearance" id="appearance">
+                    <button type="button" role="radio" data-appearance="auto" data-i18n="appearanceAuto">Auto</button>
+                    <button type="button" role="radio" data-appearance="light" data-i18n="appearanceLight">Light</button>
+                    <button type="button" role="radio" data-appearance="dark" data-i18n="appearanceDark">Dark</button>
+                </div>
             </div>
 
-            <div class="popup__setting popup__setting--toggle">
+            <label class="popup__row" for="light-theme">
+                <span data-i18n="lightTheme">Light theme</span>
+                <select id="light-theme" class="popup__select"></select>
+            </label>
+
+            <label class="popup__row" for="dark-theme">
+                <span data-i18n="darkTheme">Dark theme</span>
+                <select id="dark-theme" class="popup__select"></select>
+            </label>
+
+            <div class="popup__row">
                 <span data-i18n="lineNumbers">Line Numbers</span>
                 <div class="popup__toggle" id="line-numbers-toggle" role="switch" tabindex="0" aria-checked="true">
                     <div class="popup__toggle-track"></div>
@@ -38,7 +57,7 @@
                 </div>
             </div>
 
-            <div class="popup__setting popup__setting--toggle">
+            <div class="popup__row">
                 <span data-i18n="wordWrap">Word Wrap</span>
                 <div class="popup__toggle" id="word-wrap-toggle" role="switch" tabindex="0" aria-checked="false">
                     <div class="popup__toggle-track"></div>
@@ -47,8 +66,42 @@
             </div>
         </section>
 
+        <section class="popup__group" aria-labelledby="help-title">
+            <h2 id="help-title" data-i18n="help">Help</h2>
+            <nav class="popup__links">
+                <a href="../guide/index.html" target="_blank">
+                    <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6.4 6.3a1.7 1.7 0 1 1 2.4 1.6c-.5.2-.8.6-.8 1.1v.3M8 11.3v.1" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                    <span data-i18n="howToUseLink">How to use</span>
+                </a>
+                <a href="https://zerowp.com/code-formatter/docs/?utm_source=code-formatter-extension&amp;utm_medium=extension&amp;utm_campaign=code-formatter&amp;utm_content=popup" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 2.5h6l3 3v8h-9z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M5.8 8h4.4M5.8 10.5h4.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                    <span data-i18n="documentation">Documentation</span>
+                </a>
+                <a href="https://zerowp.com/code-formatter/docs/?utm_source=code-formatter-extension&amp;utm_medium=extension&amp;utm_campaign=code-formatter&amp;utm_content=popup#shortcuts" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1.75" y="4" width="12.5" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M4.5 6.6h.1M7 6.6h.1M9.5 6.6h.1M5 9.4h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                    <span data-i18n="shortcutsShort">Shortcuts</span>
+                </a>
+                <a href="https://github.com/awps/code-formatter-extension/issues" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2.2 14.3 13H1.7z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M8 6.5v3M8 11.3v.1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                    <span data-i18n="reportBug">Report a bug</span>
+                </a>
+            </nav>
+        </section>
+
+        <a class="popup__sponsor" href="https://crustat.com/?utm_source=code-formatter-extension&amp;utm_medium=extension&amp;utm_campaign=extension-promo&amp;utm_content=popup" target="_blank" rel="noopener sponsored" lang="en">
+            <img class="popup__sponsor-mark" src="../icons/crustat-mark.svg" alt="" width="28" height="28">
+            <span class="popup__sponsor-copy">
+                <span class="popup__sponsor-head">
+                    <span class="popup__sponsor-name">Crustat</span>
+                    <span class="popup__sponsor-tag" data-i18n="sponsored">Sponsored</span>
+                </span>
+                <span class="popup__sponsor-text">See who visits your website.</span>
+            </span>
+            <span class="popup__sponsor-cta">Try it free</span>
+        </a>
+
         <footer class="popup__footer">
-            <a href="https://zerowp.com/code-formatter" target="_blank" rel="noopener noreferrer" data-i18n="learnMore">Learn more</a>
+            <a href="https://zerowp.com/code-formatter/?utm_source=code-formatter-extension&amp;utm_medium=extension&amp;utm_campaign=code-formatter&amp;utm_content=popup" target="_blank" rel="noopener" data-i18n="website">Website</a>
         </footer>
     </div>
 

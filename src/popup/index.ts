@@ -1,100 +1,92 @@
 import { loadSettings, saveSettings } from '../shared/utils/storage';
 import { themeLabels, themeKeys } from '../shared/utils/themes';
-import { ThemeKey } from '../shared/types/settings';
+import { Appearance, Settings, ThemeKey, themeTone, normalizeSettings } from '../shared/types/settings';
+import { currentTone, watchDeviceTone } from '../shared/utils/appearance';
+import { applyI18n, openExtensionSettings } from '../shared/utils/i18n';
 
-class PopupController {
-    private themeSelect: HTMLSelectElement | null = null;
-    private lineNumbersToggle: HTMLElement | null = null;
-    private wordWrapToggle: HTMLElement | null = null;
+const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T | null;
 
-    async init(): Promise<void> {
-        this.themeSelect = document.getElementById('theme-select') as HTMLSelectElement;
-        this.lineNumbersToggle = document.getElementById('line-numbers-toggle');
-        this.wordWrapToggle = document.getElementById('word-wrap-toggle');
+let settings: Settings;
 
-        this.populateThemeDropdown();
-        this.applyI18n();
-        await this.loadAndApplySettings();
-        this.bindEvents();
-    }
-
-    private populateThemeDropdown(): void {
-        if (!this.themeSelect) return;
-
-        themeKeys.forEach((key) => {
-            const option = document.createElement('option');
-            option.value = key;
-            option.textContent = themeLabels[key];
-            this.themeSelect!.appendChild(option);
-        });
-    }
-
-    private applyI18n(): void {
-        const elements = document.querySelectorAll('[data-i18n]');
-        elements.forEach((el) => {
-            const key = el.getAttribute('data-i18n');
-            if (key && chrome.i18n) {
-                const message = chrome.i18n.getMessage(key);
-                if (message) {
-                    el.textContent = message;
-                }
-            }
-        });
-    }
-
-    private async loadAndApplySettings(): Promise<void> {
-        const settings = await loadSettings();
-
-        if (this.themeSelect) {
-            this.themeSelect.value = settings.theme;
-        }
-
-        this.setToggleState(this.lineNumbersToggle, settings.lineNumbers);
-        this.setToggleState(this.wordWrapToggle, settings.wordWrap);
-    }
-
-    private setToggleState(toggle: HTMLElement | null, isOn: boolean): void {
-        if (!toggle) return;
-        toggle.classList.toggle('popup__toggle--on', isOn);
-        toggle.setAttribute('aria-checked', String(isOn));
-    }
-
-    private getToggleState(toggle: HTMLElement | null): boolean {
-        if (!toggle) return false;
-        return toggle.classList.contains('popup__toggle--on');
-    }
-
-    private bindEvents(): void {
-        // Theme change
-        this.themeSelect?.addEventListener('change', async () => {
-            const theme = this.themeSelect!.value as ThemeKey;
-            await saveSettings({ theme });
-        });
-
-        // Line numbers toggle
-        this.lineNumbersToggle?.addEventListener('click', () => this.handleToggleClick(this.lineNumbersToggle!, 'lineNumbers'));
-        this.lineNumbersToggle?.addEventListener('keydown', (e) => this.handleToggleKeydown(e as KeyboardEvent, this.lineNumbersToggle!, 'lineNumbers'));
-
-        // Word wrap toggle
-        this.wordWrapToggle?.addEventListener('click', () => this.handleToggleClick(this.wordWrapToggle!, 'wordWrap'));
-        this.wordWrapToggle?.addEventListener('keydown', (e) => this.handleToggleKeydown(e as KeyboardEvent, this.wordWrapToggle!, 'wordWrap'));
-    }
-
-    private async handleToggleClick(toggle: HTMLElement, settingKey: 'lineNumbers' | 'wordWrap'): Promise<void> {
-        const newState = !this.getToggleState(toggle);
-        this.setToggleState(toggle, newState);
-        await saveSettings({ [settingKey]: newState });
-    }
-
-    private handleToggleKeydown(e: KeyboardEvent, toggle: HTMLElement, settingKey: 'lineNumbers' | 'wordWrap'): void {
-        if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            this.handleToggleClick(toggle, settingKey);
-        }
-    }
+function fillThemeSelect(select: HTMLSelectElement | null, tone: 'light' | 'dark'): void {
+    if (!select) return;
+    themeKeys.filter(key => themeTone(key) === tone).forEach(key => {
+        const option = document.createElement('option');
+        option.value = key;
+        option.textContent = themeLabels[key];
+        select.appendChild(option);
+    });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const controller = new PopupController();
-    controller.init();
+function setToggle(toggle: HTMLElement | null, on: boolean): void {
+    if (!toggle) return;
+    toggle.classList.toggle('popup__toggle--on', on);
+    toggle.setAttribute('aria-checked', String(on));
+}
+
+/** The popup follows the same light/dark choice as the viewer. */
+function applyTone(): void {
+    document.documentElement.dataset.theme = currentTone(settings);
+}
+
+function render(): void {
+    document.querySelectorAll<HTMLButtonElement>('[data-appearance]').forEach(btn => {
+        btn.setAttribute('aria-checked', String(btn.dataset.appearance === settings.appearance));
+    });
+    const light = $<HTMLSelectElement>('light-theme');
+    const dark = $<HTMLSelectElement>('dark-theme');
+    if (light) light.value = settings.lightTheme;
+    if (dark) dark.value = settings.darkTheme;
+    setToggle($('line-numbers-toggle'), settings.lineNumbers);
+    setToggle($('word-wrap-toggle'), settings.wordWrap);
+    applyTone();
+}
+
+async function update(changes: Partial<Settings>): Promise<void> {
+    settings = normalizeSettings({ ...settings, ...changes });
+    render();
+    await saveSettings(changes);
+}
+
+function bindToggle(id: string, key: 'lineNumbers' | 'wordWrap'): void {
+    const toggle = $(id);
+    if (!toggle) return;
+    const flip = () => update({ [key]: !settings[key] });
+    toggle.addEventListener('click', flip);
+    toggle.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            flip();
+        }
+    });
+}
+
+async function showFileAccessNotice(): Promise<void> {
+    const notice = $('file-access-notice');
+    if (!notice) return;
+    notice.hidden = await chrome.extension.isAllowedFileSchemeAccess();
+    $('file-access-button')?.addEventListener('click', openExtensionSettings);
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+    fillThemeSelect($('light-theme'), 'light');
+    fillThemeSelect($('dark-theme'), 'dark');
+    applyI18n();
+
+    const version = $('version');
+    if (version) version.textContent = chrome.runtime.getManifest().version;
+
+    settings = await loadSettings();
+    render();
+    showFileAccessNotice();
+
+    document.querySelectorAll<HTMLButtonElement>('[data-appearance]').forEach(btn => {
+        btn.addEventListener('click', () => update({ appearance: btn.dataset.appearance as Appearance }));
+    });
+    $<HTMLSelectElement>('light-theme')?.addEventListener('change', e => update({ lightTheme: (e.target as HTMLSelectElement).value as ThemeKey }));
+    $<HTMLSelectElement>('dark-theme')?.addEventListener('change', e => update({ darkTheme: (e.target as HTMLSelectElement).value as ThemeKey }));
+    bindToggle('line-numbers-toggle', 'lineNumbers');
+    bindToggle('word-wrap-toggle', 'wordWrap');
+
+    watchDeviceTone(applyTone);
 });

@@ -3,25 +3,30 @@ import { EditorView } from "@codemirror/view";
 import { EditorState, Extension } from "@codemirror/state";
 import { Settings } from '../../shared/types/settings';
 import { getTheme } from '../../shared/utils/themes';
+import { activeTheme } from '../../shared/types/settings';
+import { deviceIsDark } from '../../shared/utils/appearance';
 
 export interface EditorConfig {
     container: HTMLElement;
     code: string;
     languageExtension: () => Extension;
     settings: Settings;
+    /** Extra extensions (JSON path bar, links, ...) */
+    extraExtensions?: Extension[];
 }
 
 /**
  * Creates a CodeMirror EditorView with the specified configuration.
  */
 export function createEditorView(config: EditorConfig): EditorView {
-    const { container, code, languageExtension, settings } = config;
+    const { container, code, languageExtension, settings, extraExtensions = [] } = config;
 
     const extensions: Extension[] = [
         basicSetup,
-        getTheme(settings.theme),
+        getTheme(activeTheme(settings, deviceIsDark())),
         languageExtension(),
         EditorState.readOnly.of(true),
+        ...extraExtensions,
     ];
 
     // Add word wrap if enabled

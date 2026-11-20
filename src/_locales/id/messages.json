@@ -3,7 +3,7 @@
     "message": "Code Formatter - JSON, CSS & JavaScript."
   },
   "extDescription": {
-    "message": "Code Formatter - ekstensi lengkap yang menawarkan penyorotan sintaksis canggih untuk CSS, JSON, dan JavaScript. "
+    "message": "Code Formatter - ekstensi lengkap yang menawarkan penyorotan sintaksis canggih untuk CSS, JSON, dan JavaScript."
   },
   "extShortName": {
     "message": "Code Formatter"
@@ -18,7 +18,7 @@
     "message": "Tampilkan asli"
   },
   "showFormatted": {
-    "message": "Tampilkan diformat "
+    "message": "Tampilkan diformat"
   },
   "networkResponseError": {
     "message": "Respons jaringan tidak baik."
@@ -43,5 +43,239 @@
   },
   "learnMore": {
     "message": "Pelajari lebih lanjut"
+  },
+  "guideTitle": {
+    "message": "Cara menggunakan Code Formatter"
+  },
+  "guideLead": {
+    "message": "Code Formatter bekerja sendiri. Tidak ada tombol yang perlu ditekan dan tidak ada yang perlu dipilih: buka file kode di tab browser dan file itu langsung diformat otomatis."
+  },
+  "guideStepsTitle": {
+    "message": "Cara kerjanya"
+  },
+  "guideStep1Title": {
+    "message": "Buka file kode di tab"
+  },
+  "guideStep1Text": {
+    "message": "Klik tautan yang berakhiran .json, .css, .js, .ts, .xml, .yaml…, buka URL API yang mengembalikan JSON, atau seret file dari komputer Anda ke Chrome."
+  },
+  "guideStep2Title": {
+    "message": "Langsung diformat"
+  },
+  "guideStep2Text": {
+    "message": "JSON, CSS, dan JavaScript yang diminifikasi diberi indentasi ulang. Setiap file mendapat penyorotan sintaks, nomor baris, dan panah untuk melipat blok."
+  },
+  "guideStep3Title": {
+    "message": "Gunakan toolbar"
+  },
+  "guideStep3Text": {
+    "message": "Di bagian atas: beralih antara Diformat dan Asli, salin, unduh, dan buka pengaturan tema, nomor baris, dan bungkus kata. Di bagian bawah: lipat semua atau buka semua."
+  },
+  "guideTryJson": {
+    "message": "Buka contoh JSON"
+  },
+  "guideTryCss": {
+    "message": "Buka contoh CSS"
+  },
+  "guideFilesTitle": {
+    "message": "File dari komputer Anda"
+  },
+  "guideFilesText": {
+    "message": "Chrome melarang ekstensi membaca file lokal (file://) sampai Anda mengizinkannya. Ini hanya perlu diaktifkan satu kali."
+  },
+  "guideFilesOn": {
+    "message": "Akses ke file lokal aktif. Semuanya sudah siap."
+  },
+  "guideFilesOff": {
+    "message": "Akses ke file lokal nonaktif."
+  },
+  "guideFilesStep1": {
+    "message": "Klik tombol di bawah untuk membuka pengaturan ekstensi ini."
+  },
+  "guideFilesStep2": {
+    "message": "Aktifkan “Allow access to file URLs”."
+  },
+  "guideFilesStep3": {
+    "message": "Muat ulang tab yang berisi file Anda."
+  },
+  "fileAccessButton": {
+    "message": "Buka pengaturan ekstensi"
+  },
+  "guideJsonTitle": {
+    "message": "Bekerja dengan JSON"
+  },
+  "guideJsonPath": {
+    "message": "Klik kunci atau nilai apa pun: path-nya (misalnya $$.users[2].email) ditampilkan di bilah bawah. Gunakan “Salin path” untuk menyalinnya."
+  },
+  "guideJsonFold": {
+    "message": "Klik panah di samping nomor baris untuk melipat objek atau array. “Lipat semua” membiarkan tingkat teratas tetap terbuka sehingga Anda bisa menelusuri satu tingkat demi satu tingkat."
+  },
+  "guideJsonLinks": {
+    "message": "Tautan di dalam data diberi garis bawah. Tahan Ctrl (⌘ di Mac) lalu klik untuk membukanya."
+  },
+  "guideJsonSearch": {
+    "message": "Tekan Ctrl+F (⌘+F di Mac) untuk mencari di dalam file."
+  },
+  "guideLimitsTitle": {
+    "message": "Perlu diketahui"
+  },
+  "guideLimitsPages": {
+    "message": "Hanya berfungsi pada halaman yang menampilkan file mentah. Kode di dalam situs web biasa, forum, atau editor online tidak diubah."
+  },
+  "guideLimitsSettings": {
+    "message": "Pengaturan yang Anda ubah di toolbar atau popup ekstensi akan diingat untuk semua file."
+  },
+  "guideLimitsOffline": {
+    "message": "Semuanya berjalan di komputer Anda. Kode Anda tidak pernah dikirim ke mana pun."
+  },
+  "guideLanguages": {
+    "message": "Bahasa yang didukung"
+  },
+  "guideReportIssue": {
+    "message": "Laporkan masalah"
+  },
+  "fileAccessOffTitle": {
+    "message": "File lokal belum diformat"
+  },
+  "fileAccessOffText": {
+    "message": "Untuk memformat file yang dibuka dari komputer Anda (file://), aktifkan “Allow access to file URLs” untuk ekstensi ini."
+  },
+  "howToUse": {
+    "message": "Cara penggunaan"
+  },
+  "howToUseShort": {
+    "message": "Tidak ada yang perlu diklik. Buka file kode apa pun di tab (tautan berakhiran .json, .css, .js…, respons API, atau file dari komputer Anda) dan file itu diformat otomatis."
+  },
+  "openGuide": {
+    "message": "Buka panduan lengkap"
+  },
+  "collapseAll": {
+    "message": "Lipat semua"
+  },
+  "expandAll": {
+    "message": "Buka semua"
+  },
+  "jsonPath": {
+    "message": "Path JSON"
+  },
+  "copyPath": {
+    "message": "Salin path"
+  },
+  "copied": {
+    "message": "Tersalin!"
+  },
+  "openLinkHint": {
+    "message": "Ctrl/⌘ + klik untuk membuka tautan"
+  },
+  "fileAccessBadgeTitle": {
+    "message": "File lokal tidak diformat: klik untuk melihat cara mengaktifkan akses file"
+  },
+  "guideHeroTitle": {
+    "message": "Buka file kode. Langsung terformat sendiri."
+  },
+  "guideReplay": {
+    "message": "Putar ulang"
+  },
+  "guideThemeLabel": {
+    "message": "Tampilan, juga dipakai untuk file kode dan popup"
+  },
+  "guideThemeAuto": {
+    "message": "Otomatis"
+  },
+  "guideThemeLight": {
+    "message": "Terang"
+  },
+  "guideThemeDark": {
+    "message": "Gelap"
+  },
+  "guideFilesSettingLabel": {
+    "message": "Allow access to file URLs"
+  },
+  "guideFilesSettingIncognito": {
+    "message": "Izinkan di Incognito"
+  },
+  "guideFilesSettingErrors": {
+    "message": "Kumpulkan error"
+  },
+  "guideJsonPathTitle": {
+    "message": "Lihat posisi Anda"
+  },
+  "guideJsonFoldTitle": {
+    "message": "Ciutkan yang tidak perlu"
+  },
+  "guideJsonLinksTitle": {
+    "message": "Buka tautan"
+  },
+  "guideJsonSearchTitle": {
+    "message": "Cari"
+  },
+  "viewFormatted": {
+    "message": "Diformat"
+  },
+  "viewOriginal": {
+    "message": "Asli"
+  },
+  "lines": {
+    "message": "baris"
+  },
+  "expandSelected": {
+    "message": "Buka yang dipilih"
+  },
+  "collapseSelected": {
+    "message": "Lipat yang dipilih"
+  },
+  "sponsored": {
+    "message": "Bersponsor"
+  },
+  "about": {
+    "message": "Tentang"
+  },
+  "aboutText": {
+    "message": "Memformat file kode yang Anda buka di tab. Hanya baca, berjalan sepenuhnya di browser Anda."
+  },
+  "overview": {
+    "message": "Ringkasan"
+  },
+  "documentation": {
+    "message": "Dokumentasi"
+  },
+  "keyboardShortcuts": {
+    "message": "Pintasan keyboard"
+  },
+  "appearance": {
+    "message": "Tampilan"
+  },
+  "appearanceAuto": {
+    "message": "Otomatis"
+  },
+  "appearanceLight": {
+    "message": "Terang"
+  },
+  "appearanceDark": {
+    "message": "Gelap"
+  },
+  "lightTheme": {
+    "message": "Tema terang"
+  },
+  "darkTheme": {
+    "message": "Tema gelap"
+  },
+  "popupTagline": {
+    "message": "Buka file kode apa pun di tab. File diformat otomatis."
+  },
+  "help": {
+    "message": "Bantuan"
+  },
+  "howToUseLink": {
+    "message": "Cara pakai"
+  },
+  "website": {
+    "message": "Situs web"
+  },
+  "shortcutsShort": {
+    "message": "Pintasan"
+  },
+  "reportBug": {
+    "message": "Laporkan bug"
   }
 }

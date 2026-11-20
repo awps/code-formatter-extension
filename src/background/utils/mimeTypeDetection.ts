@@ -62,8 +62,7 @@ const mimeTypeMappings: MimeMapping[] = [
     // Python
     {
         patterns: [
-            /^(text|application)\/x-python$/i,
-            /^text\/plain$/i // When combined with .py extension
+            /^(text|application)\/x-python$/i
         ],
         language: 'py'
     },

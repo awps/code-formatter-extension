@@ -43,5 +43,239 @@
   },
   "learnMore": {
     "message": "Learn more"
+  },
+  "guideTitle": {
+    "message": "How to use Code Formatter"
+  },
+  "guideLead": {
+    "message": "Code Formatter works on its own. There are no buttons to press and nothing to select: open a code file in a browser tab and it is formatted automatically."
+  },
+  "guideStepsTitle": {
+    "message": "How it works"
+  },
+  "guideStep1Title": {
+    "message": "Open a code file in a tab"
+  },
+  "guideStep1Text": {
+    "message": "Click a link that ends in .json, .css, .js, .ts, .xml, .yaml…, open an API URL that returns JSON, or drag a file from your computer into Chrome."
+  },
+  "guideStep2Title": {
+    "message": "It is formatted right away"
+  },
+  "guideStep2Text": {
+    "message": "Minified JSON, CSS and JavaScript are re-indented. Every file gets syntax highlighting, line numbers and arrows to collapse blocks."
+  },
+  "guideStep3Title": {
+    "message": "Use the toolbars"
+  },
+  "guideStep3Text": {
+    "message": "At the top: switch between formatted and original, copy, download, and open the settings for theme, line numbers and word wrap. At the bottom: collapse or expand everything."
+  },
+  "guideTryJson": {
+    "message": "Open a JSON example"
+  },
+  "guideTryCss": {
+    "message": "Open a CSS example"
+  },
+  "guideFilesTitle": {
+    "message": "Files from your computer"
+  },
+  "guideFilesText": {
+    "message": "Chrome blocks extensions from reading local files (file://) until you allow it. This is a one-time switch."
+  },
+  "guideFilesOn": {
+    "message": "Access to local files is on. You are all set."
+  },
+  "guideFilesOff": {
+    "message": "Access to local files is off."
+  },
+  "guideFilesStep1": {
+    "message": "Click the button below to open this extension's settings."
+  },
+  "guideFilesStep2": {
+    "message": "Turn on “Allow access to file URLs”."
+  },
+  "guideFilesStep3": {
+    "message": "Reload the tab with your file."
+  },
+  "fileAccessButton": {
+    "message": "Open extension settings"
+  },
+  "guideJsonTitle": {
+    "message": "Working with JSON"
+  },
+  "guideJsonPath": {
+    "message": "Click any key or value: its path (for example $$.users[2].email) is shown in the bar at the bottom. Use “Copy path” to copy it."
+  },
+  "guideJsonFold": {
+    "message": "Click the arrows next to the line numbers to collapse an object or array. “Collapse all” keeps the top level open so you can drill down one level at a time."
+  },
+  "guideJsonLinks": {
+    "message": "Links inside the data are underlined. Hold Ctrl (⌘ on Mac) and click to open them."
+  },
+  "guideJsonSearch": {
+    "message": "Press Ctrl+F (⌘+F on Mac) to search inside the file."
+  },
+  "guideLimitsTitle": {
+    "message": "Good to know"
+  },
+  "guideLimitsPages": {
+    "message": "It only works on pages that show a raw file. It does not change code shown inside normal websites, forums or online editors."
+  },
+  "guideLimitsSettings": {
+    "message": "Settings you change in the toolbar or in the extension popup are remembered for all files."
+  },
+  "guideLimitsOffline": {
+    "message": "Everything runs on your computer. Your code is never sent anywhere."
+  },
+  "guideLanguages": {
+    "message": "Supported languages"
+  },
+  "guideReportIssue": {
+    "message": "Report a problem"
+  },
+  "fileAccessOffTitle": {
+    "message": "Local files are not formatted yet"
+  },
+  "fileAccessOffText": {
+    "message": "To format files opened from your computer (file://), turn on “Allow access to file URLs” for this extension."
+  },
+  "howToUse": {
+    "message": "How to use"
+  },
+  "howToUseShort": {
+    "message": "There is nothing to click. Open any code file in a tab (a link ending in .json, .css, .js…, an API response, or a file from your computer) and it is formatted automatically."
+  },
+  "openGuide": {
+    "message": "Open the full guide"
+  },
+  "collapseAll": {
+    "message": "Collapse all"
+  },
+  "expandAll": {
+    "message": "Expand all"
+  },
+  "jsonPath": {
+    "message": "JSON path"
+  },
+  "copyPath": {
+    "message": "Copy path"
+  },
+  "copied": {
+    "message": "Copied!"
+  },
+  "openLinkHint": {
+    "message": "Ctrl/⌘ + click to open link"
+  },
+  "fileAccessBadgeTitle": {
+    "message": "Local file not formatted: click for how to enable file access"
+  },
+  "guideHeroTitle": {
+    "message": "Open a code file. It formats itself."
+  },
+  "guideReplay": {
+    "message": "Replay"
+  },
+  "guideThemeLabel": {
+    "message": "Appearance, also used for code files and the popup"
+  },
+  "guideThemeAuto": {
+    "message": "Auto"
+  },
+  "guideThemeLight": {
+    "message": "Light"
+  },
+  "guideThemeDark": {
+    "message": "Dark"
+  },
+  "guideFilesSettingLabel": {
+    "message": "Allow access to file URLs"
+  },
+  "guideFilesSettingIncognito": {
+    "message": "Allow in Incognito"
+  },
+  "guideFilesSettingErrors": {
+    "message": "Collect errors"
+  },
+  "guideJsonPathTitle": {
+    "message": "See where you are"
+  },
+  "guideJsonFoldTitle": {
+    "message": "Collapse what you don't need"
+  },
+  "guideJsonLinksTitle": {
+    "message": "Open links"
+  },
+  "guideJsonSearchTitle": {
+    "message": "Search"
+  },
+  "viewFormatted": {
+    "message": "Formatted"
+  },
+  "viewOriginal": {
+    "message": "Original"
+  },
+  "lines": {
+    "message": "lines"
+  },
+  "expandSelected": {
+    "message": "Expand selected"
+  },
+  "collapseSelected": {
+    "message": "Collapse selected"
+  },
+  "sponsored": {
+    "message": "Sponsored"
+  },
+  "about": {
+    "message": "About"
+  },
+  "aboutText": {
+    "message": "Formats code files you open in a tab. Read-only, runs fully in your browser."
+  },
+  "overview": {
+    "message": "Overview"
+  },
+  "documentation": {
+    "message": "Documentation"
+  },
+  "keyboardShortcuts": {
+    "message": "Keyboard shortcuts"
+  },
+  "appearance": {
+    "message": "Appearance"
+  },
+  "appearanceAuto": {
+    "message": "Auto"
+  },
+  "appearanceLight": {
+    "message": "Light"
+  },
+  "appearanceDark": {
+    "message": "Dark"
+  },
+  "lightTheme": {
+    "message": "Light theme"
+  },
+  "darkTheme": {
+    "message": "Dark theme"
+  },
+  "popupTagline": {
+    "message": "Open any code file in a tab. It is formatted automatically."
+  },
+  "help": {
+    "message": "Help"
+  },
+  "howToUseLink": {
+    "message": "How to use"
+  },
+  "website": {
+    "message": "Website"
+  },
+  "shortcutsShort": {
+    "message": "Shortcuts"
+  },
+  "reportBug": {
+    "message": "Report a bug"
   }
 }

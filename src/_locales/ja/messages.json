@@ -43,5 +43,239 @@
   },
   "learnMore": {
     "message": "詳細を見る"
+  },
+  "guideTitle": {
+    "message": "Code Formatter の使い方"
+  },
+  "guideLead": {
+    "message": "Code Formatter は自動で動きます。押すボタンも選択する操作もありません。コードファイルをブラウザのタブで開くだけで、自動的に整形されます。"
+  },
+  "guideStepsTitle": {
+    "message": "使い方"
+  },
+  "guideStep1Title": {
+    "message": "コードファイルをタブで開く"
+  },
+  "guideStep1Text": {
+    "message": ".json、.css、.js、.ts、.xml、.yaml などで終わるリンクをクリックするか、JSON を返す API の URL を開くか、パソコンのファイルを Chrome にドラッグします。"
+  },
+  "guideStep2Title": {
+    "message": "すぐに整形されます"
+  },
+  "guideStep2Text": {
+    "message": "圧縮された JSON、CSS、JavaScript はインデントが付け直されます。どのファイルにも構文ハイライト、行番号、ブロックを折りたたむ矢印が付きます。"
+  },
+  "guideStep3Title": {
+    "message": "ツールバーを使う"
+  },
+  "guideStep3Text": {
+    "message": "上部では、整形済みと元のコードの切り替え、コピー、ダウンロード、そしてテーマ・行番号・折り返しの設定ができます。下部では、すべて折りたたむ/すべて展開ができます。"
+  },
+  "guideTryJson": {
+    "message": "JSON のサンプルを開く"
+  },
+  "guideTryCss": {
+    "message": "CSS のサンプルを開く"
+  },
+  "guideFilesTitle": {
+    "message": "パソコン上のファイル"
+  },
+  "guideFilesText": {
+    "message": "Chrome は、許可するまで拡張機能がローカルファイル（file://）を読み取れないようにしています。設定は一度だけです。"
+  },
+  "guideFilesOn": {
+    "message": "ローカルファイルへのアクセスはオンです。準備完了です。"
+  },
+  "guideFilesOff": {
+    "message": "ローカルファイルへのアクセスはオフです。"
+  },
+  "guideFilesStep1": {
+    "message": "下のボタンをクリックして、この拡張機能の設定を開きます。"
+  },
+  "guideFilesStep2": {
+    "message": "「ファイルの URL へのアクセスを許可する」をオンにします。"
+  },
+  "guideFilesStep3": {
+    "message": "ファイルを開いているタブを再読み込みします。"
+  },
+  "fileAccessButton": {
+    "message": "拡張機能の設定を開く"
+  },
+  "guideJsonTitle": {
+    "message": "JSON の操作"
+  },
+  "guideJsonPath": {
+    "message": "キーや値をクリックすると、そのパス（例: $$.users[2].email）が下部のバーに表示されます。「パスをコピー」でコピーできます。"
+  },
+  "guideJsonFold": {
+    "message": "行番号の横の矢印をクリックすると、オブジェクトや配列を折りたためます。「すべて折りたたむ」は最上位を開いたままにするので、1 階層ずつ掘り下げられます。"
+  },
+  "guideJsonLinks": {
+    "message": "データ内のリンクには下線が付きます。Ctrl キー（Mac では ⌘）を押しながらクリックすると開きます。"
+  },
+  "guideJsonSearch": {
+    "message": "Ctrl+F（Mac では ⌘+F）を押すと、ファイル内を検索できます。"
+  },
+  "guideLimitsTitle": {
+    "message": "ご注意"
+  },
+  "guideLimitsPages": {
+    "message": "生のファイルを表示しているページでのみ動作します。通常のウェブサイト、フォーラム、オンラインエディタ内のコードは変更されません。"
+  },
+  "guideLimitsSettings": {
+    "message": "ツールバーや拡張機能のポップアップで変更した設定は、すべてのファイルで保持されます。"
+  },
+  "guideLimitsOffline": {
+    "message": "すべてお使いのパソコン上で処理されます。コードが外部に送信されることはありません。"
+  },
+  "guideLanguages": {
+    "message": "対応言語"
+  },
+  "guideReportIssue": {
+    "message": "問題を報告"
+  },
+  "fileAccessOffTitle": {
+    "message": "ローカルファイルはまだ整形されていません"
+  },
+  "fileAccessOffText": {
+    "message": "パソコンから開いたファイル（file://）を整形するには、この拡張機能で「ファイルの URL へのアクセスを許可する」をオンにしてください。"
+  },
+  "howToUse": {
+    "message": "使い方"
+  },
+  "howToUseShort": {
+    "message": "クリックするものはありません。コードファイル（.json、.css、.js などで終わるリンク、API のレスポンス、パソコン上のファイル）をタブで開くと、自動的に整形されます。"
+  },
+  "openGuide": {
+    "message": "詳しいガイドを開く"
+  },
+  "collapseAll": {
+    "message": "すべて折りたたむ"
+  },
+  "expandAll": {
+    "message": "すべて展開"
+  },
+  "jsonPath": {
+    "message": "JSON パス"
+  },
+  "copyPath": {
+    "message": "パスをコピー"
+  },
+  "copied": {
+    "message": "コピーしました！"
+  },
+  "openLinkHint": {
+    "message": "Ctrl/⌘ + クリックでリンクを開く"
+  },
+  "fileAccessBadgeTitle": {
+    "message": "ローカルファイルは未整形です。ファイルアクセスを有効にする方法はクリックで確認"
+  },
+  "guideHeroTitle": {
+    "message": "コードファイルを開くだけ。自動で整形されます。"
+  },
+  "guideReplay": {
+    "message": "もう一度再生"
+  },
+  "guideThemeLabel": {
+    "message": "外観（コードファイルとポップアップにも適用）"
+  },
+  "guideThemeAuto": {
+    "message": "自動"
+  },
+  "guideThemeLight": {
+    "message": "ライト"
+  },
+  "guideThemeDark": {
+    "message": "ダーク"
+  },
+  "guideFilesSettingLabel": {
+    "message": "ファイルの URL へのアクセスを許可する"
+  },
+  "guideFilesSettingIncognito": {
+    "message": "シークレット モードでの実行を許可"
+  },
+  "guideFilesSettingErrors": {
+    "message": "エラーを収集"
+  },
+  "guideJsonPathTitle": {
+    "message": "今いる場所を確認"
+  },
+  "guideJsonFoldTitle": {
+    "message": "不要な部分を折りたたむ"
+  },
+  "guideJsonLinksTitle": {
+    "message": "リンクを開く"
+  },
+  "guideJsonSearchTitle": {
+    "message": "検索"
+  },
+  "viewFormatted": {
+    "message": "整形済み"
+  },
+  "viewOriginal": {
+    "message": "元のコード"
+  },
+  "lines": {
+    "message": "行"
+  },
+  "expandSelected": {
+    "message": "選択部分を展開"
+  },
+  "collapseSelected": {
+    "message": "選択部分を折りたたむ"
+  },
+  "sponsored": {
+    "message": "スポンサー"
+  },
+  "about": {
+    "message": "このツールについて"
+  },
+  "aboutText": {
+    "message": "タブで開いたコードファイルを整形します。読み取り専用で、すべてブラウザ内で動作します。"
+  },
+  "overview": {
+    "message": "概要"
+  },
+  "documentation": {
+    "message": "ドキュメント"
+  },
+  "keyboardShortcuts": {
+    "message": "キーボードショートカット"
+  },
+  "appearance": {
+    "message": "外観"
+  },
+  "appearanceAuto": {
+    "message": "自動"
+  },
+  "appearanceLight": {
+    "message": "ライト"
+  },
+  "appearanceDark": {
+    "message": "ダーク"
+  },
+  "lightTheme": {
+    "message": "ライトテーマ"
+  },
+  "darkTheme": {
+    "message": "ダークテーマ"
+  },
+  "popupTagline": {
+    "message": "コードファイルをタブで開くだけで、自動的に整形されます。"
+  },
+  "help": {
+    "message": "ヘルプ"
+  },
+  "howToUseLink": {
+    "message": "使い方"
+  },
+  "website": {
+    "message": "ウェブサイト"
+  },
+  "shortcutsShort": {
+    "message": "ショートカット"
+  },
+  "reportBug": {
+    "message": "不具合を報告"
   }
 }

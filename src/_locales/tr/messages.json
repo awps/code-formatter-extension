@@ -3,13 +3,13 @@
     "message": "Code Formatter - JSON, CSS ve JavaScript."
   },
   "extDescription": {
-    "message": "Code Formatter - CSS, JSON ve JavaScript için gelişmiş sözdizimi vurgulama sunan hepsi bir arada uzantı. "
+    "message": "Code Formatter - CSS, JSON ve JavaScript için gelişmiş sözdizimi vurgulama sunan hepsi bir arada uzantı."
   },
   "extShortName": {
     "message": "Code Formatter"
   },
   "copy": {
-    "message": "Anlaşıldı"
+    "message": "Kopyala"
   },
   "download": {
     "message": "İndir"
@@ -18,7 +18,7 @@
     "message": "Orijinalini göster"
   },
   "showFormatted": {
-    "message": "Biçimlendirilmiş göster "
+    "message": "Biçimlendirilmiş göster"
   },
   "networkResponseError": {
     "message": "Ağ yanıtı iyi değildi."
@@ -43,5 +43,239 @@
   },
   "learnMore": {
     "message": "Daha fazla bilgi"
+  },
+  "guideTitle": {
+    "message": "Code Formatter nasıl kullanılır"
+  },
+  "guideLead": {
+    "message": "Code Formatter kendi kendine çalışır. Basılacak düğme ya da seçilecek bir şey yok: bir kod dosyasını tarayıcı sekmesinde açın, otomatik olarak biçimlendirilir."
+  },
+  "guideStepsTitle": {
+    "message": "Nasıl çalışır"
+  },
+  "guideStep1Title": {
+    "message": "Bir kod dosyasını sekmede açın"
+  },
+  "guideStep1Text": {
+    "message": ".json, .css, .js, .ts, .xml, .yaml… ile biten bir bağlantıya tıklayın, JSON döndüren bir API adresini açın veya bilgisayarınızdan bir dosyayı Chrome'a sürükleyin."
+  },
+  "guideStep2Title": {
+    "message": "Hemen biçimlendirilir"
+  },
+  "guideStep2Text": {
+    "message": "Küçültülmüş JSON, CSS ve JavaScript yeniden girintilenir. Her dosyada sözdizimi renklendirme, satır numaraları ve blokları daraltan oklar bulunur."
+  },
+  "guideStep3Title": {
+    "message": "Araç çubuklarını kullanın"
+  },
+  "guideStep3Text": {
+    "message": "Üstte: Biçimlendirilmiş ile Orijinal arasında geçiş yapın, kopyalayın, indirin ve tema, satır numaraları ile sözcük kaydırma ayarlarını açın. Altta: tümünü daraltın veya tümünü genişletin."
+  },
+  "guideTryJson": {
+    "message": "JSON örneği aç"
+  },
+  "guideTryCss": {
+    "message": "CSS örneği aç"
+  },
+  "guideFilesTitle": {
+    "message": "Bilgisayarınızdaki dosyalar"
+  },
+  "guideFilesText": {
+    "message": "Chrome, siz izin verene kadar uzantıların yerel dosyaları (file://) okumasını engeller. Bu ayar yalnızca bir kez yapılır."
+  },
+  "guideFilesOn": {
+    "message": "Yerel dosyalara erişim açık. Her şey hazır."
+  },
+  "guideFilesOff": {
+    "message": "Yerel dosyalara erişim kapalı."
+  },
+  "guideFilesStep1": {
+    "message": "Bu uzantının ayarlarını açmak için aşağıdaki düğmeye tıklayın."
+  },
+  "guideFilesStep2": {
+    "message": "“Dosya URL'lerine erişime izin ver” seçeneğini açın."
+  },
+  "guideFilesStep3": {
+    "message": "Dosyanızın bulunduğu sekmeyi yeniden yükleyin."
+  },
+  "fileAccessButton": {
+    "message": "Uzantı ayarlarını aç"
+  },
+  "guideJsonTitle": {
+    "message": "JSON ile çalışma"
+  },
+  "guideJsonPath": {
+    "message": "Herhangi bir anahtara veya değere tıklayın: yolu (örneğin $$.users[2].email) alttaki çubukta görünür. Kopyalamak için “Yolu kopyala” düğmesini kullanın."
+  },
+  "guideJsonFold": {
+    "message": "Bir nesneyi veya diziyi daraltmak için satır numaralarının yanındaki oklara tıklayın. “Tümünü daralt” en üst düzeyi açık bırakır, böylece birer birer alt düzeylere inebilirsiniz."
+  },
+  "guideJsonLinks": {
+    "message": "Verideki bağlantıların altı çizilidir. Açmak için Ctrl tuşuna (Mac'te ⌘) basılı tutup tıklayın."
+  },
+  "guideJsonSearch": {
+    "message": "Dosya içinde aramak için Ctrl+F (Mac'te ⌘+F) tuşlarına basın."
+  },
+  "guideLimitsTitle": {
+    "message": "Bilmeniz gerekenler"
+  },
+  "guideLimitsPages": {
+    "message": "Yalnızca ham dosya gösteren sayfalarda çalışır. Normal web sitelerinde, forumlarda veya çevrimiçi düzenleyicilerde gösterilen kodu değiştirmez."
+  },
+  "guideLimitsSettings": {
+    "message": "Araç çubuğundan veya uzantı açılır penceresinden yaptığınız ayarlar tüm dosyalar için hatırlanır."
+  },
+  "guideLimitsOffline": {
+    "message": "Her şey bilgisayarınızda çalışır. Kodunuz hiçbir yere gönderilmez."
+  },
+  "guideLanguages": {
+    "message": "Desteklenen diller"
+  },
+  "guideReportIssue": {
+    "message": "Sorun bildir"
+  },
+  "fileAccessOffTitle": {
+    "message": "Yerel dosyalar henüz biçimlendirilmiyor"
+  },
+  "fileAccessOffText": {
+    "message": "Bilgisayarınızdan açılan dosyaları (file://) biçimlendirmek için bu uzantıda “Dosya URL'lerine erişime izin ver” seçeneğini açın."
+  },
+  "howToUse": {
+    "message": "Nasıl kullanılır"
+  },
+  "howToUseShort": {
+    "message": "Tıklanacak bir şey yok. Herhangi bir kod dosyasını sekmede açın (.json, .css, .js… ile biten bir bağlantı, bir API yanıtı veya bilgisayarınızdaki bir dosya), otomatik olarak biçimlendirilir."
+  },
+  "openGuide": {
+    "message": "Tam kılavuzu aç"
+  },
+  "collapseAll": {
+    "message": "Tümünü daralt"
+  },
+  "expandAll": {
+    "message": "Tümünü genişlet"
+  },
+  "jsonPath": {
+    "message": "JSON yolu"
+  },
+  "copyPath": {
+    "message": "Yolu kopyala"
+  },
+  "copied": {
+    "message": "Kopyalandı!"
+  },
+  "openLinkHint": {
+    "message": "Bağlantıyı açmak için Ctrl/⌘ + tıklama"
+  },
+  "fileAccessBadgeTitle": {
+    "message": "Yerel dosya biçimlendirilmedi: dosya erişimini nasıl açacağınızı görmek için tıklayın"
+  },
+  "guideHeroTitle": {
+    "message": "Bir kod dosyası açın. Kendiliğinden biçimlenir."
+  },
+  "guideReplay": {
+    "message": "Tekrar oynat"
+  },
+  "guideThemeLabel": {
+    "message": "Görünüm, kod dosyaları ve açılır pencere için de kullanılır"
+  },
+  "guideThemeAuto": {
+    "message": "Otomatik"
+  },
+  "guideThemeLight": {
+    "message": "Açık"
+  },
+  "guideThemeDark": {
+    "message": "Koyu"
+  },
+  "guideFilesSettingLabel": {
+    "message": "Dosya URL'lerine erişime izin ver"
+  },
+  "guideFilesSettingIncognito": {
+    "message": "Gizli modda izin ver"
+  },
+  "guideFilesSettingErrors": {
+    "message": "Hataları topla"
+  },
+  "guideJsonPathTitle": {
+    "message": "Nerede olduğunuzu görün"
+  },
+  "guideJsonFoldTitle": {
+    "message": "İhtiyacınız olmayanı daraltın"
+  },
+  "guideJsonLinksTitle": {
+    "message": "Bağlantıları açın"
+  },
+  "guideJsonSearchTitle": {
+    "message": "Ara"
+  },
+  "viewFormatted": {
+    "message": "Biçimlendirilmiş"
+  },
+  "viewOriginal": {
+    "message": "Orijinal"
+  },
+  "lines": {
+    "message": "satır"
+  },
+  "expandSelected": {
+    "message": "Seçileni genişlet"
+  },
+  "collapseSelected": {
+    "message": "Seçileni daralt"
+  },
+  "sponsored": {
+    "message": "Sponsorlu"
+  },
+  "about": {
+    "message": "Hakkında"
+  },
+  "aboutText": {
+    "message": "Sekmede açtığınız kod dosyalarını biçimlendirir. Salt okunur, tamamen tarayıcınızda çalışır."
+  },
+  "overview": {
+    "message": "Genel bakış"
+  },
+  "documentation": {
+    "message": "Belgeler"
+  },
+  "keyboardShortcuts": {
+    "message": "Klavye kısayolları"
+  },
+  "appearance": {
+    "message": "Görünüm"
+  },
+  "appearanceAuto": {
+    "message": "Otomatik"
+  },
+  "appearanceLight": {
+    "message": "Açık"
+  },
+  "appearanceDark": {
+    "message": "Koyu"
+  },
+  "lightTheme": {
+    "message": "Açık tema"
+  },
+  "darkTheme": {
+    "message": "Koyu tema"
+  },
+  "popupTagline": {
+    "message": "Herhangi bir kod dosyasını sekmede açın. Otomatik olarak biçimlendirilir."
+  },
+  "help": {
+    "message": "Yardım"
+  },
+  "howToUseLink": {
+    "message": "Nasıl kullanılır"
+  },
+  "website": {
+    "message": "Web sitesi"
+  },
+  "shortcutsShort": {
+    "message": "Kısayollar"
+  },
+  "reportBug": {
+    "message": "Hata bildir"
   }
 }

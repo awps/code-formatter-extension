@@ -36,26 +36,24 @@ describe('alternativeDetectLanguage', () => {
         expect(alternativeDetectLanguage(code)).toBe('unknown');
     });
 
-    test('should return unknown for HTML', () => {
+    test('should detect HTML (so it is left alone)', () => {
         const code = '<div><h1>Title</h1><p>Paragraph</p></div>';
-        expect(alternativeDetectLanguage(code)).toBe('unknown');
+        expect(alternativeDetectLanguage(code)).toBe('html');
     });
 
-    // --- Tests for languages currently expected to be 'unknown' ---
-
-    test('should return unknown for Markdown', () => {
+    test('should detect Markdown', () => {
         const code = '# Heading\n* List item';
-        expect(alternativeDetectLanguage(code)).toBe('unknown');
+        expect(alternativeDetectLanguage(code)).toBe('md');
     });
 
-    test('should return unknown for XML', () => {
+    test('should detect XML', () => {
         const code = '<note><to>Tove</to></note>';
-        expect(alternativeDetectLanguage(code)).toBe('unknown');
+        expect(alternativeDetectLanguage(code)).toBe('xml');
     });
 
-    test('should return unknown for LESS', () => {
+    test('should detect LESS', () => {
         const code = '@width: 10px; .class { width: @width; }';
-        expect(alternativeDetectLanguage(code)).toBe('unknown');
+        expect(alternativeDetectLanguage(code)).toBe('less');
     });
 
     test('should return unknown for SASS/SCSS', () => {
@@ -65,17 +63,17 @@ describe('alternativeDetectLanguage', () => {
 
     test('should detect Python', () => {
         const code = 'def greet(name):\n  print(f"Hello, {name}!")';
-        expect(alternativeDetectLanguage(code)).toBe('python');
+        expect(alternativeDetectLanguage(code)).toBe('py');
     });
 
-    test('should return unknown for SQL', () => {
+    test('should detect SQL', () => {
         const code = 'SELECT * FROM users WHERE id = 1;';
-        expect(alternativeDetectLanguage(code)).toBe('unknown');
+        expect(alternativeDetectLanguage(code)).toBe('sql');
     });
 
-    test('should return unknown for YAML', () => {
+    test('should detect YAML', () => {
         const code = 'key:\n  subkey: value';
-        expect(alternativeDetectLanguage(code)).toBe('unknown');
+        expect(alternativeDetectLanguage(code)).toBe('yaml');
     });
 
     test('should detect Go', () => {
@@ -83,9 +81,9 @@ describe('alternativeDetectLanguage', () => {
         expect(alternativeDetectLanguage(code)).toBe('go');
     });
 
-    test('should return unknown for Rust', () => {
+    test('should detect Rust', () => {
         const code = 'fn main() { println!("Hello, world!"); }';
-        expect(alternativeDetectLanguage(code)).toBe('unknown');
+        expect(alternativeDetectLanguage(code)).toBe('rs');
     });
 
     test('should detect Java', () => {
@@ -93,15 +91,18 @@ describe('alternativeDetectLanguage', () => {
         expect(alternativeDetectLanguage(code)).toBe('java');
     });
 
-    test('should return unknown for C++', () => {
+    test('should detect C++', () => {
         const code = '#include <iostream>\nint main() { std::cout << "Hello"; return 0; }';
-        expect(alternativeDetectLanguage(code)).toBe('unknown');
+        expect(alternativeDetectLanguage(code)).toBe('cpp');
     });
 
     test('should detect C#', () => {
         const code = 'using System; class P { static void Main() { Console.WriteLine("Hello"); } }';
-        expect(alternativeDetectLanguage(code)).toBe('csharp');
+        expect(alternativeDetectLanguage(code)).toBe('cs');
     });
 
-    // Add more specific test cases as needed
+    test('should not mistake JavaScript with decorators/emails for Java', () => {
+        const code = '// contact: dev@example.com\n@Component()\nexport class A { run() { return 1; } }';
+        expect(alternativeDetectLanguage(code)).toBe('js');
+    });
 }); 

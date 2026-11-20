@@ -3,7 +3,7 @@
     "message": "Code Formatter - JSON, CSS та JavaScript."
   },
   "extDescription": {
-    "message": "Code Formatter - універсальне розширення, що пропонує складне підсвічування синтаксису для CSS, JSON та JavaScript. "
+    "message": "Code Formatter - універсальне розширення, що пропонує складне підсвічування синтаксису для CSS, JSON та JavaScript."
   },
   "extShortName": {
     "message": "Code Formatter"
@@ -18,7 +18,7 @@
     "message": "Показати оригінал"
   },
   "showFormatted": {
-    "message": "Показати відформатований "
+    "message": "Показати відформатований"
   },
   "networkResponseError": {
     "message": "Відповідь мережі не була нормальною."
@@ -43,5 +43,239 @@
   },
   "learnMore": {
     "message": "Дізнатися більше"
+  },
+  "guideTitle": {
+    "message": "Як користуватися Code Formatter"
+  },
+  "guideLead": {
+    "message": "Code Formatter працює сам. Немає кнопок, які треба натискати, і нічого не треба вибирати: відкрийте файл із кодом у вкладці браузера, і його буде відформатовано автоматично."
+  },
+  "guideStepsTitle": {
+    "message": "Як це працює"
+  },
+  "guideStep1Title": {
+    "message": "Відкрийте файл із кодом у вкладці"
+  },
+  "guideStep1Text": {
+    "message": "Натисніть посилання, що закінчується на .json, .css, .js, .ts, .xml, .yaml…, відкрийте адресу API, яка повертає JSON, або перетягніть файл зі свого комп’ютера в Chrome."
+  },
+  "guideStep2Title": {
+    "message": "Форматування відбувається одразу"
+  },
+  "guideStep2Text": {
+    "message": "Мінімізований JSON, CSS і JavaScript отримують відступи. Кожен файл отримує підсвітку синтаксису, номери рядків і стрілки для згортання блоків."
+  },
+  "guideStep3Title": {
+    "message": "Користуйтеся панелями інструментів"
+  },
+  "guideStep3Text": {
+    "message": "Угорі: перемикайтеся між «Відформатовано» та «Оригінал», копіюйте, завантажуйте й відкривайте налаштування теми, номерів рядків і перенесення слів. Внизу: згортайте все або розгортайте все."
+  },
+  "guideTryJson": {
+    "message": "Відкрити приклад JSON"
+  },
+  "guideTryCss": {
+    "message": "Відкрити приклад CSS"
+  },
+  "guideFilesTitle": {
+    "message": "Файли з вашого комп’ютера"
+  },
+  "guideFilesText": {
+    "message": "Chrome не дозволяє розширенням читати локальні файли (file://), доки ви цього не дозволите. Це налаштування вмикається один раз."
+  },
+  "guideFilesOn": {
+    "message": "Доступ до локальних файлів увімкнено. Усе готово."
+  },
+  "guideFilesOff": {
+    "message": "Доступ до локальних файлів вимкнено."
+  },
+  "guideFilesStep1": {
+    "message": "Натисніть кнопку нижче, щоб відкрити налаштування цього розширення."
+  },
+  "guideFilesStep2": {
+    "message": "Увімкніть «Дозволити доступ до URL-адрес файлів»."
+  },
+  "guideFilesStep3": {
+    "message": "Перезавантажте вкладку з вашим файлом."
+  },
+  "fileAccessButton": {
+    "message": "Відкрити налаштування розширення"
+  },
+  "guideJsonTitle": {
+    "message": "Робота з JSON"
+  },
+  "guideJsonPath": {
+    "message": "Натисніть будь-який ключ або значення: його шлях (наприклад, $$.users[2].email) з’явиться в нижній панелі. Скористайтеся «Копіювати шлях», щоб скопіювати його."
+  },
+  "guideJsonFold": {
+    "message": "Натискайте стрілки поруч із номерами рядків, щоб згорнути об’єкт або масив. «Згорнути все» залишає верхній рівень відкритим, щоб ви могли заглиблюватися по одному рівню."
+  },
+  "guideJsonLinks": {
+    "message": "Посилання в даних підкреслені. Утримуйте Ctrl (⌘ на Mac) і натисніть, щоб відкрити їх."
+  },
+  "guideJsonSearch": {
+    "message": "Натисніть Ctrl+F (⌘+F на Mac), щоб шукати у файлі."
+  },
+  "guideLimitsTitle": {
+    "message": "Корисно знати"
+  },
+  "guideLimitsPages": {
+    "message": "Працює лише на сторінках, що показують необроблений файл. Код у звичайних сайтах, на форумах або в онлайн-редакторах не змінюється."
+  },
+  "guideLimitsSettings": {
+    "message": "Налаштування, які ви змінюєте на панелі інструментів або у спливному вікні розширення, запам’ятовуються для всіх файлів."
+  },
+  "guideLimitsOffline": {
+    "message": "Усе працює на вашому комп’ютері. Ваш код нікуди не надсилається."
+  },
+  "guideLanguages": {
+    "message": "Підтримувані мови"
+  },
+  "guideReportIssue": {
+    "message": "Повідомити про проблему"
+  },
+  "fileAccessOffTitle": {
+    "message": "Локальні файли ще не форматуються"
+  },
+  "fileAccessOffText": {
+    "message": "Щоб форматувати файли, відкриті з вашого комп’ютера (file://), увімкніть для цього розширення «Дозволити доступ до URL-адрес файлів»."
+  },
+  "howToUse": {
+    "message": "Як користуватися"
+  },
+  "howToUseShort": {
+    "message": "Натискати нічого не потрібно. Відкрийте будь-який файл із кодом у вкладці (посилання, що закінчується на .json, .css, .js…, відповідь API або файл зі свого комп’ютера), і його буде відформатовано автоматично."
+  },
+  "openGuide": {
+    "message": "Відкрити повний посібник"
+  },
+  "collapseAll": {
+    "message": "Згорнути все"
+  },
+  "expandAll": {
+    "message": "Розгорнути все"
+  },
+  "jsonPath": {
+    "message": "Шлях JSON"
+  },
+  "copyPath": {
+    "message": "Копіювати шлях"
+  },
+  "copied": {
+    "message": "Скопійовано!"
+  },
+  "openLinkHint": {
+    "message": "Ctrl/⌘ + клік, щоб відкрити посилання"
+  },
+  "fileAccessBadgeTitle": {
+    "message": "Локальний файл не відформатовано: натисніть, щоб дізнатися, як увімкнути доступ до файлів"
+  },
+  "guideHeroTitle": {
+    "message": "Відкрийте файл з кодом. Він відформатується сам."
+  },
+  "guideReplay": {
+    "message": "Повторити"
+  },
+  "guideThemeLabel": {
+    "message": "Вигляд, також для файлів коду та спливаючого вікна"
+  },
+  "guideThemeAuto": {
+    "message": "Авто"
+  },
+  "guideThemeLight": {
+    "message": "Світла"
+  },
+  "guideThemeDark": {
+    "message": "Темна"
+  },
+  "guideFilesSettingLabel": {
+    "message": "Дозволити доступ до URL-адрес файлів"
+  },
+  "guideFilesSettingIncognito": {
+    "message": "Дозволити в режимі анонімного перегляду"
+  },
+  "guideFilesSettingErrors": {
+    "message": "Збирати помилки"
+  },
+  "guideJsonPathTitle": {
+    "message": "Бачте, де ви"
+  },
+  "guideJsonFoldTitle": {
+    "message": "Згортайте непотрібне"
+  },
+  "guideJsonLinksTitle": {
+    "message": "Відкривати посилання"
+  },
+  "guideJsonSearchTitle": {
+    "message": "Пошук"
+  },
+  "viewFormatted": {
+    "message": "Відформатовано"
+  },
+  "viewOriginal": {
+    "message": "Оригінал"
+  },
+  "lines": {
+    "message": "рядків"
+  },
+  "expandSelected": {
+    "message": "Розгорнути вибране"
+  },
+  "collapseSelected": {
+    "message": "Згорнути вибране"
+  },
+  "sponsored": {
+    "message": "Спонсоровано"
+  },
+  "about": {
+    "message": "Про розширення"
+  },
+  "aboutText": {
+    "message": "Форматує файли коду, які ви відкриваєте у вкладці. Лише для читання, працює повністю у вашому браузері."
+  },
+  "overview": {
+    "message": "Огляд"
+  },
+  "documentation": {
+    "message": "Документація"
+  },
+  "keyboardShortcuts": {
+    "message": "Комбінації клавіш"
+  },
+  "appearance": {
+    "message": "Вигляд"
+  },
+  "appearanceAuto": {
+    "message": "Авто"
+  },
+  "appearanceLight": {
+    "message": "Світлий"
+  },
+  "appearanceDark": {
+    "message": "Темний"
+  },
+  "lightTheme": {
+    "message": "Світла тема"
+  },
+  "darkTheme": {
+    "message": "Темна тема"
+  },
+  "popupTagline": {
+    "message": "Відкрийте будь-який файл коду у вкладці. Він форматується автоматично."
+  },
+  "help": {
+    "message": "Довідка"
+  },
+  "howToUseLink": {
+    "message": "Як користуватися"
+  },
+  "website": {
+    "message": "Вебсайт"
+  },
+  "shortcutsShort": {
+    "message": "Скорочення"
+  },
+  "reportBug": {
+    "message": "Повідомити про помилку"
   }
 }

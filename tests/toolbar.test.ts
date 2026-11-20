@@ -63,7 +63,7 @@ describe('toolbar component', () => {
         };
 
         test('should generate HTML for view settings', () => {
-            const settings: Settings = { theme: 'githubDark', lineNumbers: true, wordWrap: false };
+            const settings: Settings = { appearance: 'auto', lightTheme: 'githubLight', darkTheme: 'githubDark', lineNumbers: true, wordWrap: false };
             const html = generateViewItemsHtml(settings, i18n);
 
             expect(html).toContain('data-setting="lineNumbers"');
@@ -73,7 +73,7 @@ describe('toolbar component', () => {
         });
 
         test('should show checked state for enabled settings', () => {
-            const settings: Settings = { theme: 'githubDark', lineNumbers: true, wordWrap: false };
+            const settings: Settings = { appearance: 'auto', lightTheme: 'githubLight', darkTheme: 'githubDark', lineNumbers: true, wordWrap: false };
             const html = generateViewItemsHtml(settings, i18n);
 
             // lineNumbers toggle is on
@@ -84,7 +84,7 @@ describe('toolbar component', () => {
         });
 
         test('should reflect settings state correctly', () => {
-            const settings: Settings = { theme: 'githubDark', lineNumbers: false, wordWrap: true };
+            const settings: Settings = { appearance: 'auto', lightTheme: 'githubLight', darkTheme: 'githubDark', lineNumbers: false, wordWrap: true };
             const html = generateViewItemsHtml(settings, i18n);
 
             // Should have checked class for wordWrap (class comes before data-setting)
@@ -107,7 +107,9 @@ describe('toolbar component', () => {
                 wordWrap: 'Word Wrap'
             },
             settings: {
-                theme: 'githubDark',
+                appearance: 'auto',
+                lightTheme: 'githubLight',
+                darkTheme: 'githubDark',
                 lineNumbers: true,
                 wordWrap: false
             }
@@ -124,26 +126,50 @@ describe('toolbar component', () => {
         test('should include all buttons', () => {
             const html = generateToolbarHtml(mockConfig);
 
-            expect(html).toContain('id="code-formatter-switcher-button"');
+            expect(html).toContain('data-view="formatted"');
+            expect(html).toContain('data-view="original"');
             expect(html).toContain('id="code-formatter-toolbar-button-copy"');
             expect(html).toContain('id="code-formatter-toolbar-button-download"');
         });
 
-        test('should include dropdowns', () => {
+        test('should not include fold buttons (they live in the status bar)', () => {
+            const html = generateToolbarHtml(mockConfig);
+            expect(html).not.toContain('collapse');
+        });
+
+        test('should include the appearance switch and one theme list per tone', () => {
+            const html = generateToolbarHtml(mockConfig);
+            expect(html).toContain('data-appearance="auto"');
+            expect(html).toContain('data-appearance="light"');
+            expect(html).toContain('data-appearance="dark"');
+            const light = html.slice(html.indexOf('id="theme-dropdown-menu-light"'), html.indexOf('data-tone-list="dark"'));
+            expect(light).toContain('data-theme="githubLight"');
+            expect(light).not.toContain('data-theme="monokai"');
+            expect(html.slice(html.indexOf('id="theme-dropdown-menu-dark"'))).toContain('data-theme="monokai"');
+        });
+
+        test('should put theme and view settings in one settings menu', () => {
             const html = generateToolbarHtml(mockConfig);
 
-            expect(html).toContain('id="theme-dropdown-menu"');
-            expect(html).toContain('id="view-dropdown-menu"');
-            expect(html).toContain('id="theme-dropdown-trigger"');
-            expect(html).toContain('id="view-dropdown-trigger"');
+            expect(html).toContain('id="settings-dropdown-trigger"');
+            expect(html).toContain('id="settings-dropdown-menu"');
+            const menu = html.slice(html.indexOf('id="settings-dropdown-menu"'));
+            expect(menu).toContain('id="view-dropdown-menu"');
+            expect(menu).toContain('id="theme-dropdown-menu-dark"');
+        });
+
+        test('should show the language when given', () => {
+            expect(generateToolbarHtml({ ...mockConfig, languageLabel: 'JSON' })).toContain('code-formatter-toolbar__lang">JSON<');
+            expect(generateToolbarHtml(mockConfig)).not.toContain('code-formatter-toolbar__lang');
         });
 
         test('should include i18n text', () => {
-            const html = generateToolbarHtml(mockConfig);
+            const html = generateToolbarHtml({ ...mockConfig, i18n: { ...mockConfig.i18n, viewFormatted: 'Formatiert', viewOriginal: 'Original', settings: 'Einstellungen' } });
 
             expect(html).toContain('Copy');
             expect(html).toContain('Download');
-            expect(html).toContain('Show Original');
+            expect(html).toContain('Formatiert');
+            expect(html).toContain('Einstellungen');
             expect(html).toContain('Theme');
             expect(html).toContain('View');
         });

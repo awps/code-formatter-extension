@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <title data-i18n="guideTitle">How to use Code Formatter</title>
+    <link rel="stylesheet" href="../css/guide.min.css">
+    <!-- Loaded in <head> on purpose: applies the saved color theme before first paint -->
+    <script src="guide.min.js"></script>
+</head>
+<body>
+<div class="page">
+
+    <header class="topbar">
+        <a class="brand" href="https://zerowp.com/code-formatter/?utm_source=code-formatter-extension&amp;utm_medium=extension&amp;utm_campaign=code-formatter&amp;utm_content=guide" target="_blank" rel="noopener">
+            <svg class="brand__icon" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect width="96" height="96" rx="24" fill="#1E1E2E"/>
+                <path d="M28 32L44 48L28 64" stroke="#89B4FA" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M52 64H68" stroke="#A6E3A1" stroke-width="6" stroke-linecap="round"/>
+            </svg>
+            <span data-i18n="extShortName">Code Formatter</span>
+        </a>
+
+        <div class="theme-switch" role="radiogroup" aria-label="Appearance, also used for code files and the popup" title="Appearance, also used for code files and the popup" data-i18n-aria="guideThemeLabel">
+            <button type="button" role="radio" data-theme-choice="auto" aria-checked="true">
+                <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 3.5a6.5 6.5 0 0 1 0 13z" fill="currentColor"/></svg>
+                <span data-i18n="guideThemeAuto">Auto</span>
+            </button>
+            <button type="button" role="radio" data-theme-choice="light" aria-checked="false">
+                <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="3.6" fill="currentColor"/><g stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M10 1.8v2.1M10 16.1v2.1M1.8 10h2.1M16.1 10h2.1M4.2 4.2l1.5 1.5M14.3 14.3l1.5 1.5M4.2 15.8l1.5-1.5M14.3 5.7l1.5-1.5"/></g></svg>
+                <span data-i18n="guideThemeLight">Light</span>
+            </button>
+            <button type="button" role="radio" data-theme-choice="dark" aria-checked="false">
+                <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M16.5 12.3A7 7 0 0 1 7.7 3.5a7 7 0 1 0 8.8 8.8z" fill="currentColor"/></svg>
+                <span data-i18n="guideThemeDark">Dark</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero__copy">
+            <h1 data-i18n="guideHeroTitle">Open a code file. It formats itself.</h1>
+            <p class="hero__lead" data-i18n="guideLead">Code Formatter works on its own. There are no buttons to press and nothing to select: open a code file in a browser tab and it is formatted automatically.</p>
+            <div class="hero__actions">
+                <a class="btn btn--primary" href="https://api.github.com/repos/awps/code-formatter-extension" target="_blank" rel="noopener noreferrer" data-i18n="guideTryJson">Open a JSON example</a>
+                <a class="btn" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css" target="_blank" rel="noopener noreferrer" data-i18n="guideTryCss">Open a CSS example</a>
+            </div>
+        </div>
+
+        <figure class="window" id="demo" aria-label="Example: a minified JSON file being formatted">
+            <div class="window__bar">
+                <span class="window__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="window__url">api.example.com/users.json</span>
+                <button type="button" class="window__replay" id="demo-replay" data-i18n="guideReplay">Replay</button>
+            </div>
+            <div class="window__toolbar" aria-hidden="true">
+                <span class="mini-logo">&gt;_</span>
+                <span class="mini-lang">JSON</span>
+                <span class="grow"></span>
+                <span class="mini-seg"><span class="on" data-i18n="viewFormatted">Formatted</span><span data-i18n="viewOriginal">Original</span></span>
+                <span data-i18n="copy">Copy</span>
+            </div>
+            <div class="window__body">
+                <pre class="demo-raw" aria-hidden="true">{"users":[{"id":1,"name":"Ada Lovelace","email":"ada@example.com","site":"https://example.com/ada"},{"id":2,"name":"Alan Turing","email":"alan@example.com"}],"total":2}</pre>
+                <ol class="demo-code" aria-hidden="true">
+                    <li style="--i:0"><b class="f">⌄</b><span class="p">{</span></li>
+                    <li style="--i:1"><b class="f">⌄</b>  <span class="k">"users"</span><span class="p">:</span> <span class="p">[</span></li>
+                    <li style="--i:2"><b class="f">⌄</b>    <span class="p">{</span></li>
+                    <li style="--i:3"><b></b>      <span class="k">"id"</span><span class="p">:</span> <span class="n">1</span><span class="p">,</span></li>
+                    <li style="--i:4"><b></b>      <span class="k">"name"</span><span class="p">:</span> <span class="s">"Ada Lovelace"</span><span class="p">,</span></li>
+                    <li style="--i:5" class="is-cursor"><b></b>      <span class="k">"email"</span><span class="p">:</span> <span class="s">"ada@example.com"</span><span class="p">,</span></li>
+                    <li style="--i:6"><b></b>      <span class="k">"site"</span><span class="p">:</span> <span class="s"><u>"https://example.com/ada"</u></span></li>
+                    <li style="--i:7"><b></b>    <span class="p">},</span></li>
+                    <li style="--i:8"><b class="f">›</b>    <span class="p">{</span><span class="fold">…</span><span class="p">}</span></li>
+                    <li style="--i:9"><b></b>  <span class="p">],</span></li>
+                    <li style="--i:10"><b></b>  <span class="k">"total"</span><span class="p">:</span> <span class="n">2</span></li>
+                    <li style="--i:11"><b></b><span class="p">}</span></li>
+                </ol>
+            </div>
+            <div class="window__path">
+                <span data-i18n="jsonPath">JSON path</span>
+                <code>$.users[0].email</code>
+                <span class="window__copy" data-i18n="copyPath">Copy path</span>
+                <span class="window__fold"><svg viewBox="0 0 16 16"><path d="M4.5 6 8 2.5 11.5 6M4.5 10 8 13.5l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><svg viewBox="0 0 16 16"><path d="M4.5 2.5 8 6l3.5-3.5M4.5 13.5 8 10l3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+        </figure>
+    </section>
+
+    <!-- STEPS -->
+    <section class="section">
+        <h2 class="section__title" data-i18n="guideStepsTitle">How it works</h2>
+        <ol class="steps">
+            <li class="step">
+                <div class="step__visual" aria-hidden="true">
+                    <div class="vis-url">
+                        <svg viewBox="0 0 16 16"><path d="M5 7V5a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="3.5" y="7" width="9" height="6.5" rx="1.5" fill="currentColor"/></svg>
+                        <span>example.com/<strong>app.min.css</strong></span>
+                    </div>
+                    <div class="vis-files">
+                        <span>.json</span><span>.css</span><span>.js</span><span>.ts</span><span>.xml</span><span>.yaml</span>
+                    </div>
+                </div>
+                <h3><span class="step__num">1</span><span data-i18n="guideStep1Title">Open a code file in a tab</span></h3>
+                <p data-i18n="guideStep1Text">Click a link that ends in .json, .css, .js, .ts, .xml, .yaml…, open an API URL that returns JSON, or drag a file from your computer into Chrome.</p>
+            </li>
+            <li class="step">
+                <div class="step__visual" aria-hidden="true">
+                    <div class="vis-before">.btn{color:#fff;padding:4px 8px}.btn:hover{opacity:.8}</div>
+                    <div class="vis-after"><span class="k">.btn</span> {<br>  <span class="a">color</span>: <span class="n">#fff</span>;<br>  <span class="a">padding</span>: <span class="n">4px 8px</span>;<br>}</div>
+                </div>
+                <h3><span class="step__num">2</span><span data-i18n="guideStep2Title">It is formatted right away</span></h3>
+                <p data-i18n="guideStep2Text">Minified JSON, CSS and JavaScript are re-indented. Every file gets syntax highlighting, line numbers and arrows to collapse blocks.</p>
+            </li>
+            <li class="step">
+                <div class="step__visual" aria-hidden="true">
+                    <div class="vis-toolbar">
+                        <span class="vis-seg"><b data-i18n="viewFormatted">Formatted</b><i data-i18n="viewOriginal">Original</i></span>
+                        <span data-i18n="copy">Copy</span>
+                        <span data-i18n="download">Download</span>
+                        <span class="vis-gear" title="Settings"><svg viewBox="0 0 16 16"><path d="M2 4.5h7M12.5 4.5H14M2 11.5h2.5M8 11.5h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="10.75" cy="4.5" r="1.75" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="6.25" cy="11.5" r="1.75" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></span>
+                    </div>
+                    <div class="vis-statusbar"><span class="vis-tip"><strong data-i18n="collapseAll">Collapse all</strong> <kbd>Ctrl+Alt+[</kbd></span><span class="vis-icons"><svg viewBox="0 0 16 16"><path d="M4.5 6 8 2.5 11.5 6M4.5 10 8 13.5l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><svg viewBox="0 0 16 16"><path d="M4.5 2.5 8 6l3.5-3.5M4.5 13.5 8 10l3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                </div>
+                <h3><span class="step__num">3</span><span data-i18n="guideStep3Title">Use the toolbars</span></h3>
+                <p data-i18n="guideStep3Text">At the top: switch between formatted and original, copy, download, and open the settings for theme, line numbers and word wrap. At the bottom: collapse or expand everything.</p>
+            </li>
+        </ol>
+    </section>
+
+    <!-- LOCAL FILES -->
+    <section class="section files files--unknown" id="file-access">
+        <div class="files__copy">
+            <h2 class="section__title" data-i18n="guideFilesTitle">Files from your computer</h2>
+            <p data-i18n="guideFilesText">Chrome blocks extensions from reading local files (file://) until you allow it. This is a one-time switch.</p>
+
+            <p class="files__status files__status--on">
+                <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.3l2.6 2.6L14 7.5" fill="none" stroke="var(--surface)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span data-i18n="guideFilesOn">Access to local files is on. You are all set.</span>
+            </p>
+            <div class="files__off">
+                <p class="files__status files__status--off">
+                    <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M10 5.5v5.5M10 14.2v.3" stroke="var(--surface)" stroke-width="2" stroke-linecap="round"/></svg>
+                    <span data-i18n="guideFilesOff">Access to local files is off.</span>
+                </p>
+                <ol class="files__steps">
+                    <li data-i18n="guideFilesStep1">Click the button below to open this extension's settings.</li>
+                    <li data-i18n="guideFilesStep2">Turn on “Allow access to file URLs”.</li>
+                    <li data-i18n="guideFilesStep3">Reload the tab with your file.</li>
+                </ol>
+                <button type="button" class="btn btn--warn" id="file-access-button" data-i18n="fileAccessButton">Open extension settings</button>
+            </div>
+        </div>
+
+        <div class="chrome-setting" aria-hidden="true">
+            <div class="chrome-setting__row chrome-setting__row--dim">
+                <span data-i18n="guideFilesSettingIncognito">Allow in Incognito</span>
+                <span class="switch"></span>
+            </div>
+            <div class="chrome-setting__row chrome-setting__row--target">
+                <span data-i18n="guideFilesSettingLabel">Allow access to file URLs</span>
+                <span class="switch switch--target"></span>
+            </div>
+            <div class="chrome-setting__row chrome-setting__row--dim">
+                <span data-i18n="guideFilesSettingErrors">Collect errors</span>
+                <span class="switch"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- JSON -->
+    <section class="section">
+        <h2 class="section__title" data-i18n="guideJsonTitle">Working with JSON</h2>
+        <div class="tips">
+            <div class="tip">
+                <div class="tip__visual" aria-hidden="true">
+                    <div class="vis-path"><span data-i18n="jsonPath">JSON path</span><code>$.users[2].email</code><span class="vis-path__copy" data-i18n="copyPath">Copy path</span></div>
+                </div>
+                <h3 data-i18n="guideJsonPathTitle">See where you are</h3>
+                <p data-i18n="guideJsonPath">Click any key or value: its path (for example $.users[2].email) is shown in the bar at the bottom. Use “Copy path” to copy it.</p>
+            </div>
+            <div class="tip">
+                <div class="tip__visual" aria-hidden="true">
+                    <div class="vis-fold">
+                        <div><b>⌄</b><span class="k">"orders"</span>: [</div>
+                        <div class="in"><b>›</b>{<span class="fold">…</span>},</div>
+                        <div class="in"><b>›</b>{<span class="fold">…</span>}</div>
+                        <div><b></b>]</div>
+                    </div>
+                </div>
+                <h3 data-i18n="guideJsonFoldTitle">Collapse what you don't need</h3>
+                <p data-i18n="guideJsonFold">Click the arrows next to the line numbers to collapse an object or array. “Collapse all” keeps the top level open so you can drill down one level at a time.</p>
+            </div>
+            <div class="tip">
+                <div class="tip__visual" aria-hidden="true">
+                    <div class="vis-keys"><kbd>Ctrl</kbd><span>/</span><kbd>⌘</kbd><span>+</span><span class="vis-link">https://example.com</span></div>
+                </div>
+                <h3 data-i18n="guideJsonLinksTitle">Open links</h3>
+                <p data-i18n="guideJsonLinks">Links inside the data are underlined. Hold Ctrl (⌘ on Mac) and click to open them.</p>
+            </div>
+            <div class="tip">
+                <div class="tip__visual" aria-hidden="true">
+                    <div class="vis-keys"><kbd>Ctrl</kbd><span>+</span><kbd>F</kbd><span class="vis-search">email<i></i></span></div>
+                </div>
+                <h3 data-i18n="guideJsonSearchTitle">Search</h3>
+                <p data-i18n="guideJsonSearch">Press Ctrl+F (⌘+F on Mac) to search inside the file.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- GOOD TO KNOW -->
+    <section class="section">
+        <h2 class="section__title" data-i18n="guideLimitsTitle">Good to know</h2>
+        <div class="facts">
+            <div class="fact">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9l-5-5H8z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M15 4v5h5M8 13l-2 2 2 2M16 13l2 2-2 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <p data-i18n="guideLimitsPages">It only works on pages that show a raw file. It does not change code shown inside normal websites, forums or online editors.</p>
+            </div>
+            <div class="fact">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="16" cy="7" r="2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="10" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+                <p data-i18n="guideLimitsSettings">Settings you change in the toolbar or in the extension popup are remembered for all files.</p>
+            </div>
+            <div class="fact">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.4-3 7.9-7 9.5-4-1.6-7-5.1-7-9.5V6l7-3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <p data-i18n="guideLimitsOffline">Everything runs on your computer. Your code is never sent anywhere.</p>
+            </div>
+        </div>
+
+        <div class="langs">
+            <h3 data-i18n="guideLanguages">Supported languages</h3>
+            <ul>
+                <li>JSON</li><li>JavaScript</li><li>TypeScript</li><li>JSX / TSX</li><li>CSS</li><li>LESS</li><li>SASS</li><li>PHP</li><li>Python</li><li>Go</li><li>Rust</li><li>Java</li><li>C++</li><li>C#</li><li>XML</li><li>YAML</li><li>SQL</li><li>Markdown</li>
+            </ul>
+        </div>
+    </section>
+
+    <a class="sponsor" href="https://crustat.com/?utm_source=code-formatter-extension&amp;utm_medium=extension&amp;utm_campaign=extension-promo&amp;utm_content=guide" target="_blank" rel="noopener sponsored" lang="en">
+        <img class="sponsor__mark" src="../icons/crustat-mark.svg" alt="" width="44" height="44">
+        <span class="sponsor__copy">
+            <span class="sponsor__head"><span class="sponsor__name">Crustat</span><span class="sponsor__tag" data-i18n="sponsored">Sponsored</span></span>
+            <strong>See who visits your website.</strong>
+            <span class="sponsor__text">Crustat counts your visitors without cookies, so there is no banner to add. One line of code, 14-day free trial, no card.</span>
+        </span>
+        <span class="sponsor__cta">Try Crustat free</span>
+    </a>
+
+    <footer class="footer">
+        <a href="https://zerowp.com/code-formatter/docs/?utm_source=code-formatter-extension&amp;utm_medium=extension&amp;utm_campaign=code-formatter&amp;utm_content=guide" target="_blank" rel="noopener" data-i18n="documentation">Documentation</a>
+        <a href="https://zerowp.com/code-formatter/docs/?utm_source=code-formatter-extension&amp;utm_medium=extension&amp;utm_campaign=code-formatter&amp;utm_content=guide#shortcuts" target="_blank" rel="noopener" data-i18n="keyboardShortcuts">Keyboard shortcuts</a>
+        <a href="https://zerowp.com/code-formatter/?utm_source=code-formatter-extension&amp;utm_medium=extension&amp;utm_campaign=code-formatter&amp;utm_content=guide" target="_blank" rel="noopener" data-i18n="website">Website</a>
+        <a href="https://github.com/awps/code-formatter-extension/issues" target="_blank" rel="noopener noreferrer" data-i18n="guideReportIssue">Report a problem</a>
+    </footer>
+</div>
+</body>
+</html>
