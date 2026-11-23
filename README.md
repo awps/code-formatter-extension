@@ -6,6 +6,10 @@
 
 ## [Add to Chrome](https://chromewebstore.google.com/detail/bhimnoepicmcjfkbmhckamllnibadfal?hl=en)
 
+[![Watch the 1-minute demo on YouTube](store/images/en/1-formats-itself.jpg)](https://www.youtube.com/watch?v=n6z5o0HBGKQ)
+
+<p align="center"><a href="https://www.youtube.com/watch?v=n6z5o0HBGKQ">▶ Watch the 1-minute demo on YouTube</a></p>
+
 A Chrome extension that makes CSS, JSON, and JavaScript more readable in the browser with syntax highlighting, line numbers, and collapsible sections.
 
 You know how frustrating it is to read code that's not formatted correctly or is minified.
@@ -89,4 +93,12 @@ The extension icon shows a **!** badge when a local code file could not be forma
 
 ## [Get it on Chrome Web Store](https://chromewebstore.google.com/detail/bhimnoepicmcjfkbmhckamllnibadfal?hl=en)
 
+## Screenshots
 
+![Fold any object and copy its path](store/images/en/2-fold-and-path.jpg)
+
+![Light by day, dark by night](store/images/en/3-light-dark.jpg)
+
+![One extension for every code file](store/images/en/4-languages.jpg)
+
+![Runs in your browser, nothing leaves it](store/images/en/5-private.jpg)
