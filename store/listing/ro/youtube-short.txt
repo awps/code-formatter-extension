@@ -1,0 +1,8 @@
+TITLE
+Deschide un fișier de cod. Se formatează singur. Code Formatter #Shorts
+
+DESCRIPTION
+Deschide un fișier de cod brut în Chrome, iar Code Formatter îl face lizibil imediat ce se deschide fila. Restrânge obiecte JSON, copiază calea oricărei valori, comută între textul formatat și cel original și urmează modul luminos sau întunecat al dispozitivului. Totul rulează în browserul tău.
+
+Instalează gratuit: https://chromewebstore.google.com/detail/bhimnoepicmcjfkbmhckamllnibadfal
+Site: https://zerowp.com/code-formatter/?utm_source=youtube&utm_medium=video&utm_campaign=code-formatter&utm_content=ro-short

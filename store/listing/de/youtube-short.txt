@@ -1,0 +1,8 @@
+TITLE
+Code-Datei öffnen. Sie formatiert sich selbst. Code Formatter #Shorts
+
+DESCRIPTION
+Öffnen Sie eine rohe Code-Datei in Chrome, und Code Formatter macht sie lesbar, sobald der Tab geöffnet ist. Klappen Sie JSON-Objekte ein, kopieren Sie den Pfad eines Werts, wechseln Sie zwischen formatiertem und Originaltext, und nutzen Sie den hellen oder dunklen Modus Ihres Geräts. Alles läuft in Ihrem Browser.
+
+Kostenlos installieren: https://chromewebstore.google.com/detail/bhimnoepicmcjfkbmhckamllnibadfal
+Website: https://zerowp.com/code-formatter/?utm_source=youtube&utm_medium=video&utm_campaign=code-formatter&utm_content=de-short
