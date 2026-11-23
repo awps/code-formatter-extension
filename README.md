@@ -6,7 +6,7 @@
 
 ## [Add to Chrome](https://chromewebstore.google.com/detail/bhimnoepicmcjfkbmhckamllnibadfal?hl=en)
 
-[![Watch the 1-minute demo on YouTube](store/images/en/1-formats-itself.jpg)](https://www.youtube.com/watch?v=n6z5o0HBGKQ)
+[![Watch the 1-minute demo on YouTube](store/images/readme-video.jpg)](https://www.youtube.com/watch?v=n6z5o0HBGKQ)
 
 <p align="center"><a href="https://www.youtube.com/watch?v=n6z5o0HBGKQ">▶ Watch the 1-minute demo on YouTube</a></p>
 
