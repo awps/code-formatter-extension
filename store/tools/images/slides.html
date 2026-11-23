@@ -1,0 +1,197 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,800&family=JetBrains+Mono:wght@400;500&family=Onest:wght@500;600;800&family=Noto+Sans+JP:wght@500;700;900&family=Noto+Sans+SC:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #12142a;
+    --ink-2: #1b1e3a;
+    --raw: #232747;
+    --text: #eef1ff;
+    --muted: #a3a9d6;
+    --blue: #89b4fa;
+    --green: #a6e3a1;
+    --pink: #f5c2e7;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--ink); }
+  body { font-family: 'Bricolage Grotesque', 'Onest', system-ui, sans-serif; color: var(--text); }
+  :lang(ja) body, body:lang(ja) { font-family: 'Bricolage Grotesque', 'Noto Sans JP', sans-serif; }
+  :lang(zh) body, body:lang(zh) { font-family: 'Bricolage Grotesque', 'Noto Sans SC', sans-serif; }
+  :lang(ja) h1, :lang(zh) h1 { letter-spacing: 0; line-height: 1.18; font-weight: 900; }
+  :lang(ja) h1, :lang(zh) h1 { word-break: keep-all; }
+  :lang(uk) h1 { letter-spacing: -0.02em; line-height: 1.04; }
+
+  .slide { position: relative; overflow: hidden; background: var(--ink); }
+  .s1280 { width: 1280px; height: 800px; }
+  .s440 { width: 440px; height: 280px; }
+  .s1400 { width: 1400px; height: 560px; }
+
+  /* The raw, unformatted file as a texture: the "before" of every picture */
+  .raw {
+    position: absolute; inset: -20px;
+    font: 400 15px/1.55 'JetBrains Mono', monospace;
+    color: var(--raw);
+    word-break: break-all;
+    white-space: pre-wrap;
+    user-select: none;
+    transform: rotate(-4deg) scale(1.08);
+    transform-origin: center;
+  }
+  .raw.fade::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(90deg, var(--ink) 0 28%, rgba(18,20,42,.6) 48%, rgba(18,20,42,.15) 75%);
+  }
+
+  .logo { display: inline-flex; align-items: center; gap: 12px; font-weight: 600; font-size: 22px; letter-spacing: -0.01em; }
+  .logo svg { width: 40px; height: 40px; flex: none; }
+
+  h1 { font-weight: 800; letter-spacing: -0.035em; line-height: 0.98; }
+  .lead { color: var(--muted); font-weight: 500; line-height: 1.35; }
+
+  .window {
+    position: absolute; border-radius: 14px; overflow: hidden;
+    background: #0d1117;
+    box-shadow: 0 0 0 1px rgba(255,255,255,.08), 0 40px 80px -20px rgba(0,0,0,.65);
+  }
+  .window.light { background: #fff; box-shadow: 0 0 0 1px rgba(0,0,0,.08), 0 40px 80px -20px rgba(0,0,0,.55); }
+  .window__bar { height: 34px; display: flex; align-items: center; gap: 7px; padding: 0 14px; background: #1c1f33; }
+  .window.light .window__bar { background: #e7e9f2; }
+  .window__bar i { width: 11px; height: 11px; border-radius: 50%; background: #3b3f5c; }
+  .window.light .window__bar i { background: #c7cad8; }
+  .window__url { margin-left: 14px; font: 500 13px 'JetBrains Mono', monospace; color: #8c91b8; }
+  .window.light .window__url { color: #6b708e; }
+  .window img { display: block; width: 100%; }
+
+  .note {
+    position: absolute; display: inline-flex; align-items: center; gap: 10px;
+    padding: 10px 16px; border-radius: 999px; white-space: nowrap;
+    background: var(--green); color: #10251a;
+    font-weight: 600; font-size: 19px; letter-spacing: -0.01em;
+    box-shadow: 0 12px 30px -8px rgba(0,0,0,.5);
+  }
+  .note.blue { background: var(--blue); color: #0d1a33; }
+  .note::after { content: ''; position: absolute; width: 14px; height: 14px; background: inherit; transform: rotate(45deg); }
+  .note.down::after { left: 28px; bottom: -6px; }
+  .note.left::after { left: -6px; top: calc(50% - 7px); }
+  .note.right::after { right: -6px; top: calc(50% - 7px); }
+  .note.downr::after { right: 28px; bottom: -6px; }
+  .copy { position: absolute; display: flex; flex-direction: column; gap: 26px; }
+  .copy p { margin: 0; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+  .chips span { padding: 8px 14px; border-radius: 10px; background: var(--ink-2); border: 1px solid #2d3158; font: 500 17px 'JetBrains Mono', monospace; color: #d6dbff; }
+  .chips span.on { background: var(--blue); color: #0d1a33; border-color: var(--blue); }
+
+  .points { list-style: none; display: grid; gap: 14px; font-size: 22px; font-weight: 500; }
+  .points li { display: flex; gap: 12px; align-items: baseline; }
+  .points li::before { content: ''; flex: none; width: 10px; height: 10px; border-radius: 3px; background: var(--green); transform: translateY(-2px); }
+</style>
+</head>
+<body>
+<template id="logo">
+  <svg viewBox="0 0 96 96" fill="none" aria-hidden="true"><rect width="96" height="96" rx="24" fill="#1E1E2E"/><rect x="1" y="1" width="94" height="94" rx="23" stroke="#3a3d5c" stroke-width="2"/><path d="M28 32L44 48L28 64" stroke="#89B4FA" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M52 64H68" stroke="#A6E3A1" stroke-width="6" stroke-linecap="round"/></svg>
+</template>
+<div id="root"></div>
+<script>
+const RAW = __RAW__;
+const ALL = __STRINGS__;
+const LOC = new URLSearchParams(location.search).get('l') || 'en';
+const T = ALL[LOC];
+document.documentElement.lang = LOC.replace('_', '-');
+const raw = (cls = 'fade') => `<div class="raw ${cls}">${(RAW + RAW + RAW + RAW + RAW).replace(/</g, '&lt;')}</div>`;
+const logo = (size = 40) => `<span class="logo" style="font-size:${size * 0.55}px">${document.getElementById('logo').innerHTML.replace('<svg', `<svg style="width:${size}px;height:${size}px"`)}Code Formatter</span>`;
+const win = (img, url, style, light = false) => `<div class="window${light ? ' light' : ''}" style="${style}"><div class="window__bar"><i></i><i></i><i></i><span class="window__url">${url}</span></div><img src="shots/${LOC}/${img}.png"></div>`;
+
+const BOXES = __BOXES__[LOC];
+// Window on slide 2 sits at (140, 206); the screenshot starts below its 34px bar.
+const W2 = { x: 140, y: 206 + 34 };
+const bx = BOXES;
+const notes2 = `
+  <div class="note right blue" style="left:${W2.x + bx.view.x - 14}px;top:${W2.y + bx.view.y + bx.view.h / 2}px;transform:translate(-100%,-50%)">${T.n_view}</div>
+  <div class="note left" style="left:${W2.x + bx.folded.x + 112}px;top:${W2.y + bx.folded.y + bx.folded.h / 2}px;transform:translateY(-50%)">${T.n_fold}</div>
+  <div class="note left blue" style="left:${W2.x + bx.copy.x + bx.copy.w + 16}px;top:${W2.y + bx.copy.y + bx.copy.h / 2}px;transform:translateY(-50%)">${T.n_copy}</div>
+  <div class="note downr" style="left:${W2.x + bx.folds.x + 24 + 35}px;top:${W2.y + bx.folds.y - 14}px;transform:translate(-100%,-100%)">${T.n_all}</div>`;
+
+const slides = {
+  shot1: `<div class="slide s1280">${raw()}
+    <div style="position:absolute;left:72px;top:72px">${logo(44)}</div>
+    <div class="copy" data-fit="560" style="left:72px;top:170px;width:450px">
+      <h1 style="font-size:68px">${T.s1_h}</h1>
+      <p class="lead" style="font-size:24px;width:420px">${T.s1_p}</p>
+    </div>
+    ${win('json-open', 'api.northwind.dev/v2/users', 'left:540px;top:150px;width:680px')}
+  </div>`,
+
+  shot2: `<div class="slide s1280">${raw()}
+    <div class="copy" data-fit="132" style="left:72px;top:56px;width:1136px;gap:14px">
+      <h1 style="font-size:60px">${T.s2_h}</h1>
+      <p class="lead" style="font-size:23px">${T.s2_p}</p>
+    </div>
+    ${win('json-wide', 'api.northwind.dev/v2/users', 'left:140px;top:206px;width:1000px')}
+    ${notes2}
+  </div>`,
+
+  shot3: `<div class="slide s1280">${raw()}
+    <div class="copy" data-fit="600" style="left:72px;top:96px;width:440px">
+      <h1 style="font-size:64px">${T.s3_h}</h1>
+      <p class="lead" style="font-size:23px;width:400px">${T.s3_p}</p>
+    </div>
+    ${win('json-light', 'api.northwind.dev/v2/users', 'left:560px;top:56px;width:640px', true)}
+    ${win('css-dark', 'cdn.northwind.dev/assets/card.css', 'left:500px;top:396px;width:640px')}
+  </div>`,
+
+  shot4: `<div class="slide s1280">${raw()}
+    <div class="copy" data-fit="196" style="left:72px;top:72px;width:470px">
+      <h1 style="font-size:56px">${T.s4_h}</h1>
+    </div>
+    <div class="chips" style="position:absolute;left:72px;top:290px;width:450px">
+      <span class="on">JSON</span><span class="on">JavaScript</span><span class="on">CSS</span><span>TypeScript</span><span>JSX</span><span>PHP</span><span>Python</span><span>Go</span><span>Rust</span><span>Java</span><span>C++</span><span>C#</span><span>XML</span><span>YAML</span><span>SQL</span><span>LESS</span><span>SASS</span><span>Markdown</span>
+    </div>
+    <p class="lead" style="position:absolute;left:72px;top:560px;width:440px;font-size:21px">${T.s4_p}</p>
+    ${win('js-light', 'cdn.northwind.dev/js/search.js', 'left:580px;top:56px;width:620px', true)}
+    ${win('css-dark', 'cdn.northwind.dev/assets/card.css', 'left:620px;top:396px;width:600px')}
+  </div>`,
+
+  shot5: `<div class="slide s1280">${raw()}
+    <div class="copy" data-fit="680" style="left:72px;top:96px;width:640px;gap:56px">
+      <h1 style="font-size:64px;width:620px">${T.s5_h}</h1>
+      <ul class="points" style="width:600px">
+        <li>${T.p1}</li><li>${T.p2}</li><li>${T.p3}</li><li>${T.p4}</li><li>${T.p5}</li>
+      </ul>
+    </div>
+    <div class="window" style="left:790px;top:72px;width:340px;border-radius:16px"><img src="shots/${LOC}/popup-dark.png"></div>
+  </div>`,
+
+  small: `<div class="slide s440">${raw('')}
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(18,20,42,.2), rgba(18,20,42,.88) 70%)"></div>
+    <div style="position:absolute;left:28px;top:28px">${logo(34)}</div>
+    <div class="copy" data-fit="104" style="left:28px;bottom:54px;width:384px">
+      <h1 style="font-size:39px">${T.small_h}</h1>
+    </div>
+    <p style="position:absolute;left:28px;bottom:24px;font:500 15px 'JetBrains Mono',monospace;color:var(--green)">JSON  CSS  JavaScript  +15</p>
+  </div>`,
+
+  marquee: `<div class="slide s1400">${raw()}
+    <div style="position:absolute;left:80px;top:72px">${logo(46)}</div>
+    <div class="copy" data-fit="370" style="left:80px;top:160px;width:520px">
+      <h1 style="font-size:66px">${T.m_h1}<br>${T.m_h2}</h1>
+      <p class="lead" style="font-size:23px;width:480px">${T.m_p}</p>
+    </div>
+    ${win('json-dark', 'api.northwind.dev/v2/users', 'left:620px;top:38px;width:700px')}
+  </div>`,
+};
+const key = new URLSearchParams(location.search).get('s');
+document.getElementById('root').innerHTML = slides[key];
+// Shrink the headline until its text block fits the space it has
+window.fitDone = document.fonts.ready.then(() => {
+  document.querySelectorAll('[data-fit]').forEach(box => {
+    const h1 = box.querySelector('h1'); let size = parseFloat(h1.style.fontSize);
+    while ((box.scrollHeight > +box.dataset.fit || h1.scrollWidth > h1.clientWidth + 1) && size > 20) { size -= 2; h1.style.fontSize = size + 'px'; }
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+TITLE
+Code Formatter for Chrome: JSON, CSS and JavaScript formatted automatically
+
+DESCRIPTION
+Open a raw code file in Chrome and Code Formatter makes it readable the moment the tab opens. Fold any JSON object, copy the path of any value, switch between formatted and original text, and follow your device's light or dark mode. Everything runs in your browser.
+
+Get it free: https://chromewebstore.google.com/detail/bhimnoepicmcjfkbmhckamllnibadfal
+Website: https://zerowp.com/code-formatter/?utm_source=youtube&utm_medium=video&utm_campaign=code-formatter&utm_content=en

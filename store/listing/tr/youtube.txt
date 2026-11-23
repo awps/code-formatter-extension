@@ -1,0 +1,8 @@
+TITLE
+Chrome için Code Formatter: JSON, CSS ve JavaScript otomatik biçimlendirilir
+
+DESCRIPTION
+Chrome'da ham bir kod dosyası açın; Code Formatter sekme açıldığı anda onu okunur hale getirir. JSON nesnelerini daraltın, herhangi bir değerin yolunu kopyalayın, biçimlendirilmiş ve orijinal metin arasında geçiş yapın ve cihazınızın açık veya koyu modunu izleyin. Her şey tarayıcınızda çalışır.
+
+Ücretsiz yükleyin: https://chromewebstore.google.com/detail/bhimnoepicmcjfkbmhckamllnibadfal
+Web sitesi: https://zerowp.com/code-formatter/?utm_source=youtube&utm_medium=video&utm_campaign=code-formatter&utm_content=tr

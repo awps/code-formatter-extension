@@ -1,0 +1,17 @@
+Code Formatter makes raw code files readable in Chrome. When a tab shows a .json, .css or .js file, or an API that returns JSON, it formats it as soon as the tab opens. It never changes normal websites.
+
+JSON, CSS and JavaScript get clean indentation. Many other common languages get syntax colors.
+
+For JSON:
+- Fold any object or array with its own arrow
+- Collapse or expand all, or just the current block, with shortcuts
+- Click a value to see and copy its path, such as $.data[3].email
+- Clickable links and exact long numbers
+
+Switch between Formatted and Original, copy or download the code, and toggle line numbers or word wrap. Appearance can be Auto, Light or Dark; Auto follows your device. Choose from 23 themes.
+
+For local files, turn on "Allow access to file URLs" in chrome://extensions, under Details on Code Formatter.
+
+It runs offline in your browser, is free and open source, and has no account, tracking or data collection.
+
+Code Formatter shows one small link to our sponsor, Crustat, labeled "Sponsored", in the viewer's bottom bar, popup and welcome page. It is a plain link: it loads nothing, collects no data and sends nothing unless you click it.

@@ -1,0 +1,17 @@
+Code Formatter macht rohe Code-Dateien in Chrome lesbar. Wenn ein Tab eine .json-, .css- oder .js-Datei oder eine API mit JSON-Antwort zeigt, formatiert die Erweiterung sie, sobald der Tab geöffnet wird. Normale Websites verändert sie nie.
+
+JSON, CSS und JavaScript werden sauber eingerückt. Viele weitere gängige Sprachen erhalten Syntaxfarben.
+
+Für JSON:
+- Klappen Sie jedes Objekt und Array mit seinem eigenen Pfeil ein
+- Klappen Sie alles oder nur den aktuellen Block per Tastenkürzel ein oder aus
+- Klicken Sie auf einen Wert, um seinen Pfad zu sehen und zu kopieren, etwa $.data[3].email
+- Öffnen Sie Links per Klick; lange Zahlen bleiben exakt erhalten
+
+Wechseln Sie zwischen „Formatiert“ und „Original“, kopieren Sie den Code oder laden Sie ihn herunter, und schalten Sie Zeilennummern oder Zeilenumbruch ein. Die Darstellung kann Auto, Hell oder Dunkel sein; Auto folgt Ihrem Gerät. Zur Wahl stehen 23 Themes.
+
+Für lokale Dateien öffnen Sie chrome://extensions, klicken bei Code Formatter auf „Details“ und aktivieren „Zugriff auf Datei-URLs zulassen“.
+
+Code Formatter läuft offline in Ihrem Browser, ist kostenlos und Open Source und kommt ohne Konto, Tracking oder Datenerfassung aus.
+
+Code Formatter zeigt einen kleinen Link zu unserem Sponsor Crustat mit der Kennzeichnung „Gesponsert“: in der unteren Leiste der Ansicht, im Popup und auf der Willkommensseite. Es ist ein einfacher Link: Er lädt nichts, erfasst keine Daten und sendet nichts, solange Sie ihn nicht anklicken.

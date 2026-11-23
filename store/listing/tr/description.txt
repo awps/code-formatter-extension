@@ -1,0 +1,17 @@
+Code Formatter, ham kod dosyalarını Chrome'da okunur hâle getirir. Bir sekmede .json, .css veya .js dosyası ya da JSON döndüren bir API açıldığında, içeriği sekme açılır açılmaz biçimlendirir. Normal web sitelerini asla değiştirmez.
+
+JSON, CSS ve JavaScript düzgün girintilerle yeniden biçimlendirilir. Diğer birçok yaygın dil ise sözdizimi renkleri alır.
+
+JSON için:
+- Her nesneyi veya diziyi kendi okuyla daraltın
+- Tümünü ya da yalnızca geçerli bloğu klavye kısayollarıyla daraltın veya genişletin
+- Bir değere tıklayarak yolunu görün ve kopyalayın, örneğin $.data[3].email
+- Bağlantıları tek tıkla açın; uzun sayılar olduğu gibi korunur
+
+“Biçimlendirilmiş” ve “Orijinal” görünümleri arasında geçiş yapın, kodu kopyalayın veya indirin, satır numaralarını ya da sözcük kaydırmayı açın. Görünüm Otomatik, Açık veya Koyu olabilir; Otomatik cihazınızı takip eder. 23 tema arasından seçim yapabilirsiniz.
+
+Yerel dosyalar için chrome://extensions sayfasını açın, Code Formatter'da “Ayrıntılar”a tıklayın ve “Dosya URL'lerine erişime izin ver” seçeneğini açın.
+
+Code Formatter tarayıcınızda çevrimdışı çalışır, ücretsiz ve açık kaynaklıdır. Hesap, izleme veya veri toplama yoktur.
+
+Code Formatter, sponsorumuz Crustat'a giden tek bir küçük bağlantıyı “Sponsorlu” etiketiyle gösterir: görüntüleyicinin alt çubuğunda, açılır pencerede ve karşılama sayfasında. Bu basit bir bağlantıdır: hiçbir şey yüklemez, veri toplamaz ve siz tıklamadıkça hiçbir şey göndermez.

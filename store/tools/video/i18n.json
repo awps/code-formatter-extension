@@ -1,0 +1,200 @@
+{
+  "en": {
+    "vo": [
+      "Code Formatter. Open a code file, and it formats itself.",
+      "Raw JSON from an API is one long line that nobody can read.",
+      "With Code Formatter, it's clean and colored the moment the tab opens. No button to press.",
+      "Every object and array has its own fold arrow. Collapse everything, then open only what you need.",
+      "Click any value to see its path, and copy it with one click.",
+      "Switch to the original text at any time, or copy and download the file.",
+      "It follows your device. Light by day, dark by night.",
+      "CSS and JavaScript are formatted too, and fifteen more languages get syntax colors.",
+      "Everything runs in your browser. No account, and no tracking.",
+      "Code Formatter. Free on the Chrome Web Store."
+    ],
+    "title": ["Open a code file.", "It formats itself."],
+    "private": ["Runs in your browser.", "Nothing leaves it."],
+    "points": ["Works offline, no account", "No tracking, no data collected", "Free and open source"],
+    "end": "Free on the Chrome Web Store"
+  },
+  "de": {
+    "vo": [
+      "Code Formatter. Öffnen Sie eine Code-Datei, und sie formatiert sich selbst.",
+      "Rohes JSON aus einer API ist eine einzige lange Zeile, die niemand lesen kann.",
+      "Mit Code Formatter ist sie sauber und farbig, sobald der Tab geöffnet ist. Ganz ohne Klick.",
+      "Jedes Objekt und jedes Array hat einen eigenen Pfeil zum Einklappen. Klappen Sie alles ein und öffnen Sie nur, was Sie brauchen.",
+      "Klicken Sie auf einen Wert, um seinen Pfad zu sehen, und kopieren Sie ihn mit einem Klick.",
+      "Wechseln Sie jederzeit zum Originaltext, oder kopieren Sie die Datei und laden Sie sie herunter.",
+      "Die Darstellung folgt Ihrem Gerät. Hell am Tag, dunkel bei Nacht.",
+      "Auch CSS und JavaScript werden formatiert, und fünfzehn weitere Sprachen erhalten Syntaxfarben.",
+      "Alles läuft in Ihrem Browser. Kein Konto und kein Tracking.",
+      "Code Formatter. Kostenlos im Chrome Web Store."
+    ],
+    "title": ["Code-Datei öffnen.", "Sie formatiert sich selbst."],
+    "private": ["Läuft im Browser.", "Nichts verlässt ihn."],
+    "points": ["Funktioniert offline, ohne Konto", "Kein Tracking, keine Datenerfassung", "Kostenlos und Open Source"],
+    "end": "Kostenlos im Chrome Web Store"
+  },
+  "fr": {
+    "vo": [
+      "Code Formatter. Ouvrez un fichier de code, et il se formate tout seul.",
+      "Le JSON brut renvoyé par une API tient sur une seule longue ligne, illisible.",
+      "Avec Code Formatter, il est propre et coloré dès l'ouverture de l'onglet. Aucun bouton à presser.",
+      "Chaque objet et chaque tableau a sa propre flèche. Repliez tout, puis ouvrez seulement ce dont vous avez besoin.",
+      "Cliquez sur une valeur pour voir son chemin, et copiez-le en un clic.",
+      "Revenez au texte original à tout moment, ou copiez et téléchargez le fichier.",
+      "Il suit votre appareil. Clair le jour, sombre la nuit.",
+      "Le CSS et le JavaScript sont aussi formatés, et quinze autres langages ont la coloration syntaxique.",
+      "Tout s'exécute dans votre navigateur. Pas de compte, et aucun suivi.",
+      "Code Formatter. Gratuit sur le Chrome Web Store."
+    ],
+    "title": ["Ouvrez un fichier de code.", "Il se formate tout seul."],
+    "private": ["Tout reste dans", "votre navigateur."],
+    "points": ["Fonctionne hors ligne, sans compte", "Aucun suivi, aucune donnée collectée", "Gratuit et open source"],
+    "end": "Gratuit sur le Chrome Web Store"
+  },
+  "id": {
+    "vo": [
+      "Code Formatter. Buka file kode, dan file itu langsung rapi sendiri.",
+      "JSON mentah dari API hanyalah satu baris panjang yang tidak bisa dibaca.",
+      "Dengan Code Formatter, kode langsung rapi dan berwarna begitu tab dibuka. Tanpa menekan tombol apa pun.",
+      "Setiap objek dan array punya panah lipatnya sendiri. Lipat semuanya, lalu buka hanya yang Anda perlukan.",
+      "Klik nilai mana pun untuk melihat jalurnya, lalu salin dengan sekali klik.",
+      "Beralih ke teks asli kapan saja, atau salin dan unduh filenya.",
+      "Tampilannya mengikuti perangkat Anda. Terang di siang hari, gelap di malam hari.",
+      "CSS dan JavaScript juga dirapikan, dan lima belas bahasa lainnya mendapat warna sintaks.",
+      "Semuanya berjalan di browser Anda. Tanpa akun, dan tanpa pelacakan.",
+      "Code Formatter. Gratis di Chrome Web Store."
+    ],
+    "title": ["Buka file kode.", "Langsung rapi sendiri."],
+    "private": ["Berjalan di browser.", "Tidak ada yang keluar."],
+    "points": ["Bekerja offline, tanpa akun", "Tanpa pelacakan, tanpa pengumpulan data", "Gratis dan open source"],
+    "end": "Gratis di Chrome Web Store"
+  },
+  "it": {
+    "vo": [
+      "Code Formatter. Apri un file di codice, e si formatta da solo.",
+      "Il JSON grezzo di un'API è un'unica lunga riga che nessuno riesce a leggere.",
+      "Con Code Formatter è pulito e colorato appena apri la scheda. Nessun pulsante da premere.",
+      "Ogni oggetto e ogni array ha la sua freccia. Comprimi tutto, poi apri solo quello che ti serve.",
+      "Fai clic su un valore per vederne il percorso, e copialo con un clic.",
+      "Passa al testo originale quando vuoi, oppure copia e scarica il file.",
+      "Segue il tuo dispositivo. Chiaro di giorno, scuro di notte.",
+      "Anche CSS e JavaScript vengono formattati, e altri quindici linguaggi hanno la colorazione della sintassi.",
+      "Tutto funziona nel tuo browser. Nessun account, e nessun tracciamento.",
+      "Code Formatter. Gratis sul Chrome Web Store."
+    ],
+    "title": ["Apri un file di codice.", "Si formatta da solo."],
+    "private": ["Funziona nel browser.", "Niente esce."],
+    "points": ["Funziona offline, senza account", "Nessun tracciamento, nessun dato raccolto", "Gratis e open source"],
+    "end": "Gratis sul Chrome Web Store"
+  },
+  "ja": {
+    "vo": [
+      "Code Formatter。コードファイルを開くだけで、自動で整形されます。",
+      "API から返ってくる生の JSON は、誰にも読めない長い一行です。",
+      "Code Formatter なら、タブを開いた瞬間に、きれいに色分けされて表示されます。ボタン操作は不要です。",
+      "すべてのオブジェクトと配列に、折りたたみ用の矢印があります。全部たたんで、必要なところだけ開けます。",
+      "値をクリックするとパスが表示され、ワンクリックでコピーできます。",
+      "いつでも元のテキストに切り替えられます。コピーやダウンロードも簡単です。",
+      "表示はデバイスに合わせて切り替わります。昼はライト、夜はダーク。",
+      "CSS と JavaScript も整形され、ほかに 15 の言語で色分け表示が使えます。",
+      "すべてブラウザの中で動作します。アカウントも、追跡もありません。",
+      "Code Formatter。Chrome ウェブストアで無料です。"
+    ],
+    "title": ["コードファイルを開くだけ。", "自動で整形されます。"],
+    "private": ["ブラウザ内で完結。", "外には出ません。"],
+    "points": ["オフラインで動作、アカウント不要", "追跡なし、データ収集なし", "無料でオープンソース"],
+    "end": "Chrome ウェブストアで無料"
+  },
+  "pt_BR": {
+    "vo": [
+      "Code Formatter. Abra um arquivo de código, e ele se formata sozinho.",
+      "O JSON bruto de uma API é uma única linha longa que ninguém consegue ler.",
+      "Com o Code Formatter, ele fica limpo e colorido assim que a aba abre. Sem apertar nenhum botão.",
+      "Cada objeto e cada array tem sua própria seta. Recolha tudo e abra só o que você precisa.",
+      "Clique em qualquer valor para ver o caminho dele, e copie com um clique.",
+      "Volte ao texto original quando quiser, ou copie e baixe o arquivo.",
+      "Ele acompanha o seu dispositivo. Claro de dia, escuro à noite.",
+      "CSS e JavaScript também são formatados, e outras quinze linguagens ganham cores de sintaxe.",
+      "Tudo roda no seu navegador. Sem conta, e sem rastreamento.",
+      "Code Formatter. Grátis na Chrome Web Store."
+    ],
+    "title": ["Abra um arquivo de código.", "Ele se formata sozinho."],
+    "private": ["Roda no navegador.", "Nada sai dele."],
+    "points": ["Funciona offline, sem conta", "Sem rastreamento, sem coleta de dados", "Grátis e de código aberto"],
+    "end": "Grátis na Chrome Web Store"
+  },
+  "ro": {
+    "vo": [
+      "Code Formatter. Deschide un fișier de cod, și se formatează singur.",
+      "JSON-ul brut de la un API e o singură linie lungă, pe care nimeni n-o poate citi.",
+      "Cu Code Formatter, e curat și colorat imediat ce se deschide fila. Fără niciun buton de apăsat.",
+      "Fiecare obiect și fiecare array are săgeata lui. Restrânge tot, apoi deschide doar ce-ți trebuie.",
+      "Dă clic pe orice valoare ca să-i vezi calea, și copiaz-o dintr-un singur clic.",
+      "Treci oricând la textul original, sau copiază și descarcă fișierul.",
+      "Urmează dispozitivul tău. Luminos ziua, întunecat noaptea.",
+      "CSS și JavaScript sunt formatate și ele, iar alte cincisprezece limbaje primesc culori de sintaxă.",
+      "Totul rulează în browserul tău. Fără cont, și fără urmărire.",
+      "Code Formatter. Gratuit în Chrome Web Store."
+    ],
+    "title": ["Deschide un fișier de cod.", "Se formatează singur."],
+    "private": ["Rulează în browser.", "Nimic nu iese din el."],
+    "points": ["Merge offline, fără cont", "Fără urmărire, fără date colectate", "Gratuit și open source"],
+    "end": "Gratuit în Chrome Web Store"
+  },
+  "tr": {
+    "vo": [
+      "Code Formatter. Bir kod dosyası açın, kendi kendine biçimlensin.",
+      "Bir API'den gelen ham JSON, kimsenin okuyamadığı tek bir uzun satırdır.",
+      "Code Formatter ile sekme açıldığı anda temiz ve renkli görünür. Hiçbir düğmeye basmanız gerekmez.",
+      "Her nesnenin ve dizinin kendi daraltma oku vardır. Hepsini daraltın, sonra yalnızca ihtiyacınız olanı açın.",
+      "Yolunu görmek için herhangi bir değere tıklayın, ve tek tıkla kopyalayın.",
+      "İstediğiniz zaman orijinal metne geçin, ya da dosyayı kopyalayıp indirin.",
+      "Cihazınızı izler. Gündüz açık, gece koyu.",
+      "CSS ve JavaScript de biçimlendirilir, on beş dil daha sözdizimi renkleri alır.",
+      "Her şey tarayıcınızda çalışır. Hesap yok, izleme yok.",
+      "Code Formatter. Chrome Web Mağazası'nda ücretsiz."
+    ],
+    "title": ["Bir kod dosyası açın.", "Kendi kendine biçimlenir."],
+    "private": ["Tarayıcınızda çalışır.", "Hiçbir şey dışarı çıkmaz."],
+    "points": ["Çevrimdışı çalışır, hesap gerekmez", "İzleme yok, veri toplanmaz", "Ücretsiz ve açık kaynak"],
+    "end": "Chrome Web Mağazası'nda ücretsiz"
+  },
+  "uk": {
+    "vo": [
+      "Code Formatter. Відкрийте файл із кодом, і він відформатується сам.",
+      "Сирий JSON з API — це один довгий рядок, який ніхто не може прочитати.",
+      "З Code Formatter він чистий і кольоровий, щойно відкривається вкладка. Жодних кнопок.",
+      "Кожен об'єкт і масив має власну стрілку. Згорніть усе, а потім відкрийте лише те, що потрібно.",
+      "Клацніть будь-яке значення, щоб побачити його шлях, і скопіюйте одним клацанням.",
+      "Будь-коли перейдіть до оригінального тексту, або скопіюйте й завантажте файл.",
+      "Він стежить за вашим пристроєм. Світла тема вдень, темна вночі.",
+      "CSS і JavaScript теж форматуються, а ще п'ятнадцять мов отримують підсвічування синтаксису.",
+      "Усе працює у вашому браузері. Без облікового запису, і без відстеження.",
+      "Code Formatter. Безкоштовно в Chrome Web Store."
+    ],
+    "title": ["Відкрийте файл із кодом.", "Він форматується сам."],
+    "private": ["Працює у браузері.", "Ніщо його не залишає."],
+    "points": ["Працює офлайн, без облікового запису", "Без відстеження, без збору даних", "Безкоштовно й з відкритим кодом"],
+    "end": "Безкоштовно в Chrome Web Store"
+  },
+  "zh_CN": {
+    "vo": [
+      "Code Formatter。打开代码文件，它会自动格式化。",
+      "API 返回的原始 JSON，只是一行谁也读不懂的长文本。",
+      "有了 Code Formatter，标签页一打开，代码就整洁又带颜色。无需点击任何按钮。",
+      "每个对象和数组都有自己的折叠箭头。先全部折叠，再只展开你需要的部分。",
+      "点击任意值即可看到它的路径，一键就能复制。",
+      "随时切换回原始文本，也可以复制或下载文件。",
+      "它会跟随你的设备切换。白天浅色，夜晚深色。",
+      "CSS 和 JavaScript 同样会被格式化，另有十五种语言提供语法高亮。",
+      "一切都在你的浏览器中运行。无需账号，也没有追踪。",
+      "Code Formatter。在 Chrome 网上应用店免费获取。"
+    ],
+    "title": ["打开代码文件，", "自动格式化。"],
+    "private": ["在浏览器中运行，", "数据从不离开。"],
+    "points": ["离线可用，无需账号", "没有追踪，不收集数据", "免费且开源"],
+    "end": "在 Chrome 网上应用店免费获取"
+  }
+}

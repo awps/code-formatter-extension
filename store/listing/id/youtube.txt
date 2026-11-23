@@ -1,0 +1,8 @@
+TITLE
+Code Formatter untuk Chrome: JSON, CSS, dan JavaScript dirapikan otomatis
+
+DESCRIPTION
+Buka file kode mentah di Chrome, dan Code Formatter langsung membuatnya mudah dibaca saat tab dibuka. Lipat objek JSON, salin jalur nilai apa pun, beralih antara teks yang diformat dan asli, serta ikuti mode terang atau gelap perangkat Anda. Semuanya berjalan di browser Anda.
+
+Pasang gratis: https://chromewebstore.google.com/detail/bhimnoepicmcjfkbmhckamllnibadfal
+Situs web: https://zerowp.com/code-formatter/?utm_source=youtube&utm_medium=video&utm_campaign=code-formatter&utm_content=id
