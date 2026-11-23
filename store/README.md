@@ -39,7 +39,7 @@ Thumbnail: `images/<lang>/1-formats-itself.jpg`.
 | ro | https://www.youtube.com/watch?v=9bI025jQv6Q |
 | tr | https://www.youtube.com/watch?v=c7mWrEzjDt4 |
 | uk | https://www.youtube.com/watch?v=c2e_hQWLTCU |
-| zh_CN | https://www.youtube.com/watch?v=ko1OhJFYTz4 |
+| zh_CN | https://www.youtube.com/watch?v=YQaqZx40KtU |
 
 The GitHub README shows `images/readme-video.jpg` (the English thumbnail with a play
 button) linked to the English video. Rebuild it with `node store/tools/images/readme-thumb.mjs`
@@ -63,7 +63,7 @@ comment with the store link in its language.
 | ro | https://youtube.com/shorts/eOv1D49kLM4 |
 | tr | https://youtube.com/shorts/yy3NdDteSNk |
 | uk | https://youtube.com/shorts/mzFHbKgdUWI |
-| zh_CN | https://youtube.com/shorts/5H9AK7lmXxg |
+| zh_CN | https://youtube.com/shorts/prjkqsniljg |
 
 ## Rebuilding the assets
 
