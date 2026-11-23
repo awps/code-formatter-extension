@@ -1,0 +1,17 @@
+Code Formatter rende leggibili in Chrome i file di codice grezzi. Quando una scheda mostra un file .json, .css o .js, o un'API che restituisce JSON, lo formatta appena apri la scheda. Non modifica mai i normali siti web.
+
+JSON, CSS e JavaScript vengono reindentati in modo ordinato. Molti altri linguaggi comuni ricevono i colori della sintassi.
+
+Per il JSON:
+- Comprimi ogni oggetto o array con la sua freccia
+- Comprimi o espandi tutto, o solo il blocco corrente, con le scorciatoie da tastiera
+- Clicca su un valore per vederne e copiarne il percorso, ad esempio $.data[3].email
+- Apri i link con un clic; i numeri lunghi restano esatti
+
+Passa da «Formattato» a «Originale», copia o scarica il codice e attiva i numeri di riga o l'a capo automatico. L'aspetto può essere Auto, Chiaro o Scuro; Auto segue il tuo dispositivo. Puoi scegliere tra 23 temi.
+
+Per i file locali, apri chrome://extensions, clicca su «Dettagli» in Code Formatter e attiva «Consenti l'accesso agli URL dei file».
+
+Code Formatter funziona offline nel tuo browser, è gratuito e open source, senza account, senza tracciamento e senza raccolta di dati.
+
+Code Formatter mostra un piccolo link al nostro sponsor, Crustat, contrassegnato come «Sponsorizzato», nella barra in basso del visualizzatore, nel popup e nella pagina di benvenuto. È un semplice link: non carica nulla, non raccoglie dati e non invia nulla finché non ci clicchi sopra.

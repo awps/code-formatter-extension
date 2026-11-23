@@ -92,3 +92,12 @@ mix-manifest.json
 /src/vendor/
 /zip/
 
+
+# Store asset generators: build output (the results live in store/images and on YouTube)
+store/tools/images/shots/
+store/tools/images/out/
+store/tools/images/slides.built.html
+store/tools/images/sheet*.png
+store/tools/video/scenes/
+store/tools/video/work/
+store/tools/video/out/

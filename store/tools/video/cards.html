@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,800&family=JetBrains+Mono:wght@400;500&family=Onest:wght@500;600;800&family=Noto+Sans+JP:wght@500;700;900&family=Noto+Sans+SC:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root { --ink: #12142a; --raw: #232747; --text: #eef1ff; --muted: #a3a9d6; --blue: #89b4fa; --green: #a6e3a1; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { zoom: 0.666667; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--ink); color: var(--text); font-family: 'Bricolage Grotesque', 'Onest', sans-serif; }
+  html:lang(ja) body { font-family: 'Bricolage Grotesque', 'Noto Sans JP', sans-serif; }
+  html:lang(zh) body { font-family: 'Bricolage Grotesque', 'Noto Sans SC', sans-serif; }
+  html:lang(ja) h1, html:lang(zh) h1 { letter-spacing: 0; line-height: 1.2; font-weight: 900; }
+  h1 { max-width: 1600px; }
+  .raw { position: absolute; inset: -40px; font: 400 22px/1.55 'JetBrains Mono', monospace; color: var(--raw); word-break: break-all; white-space: pre-wrap; transform: rotate(-4deg) scale(1.08); }
+  .raw::after { content: ''; position: absolute; inset: 0; background: radial-gradient(70% 70% at 50% 50%, var(--ink) 30%, rgba(18,20,42,.4) 100%); }
+  .center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 40px; }
+  .logo { display: inline-flex; align-items: center; gap: 22px; font-weight: 600; font-size: 44px; letter-spacing: -0.01em; }
+  .logo svg { width: 84px; height: 84px; }
+  h1 { font-weight: 800; letter-spacing: -0.035em; line-height: 1; font-size: 120px; }
+  .lead { color: var(--muted); font-weight: 500; font-size: 40px; }
+  .url { font: 500 34px 'JetBrains Mono', monospace; color: var(--green); }
+  .fade { animation: in .8s cubic-bezier(.2,.7,.2,1) both; }
+  .fade.d1 { animation-delay: .35s; } .fade.d2 { animation-delay: .7s; }
+  @keyframes in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+  .split { position: absolute; inset: 0; display: grid; grid-template-columns: 1fr 520px; align-items: center; gap: 80px; padding: 0 160px; }
+  .points { list-style: none; display: grid; gap: 26px; font-size: 40px; font-weight: 500; margin-top: 56px; }
+  .points li { display: flex; gap: 20px; align-items: baseline; }
+  .points li::before { content: ''; flex: none; width: 16px; height: 16px; border-radius: 4px; background: var(--green); transform: translateY(-4px); }
+  .popup { width: 480px; border-radius: 22px; overflow: hidden; box-shadow: 0 0 0 1px rgba(255,255,255,.08), 0 50px 100px -20px rgba(0,0,0,.7); }
+  .popup img { display: block; width: 100%; }
+</style>
+</head>
+<body>
+<div class="raw" id="raw"></div>
+<div id="root"></div>
+<script>
+const LOGO = '<svg viewBox="0 0 96 96" fill="none"><rect width="96" height="96" rx="24" fill="#1E1E2E"/><rect x="1" y="1" width="94" height="94" rx="23" stroke="#3a3d5c" stroke-width="2"/><path d="M28 32L44 48L28 64" stroke="#89B4FA" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M52 64H68" stroke="#A6E3A1" stroke-width="6" stroke-linecap="round"/></svg>';
+const RAW = '{"data":[{"id":1041,"name":"Maya Chen","email":"maya@northwind.dev","role":"admin","active":true,"website":"https:\\/\\/northwind.dev\\/team\\/maya","address":{"city":"Lisbon","country":"PT","zip":"1100-148"},"tags":["billing","api"],"balance":2450.75},{"id":1042,"name":"Jonas Weber","email":"jonas@northwind.dev","role":"editor"},';
+document.getElementById('raw').textContent = RAW.repeat(40);
+const q = new URLSearchParams(location.search);
+const LOC = q.get('l') || 'en';
+document.documentElement.lang = LOC.replace('_', '-');
+window.ready = fetch('/i18n.json').then(r => r.json()).then(all => {
+  const T = all[LOC];
+  const cards = {
+    title: `<div class="center">
+        <div class="logo fade">${LOGO}Code Formatter</div>
+        <h1 class="fade d1">${T.title[0]}<br>${T.title[1]}</h1>
+      </div>`,
+    private: `<div class="split">
+        <div>
+          <h1 class="fade" style="font-size:96px">${T.private[0]}<br>${T.private[1]}</h1>
+          <ul class="points fade d1">${T.points.map(p => `<li>${p}</li>`).join('')}</ul>
+        </div>
+        <div class="popup fade d2"><img src="/popup.png"></div>
+      </div>`,
+    end: `<div class="center">
+        <div class="logo fade">${LOGO}Code Formatter</div>
+        <h1 class="fade d1" style="font-size:104px">${T.end}</h1>
+        <div class="url fade d2">zerowp.com/code-formatter</div>
+      </div>`,
+  };
+  document.getElementById('root').innerHTML = cards[q.get('c')];
+  // Long translations: shrink the headline until it fits
+  return document.fonts.ready.then(() => document.querySelectorAll('h1').forEach(h => {
+    let size = parseFloat(getComputedStyle(h).fontSize);
+    const box = h.closest('.split > div') || h.parentElement;
+    while ((h.scrollWidth > h.clientWidth + 1 || h.getBoundingClientRect().height > 420) && size > 40) { size -= 4; h.style.fontSize = size + 'px'; }
+  }));
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+Code Formatter membuat file kode mentah mudah dibaca di Chrome. Saat tab menampilkan file .json, .css, atau .js, atau API yang mengembalikan JSON, ekstensi ini langsung memformatnya begitu tab dibuka. Ekstensi ini tidak pernah mengubah situs web biasa.
+
+JSON, CSS, dan JavaScript diberi indentasi yang rapi. Banyak bahasa umum lainnya mendapat pewarnaan sintaksis.
+
+Untuk JSON:
+- Lipat setiap objek atau array dengan panahnya sendiri
+- Lipat atau buka semua, atau hanya blok saat ini, dengan pintasan keyboard
+- Klik sebuah nilai untuk melihat dan menyalin path-nya, misalnya $.data[3].email
+- Buka tautan dengan sekali klik; angka panjang tetap persis
+
+Beralih antara “Diformat” dan “Asli”, salin atau unduh kode, serta aktifkan nomor baris atau bungkus kata. Tampilan bisa Otomatis, Terang, atau Gelap; Otomatis mengikuti perangkat Anda. Tersedia 23 tema.
+
+Untuk file lokal, buka chrome://extensions, klik “Detail” pada Code Formatter, lalu aktifkan “Izinkan akses ke URL file” (Allow access to file URLs).
+
+Code Formatter berjalan offline di browser Anda, gratis dan open source, tanpa akun, tanpa pelacakan, dan tanpa pengumpulan data.
+
+Code Formatter menampilkan satu tautan kecil ke sponsor kami, Crustat, berlabel “Bersponsor”, di bilah bawah penampil, di popup, dan di halaman sambutan. Ini hanya tautan biasa: tidak memuat apa pun, tidak mengumpulkan data, dan tidak mengirim apa pun kecuali Anda mengkliknya.

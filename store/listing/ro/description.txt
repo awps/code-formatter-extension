@@ -1,0 +1,17 @@
+Code Formatter face fișierele de cod brute ușor de citit în Chrome. Când o filă afișează un fișier .json, .css sau .js ori un API care returnează JSON, îl formatează imediat ce deschizi fila. Nu modifică niciodată site-urile obișnuite.
+
+JSON, CSS și JavaScript primesc o indentare curată. Multe alte limbaje uzuale primesc culori de sintaxă.
+
+Pentru JSON:
+- Restrânge orice obiect sau array cu propria săgeată
+- Restrânge sau extinde tot ori doar blocul curent, cu scurtături de tastatură
+- Dă clic pe o valoare ca să-i vezi și să-i copiezi calea, de exemplu $.data[3].email
+- Deschide linkurile cu un clic; numerele lungi rămân exacte
+
+Comută între „Formatat” și „Original”, copiază sau descarcă codul și activează numerele de linie sau încadrarea textului. Aspectul poate fi Auto, Luminos sau Întunecat; Auto urmează dispozitivul tău. Ai de ales dintre 23 de teme.
+
+Pentru fișierele locale, deschide chrome://extensions, dă clic pe „Detalii” la Code Formatter și activează „Permite accesul la adresele URL ale fișierelor” (Allow access to file URLs).
+
+Code Formatter funcționează offline, în browserul tău, și este gratuit și open source, fără cont, fără urmărire și fără colectare de date.
+
+Code Formatter afișează un singur link mic către sponsorul nostru, Crustat, marcat „Sponsorizat”, în bara de jos a vizualizatorului, în fereastra extensiei și pe pagina de bun venit. Este un link simplu: nu încarcă nimic, nu colectează date și nu trimite nimic decât dacă dai clic pe el.

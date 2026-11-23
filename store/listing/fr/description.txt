@@ -1,0 +1,17 @@
+Code Formatter rend lisibles dans Chrome les fichiers de code bruts. Quand un onglet affiche un fichier .json, .css ou .js, ou une API qui renvoie du JSON, l'extension le formate dès l'ouverture de l'onglet. Elle ne modifie jamais les sites web classiques.
+
+JSON, CSS et JavaScript sont réindentés proprement. De nombreux autres langages courants bénéficient de la coloration syntaxique.
+
+Pour le JSON :
+- Repliez chaque objet ou tableau avec sa propre flèche
+- Repliez ou dépliez tout, ou seulement le bloc courant, avec des raccourcis clavier
+- Cliquez sur une valeur pour voir et copier son chemin, par exemple $.data[3].email
+- Ouvrez les liens d'un clic ; les grands nombres restent exacts
+
+Passez de « Formaté » à « Original », copiez ou téléchargez le code, et activez les numéros de ligne ou le retour à la ligne. L'apparence peut être Auto, Clair ou Sombre ; Auto suit votre appareil. 23 thèmes sont disponibles.
+
+Pour les fichiers locaux, ouvrez chrome://extensions, cliquez sur « Détails » sous Code Formatter et activez « Autoriser l'accès aux URL de fichier ».
+
+Code Formatter fonctionne hors ligne dans votre navigateur. Il est gratuit et open source, sans compte, sans suivi et sans collecte de données.
+
+Code Formatter affiche un petit lien vers notre sponsor, Crustat, marqué « Sponsorisé », dans la barre inférieure de l'afficheur, dans la fenêtre de l'extension et sur la page de bienvenue. C'est un simple lien : il ne charge rien, ne collecte aucune donnée et n'envoie rien tant que vous ne cliquez pas dessus.
