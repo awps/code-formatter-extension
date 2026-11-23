@@ -41,6 +41,10 @@ Thumbnail: `images/<lang>/1-formats-itself.jpg`.
 | uk | https://www.youtube.com/watch?v=c2e_hQWLTCU |
 | zh_CN | https://www.youtube.com/watch?v=ko1OhJFYTz4 |
 
+The GitHub README shows `images/readme-video.jpg` (the English thumbnail with a play
+button) linked to the English video. Rebuild it with `node store/tools/images/readme-thumb.mjs`
+run from `store/tools/images`.
+
 ## Rebuilding the assets
 
 The images and videos are made from the real extension, so rebuild them when

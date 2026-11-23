@@ -1,0 +1,23 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+body{width:1280px;height:800px;position:relative;overflow:hidden;font-family:'Bricolage Grotesque',sans-serif;background:#12142a}
+.bg{position:absolute;inset:0;background:url(../../images/en/1-formats-itself.jpg) center/cover}
+.shade{position:absolute;inset:0;background:radial-gradient(60% 60% at 50% 50%,rgba(10,12,28,.15),rgba(10,12,28,.55))}
+.play{position:absolute;left:50%;top:50%;width:168px;height:168px;margin:-84px 0 0 -84px;border-radius:50%;
+ background:rgba(255,255,255,.96);box-shadow:0 20px 60px rgba(0,0,0,.55),0 0 0 14px rgba(255,255,255,.18)}
+.play::after{content:'';position:absolute;left:66px;top:50px;border-style:solid;border-width:34px 0 34px 54px;border-color:transparent transparent transparent #12142a}
+.bar{position:absolute;left:0;right:0;bottom:0;height:86px;background:linear-gradient(transparent,rgba(5,6,16,.85));}
+.track{position:absolute;left:32px;right:32px;bottom:58px;height:6px;border-radius:3px;background:rgba(255,255,255,.3)}
+.track i{position:absolute;left:0;top:0;bottom:0;width:4%;border-radius:3px;background:#89b4fa}
+.track i::after{content:'';position:absolute;right:-8px;top:-5px;width:16px;height:16px;border-radius:50%;background:#89b4fa}
+.meta{position:absolute;left:32px;right:32px;bottom:16px;display:flex;justify-content:space-between;color:#fff;font-size:24px;font-weight:600}
+.badge{position:absolute;right:32px;top:28px;padding:10px 18px;border-radius:999px;background:rgba(18,20,42,.85);color:#fff;font-size:24px;font-weight:600;border:1px solid rgba(255,255,255,.15)}
+</style></head><body>
+<div class="bg"></div><div class="shade"></div>
+<div class="badge">▶ Watch the demo · 1 min</div>
+<div class="play"></div>
+<div class="bar"></div><div class="track"><i></i></div>
+<div class="meta"><span>0:00 / 0:57</span><span>YouTube</span></div>
+</body></html>
