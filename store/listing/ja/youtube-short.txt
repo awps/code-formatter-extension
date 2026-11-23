@@ -1,0 +1,8 @@
+TITLE
+コードファイルを開くだけ。自動で整形されます。 Code Formatter #Shorts
+
+DESCRIPTION
+Chrome で生のコードファイルを開くと、Code Formatter がタブを開いた瞬間に読みやすく整形します。JSON のオブジェクトを折りたたみ、値のパスをコピーし、整形済みと元のテキストを切り替え、デバイスのライト／ダークモードにも対応。すべてブラウザ内で動作します。
+
+無料でインストール: https://chromewebstore.google.com/detail/bhimnoepicmcjfkbmhckamllnibadfal
+ウェブサイト: https://zerowp.com/code-formatter/?utm_source=youtube&utm_medium=video&utm_campaign=code-formatter&utm_content=ja-short

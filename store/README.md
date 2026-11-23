@@ -45,6 +45,26 @@ The GitHub README shows `images/readme-video.jpg` (the English thumbnail with a 
 button) linked to the English video. Rebuild it with `node store/tools/images/readme-thumb.mjs`
 run from `store/tools/images`.
 
+## YouTube Shorts (vertical 1080×1920)
+
+Same narration, music and captions as the promo videos, recorded in a phone-shaped window.
+Title and description: `listing/<lang>/youtube-short.txt`. Each Short has a pinned first
+comment with the store link in its language.
+
+| Language | Short |
+|---|---|
+| en | https://youtube.com/shorts/MVkOXXmuFME |
+| de | https://youtube.com/shorts/9TFqwD8x8n8 |
+| fr | https://youtube.com/shorts/xWtfqkvaiMA |
+| id | https://youtube.com/shorts/An80EiW9rh0 |
+| it | https://youtube.com/shorts/T3OysPhsP_w |
+| ja | https://youtube.com/shorts/i1dl0HYSMTY |
+| pt_BR | https://youtube.com/shorts/kPbLjH_v19Q |
+| ro | https://youtube.com/shorts/eOv1D49kLM4 |
+| tr | https://youtube.com/shorts/yy3NdDteSNk |
+| uk | https://youtube.com/shorts/mzFHbKgdUWI |
+| zh_CN | https://youtube.com/shorts/5H9AK7lmXxg |
+
 ## Rebuilding the assets
 
 The images and videos are made from the real extension, so rebuild them when
@@ -80,6 +100,9 @@ for l in en de fr id it ja pt_BR ro tr uk zh_CN; do
   node compose-l10n.mjs $l    # adds voice, music and captions -> out/<lang>/code-formatter-promo.mp4
 done
 ```
+
+For the vertical Shorts version, prefix both commands with `SHORT=1`
+(output in `out-short/<lang>/`).
 
 Needs `ffmpeg` with libass (for captions). Narration lines, title/end card text and
 captions: `i18n.json`.

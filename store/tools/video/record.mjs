@@ -4,10 +4,12 @@ import puppeteer from 'puppeteer';
 import http from 'node:http';
 import fs from 'node:fs';
 
-const W = 1280, H = 720, ZOOM = 1, DPR = 1.5;
+// SHORT=1: vertical 1080x1920 for YouTube Shorts
+const SHORT = process.env.SHORT === '1';
+const W = SHORT ? 540 : 1280, H = SHORT ? 960 : 720, ZOOM = 1, DPR = SHORT ? 2 : 1.5;
 const LOC = process.argv[2] || 'en'; const CHROME_LANG = LOC.replace('_', '-');
 const only = process.argv[3]; // record a single scene while iterating
-const OUT = `scenes/${LOC}`; fs.mkdirSync(OUT, { recursive: true });
+const OUT = `${SHORT ? 'scenes-short' : 'scenes'}/${LOC}`; fs.mkdirSync(OUT, { recursive: true });
 
 const users = [
   { id: 1041, name: 'Maya Chen', email: 'maya@northwind.dev', role: 'admin', active: true, website: 'https://northwind.dev/team/maya', address: { city: 'Lisbon', country: 'PT', zip: '1100-148' }, tags: ['billing', 'api'], balance: 2450.75, created_at: '2026-03-14T09:26:53Z' },
@@ -126,7 +128,7 @@ async function record(name, fn) {
 // ---------------- Scenes ----------------
 const S = {};
 S['01-title'] = Object.assign(async p => { await wait(3200); }, {
-  setup: async p => { await p.goto(`${base}/card/?c=title&l=${LOC}`); await p.bringToFront(); await p.evaluate(() => window.ready); await wait(200); },
+  setup: async p => { await p.goto(`${base}/card/?c=title&l=${LOC}${SHORT ? '&p=1' : ''}`); await p.bringToFront(); await p.evaluate(() => window.ready); await wait(200); },
 });
 S['02-raw'] = Object.assign(async p => { await wait(3600); }, {
   setup: async p => { await p.goto(`${base}/raw/users`); await p.bringToFront(); await zoom(p); },
@@ -168,10 +170,10 @@ S['09-js'] = Object.assign(async p => { await wait(2400); }, {
   scheme: 'light', setup: async p => { await openViewer(p, `${base}/js/search.js`); },
 });
 S['10-private'] = Object.assign(async p => { await wait(3600); }, {
-  setup: async p => { await p.goto(`${base}/card/?c=private&l=${LOC}`); await p.bringToFront(); await p.evaluate(() => window.ready); await wait(300); },
+  setup: async p => { await p.goto(`${base}/card/?c=private&l=${LOC}${SHORT ? '&p=1' : ''}`); await p.bringToFront(); await p.evaluate(() => window.ready); await wait(300); },
 });
 S['11-end'] = Object.assign(async p => { await wait(3600); }, {
-  setup: async p => { await p.goto(`${base}/card/?c=end&l=${LOC}`); await p.bringToFront(); await p.evaluate(() => window.ready); await wait(200); },
+  setup: async p => { await p.goto(`${base}/card/?c=end&l=${LOC}${SHORT ? '&p=1' : ''}`); await p.bringToFront(); await p.evaluate(() => window.ready); await wait(200); },
 });
 
 // Popup screenshot used on the privacy card

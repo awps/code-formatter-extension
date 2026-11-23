@@ -1,0 +1,8 @@
+TITLE
+打开代码文件，自动格式化。 Code Formatter #Shorts
+
+DESCRIPTION
+在 Chrome 中打开原始代码文件，Code Formatter 会在标签页打开的瞬间让它变得易读。折叠 JSON 对象、复制任意值的路径、在格式化文本与原始文本之间切换，并跟随设备的浅色或深色模式。一切都在你的浏览器中运行。
+
+免费安装: https://chromewebstore.google.com/detail/bhimnoepicmcjfkbmhckamllnibadfal
+网站: https://zerowp.com/code-formatter/?utm_source=youtube&utm_medium=video&utm_campaign=code-formatter&utm_content=zh_CN-short

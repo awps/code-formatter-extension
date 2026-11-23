@@ -12,6 +12,18 @@
   html:lang(zh) body { font-family: 'Bricolage Grotesque', 'Noto Sans SC', sans-serif; }
   html:lang(ja) h1, html:lang(zh) h1 { letter-spacing: 0; line-height: 1.2; font-weight: 900; }
   h1 { max-width: 1600px; }
+  /* Vertical (Shorts) layout */
+  html.portrait { zoom: 0.5; }
+  html.portrait, html.portrait body { width: 1080px; height: 1920px; }
+  .portrait .center { padding: 0 80px; gap: 56px; }
+  .portrait .center h1 { font-size: 112px !important; max-width: 920px; }
+  .portrait .logo { font-size: 52px; } .portrait .logo svg { width: 96px; height: 96px; }
+  .portrait .split { grid-template-columns: 1fr; align-content: center; justify-items: center; text-align: center; gap: 72px; padding: 0 80px; }
+  .portrait .split h1 { font-size: 96px !important; }
+  .portrait .points { justify-content: center; margin-top: 44px; font-size: 42px; }
+  .portrait .points li { justify-content: center; }
+  .portrait .popup { width: 520px; }
+  .portrait .url { font-size: 40px; }
   .raw { position: absolute; inset: -40px; font: 400 22px/1.55 'JetBrains Mono', monospace; color: var(--raw); word-break: break-all; white-space: pre-wrap; transform: rotate(-4deg) scale(1.08); }
   .raw::after { content: ''; position: absolute; inset: 0; background: radial-gradient(70% 70% at 50% 50%, var(--ink) 30%, rgba(18,20,42,.4) 100%); }
   .center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 40px; }
@@ -41,6 +53,7 @@ document.getElementById('raw').textContent = RAW.repeat(40);
 const q = new URLSearchParams(location.search);
 const LOC = q.get('l') || 'en';
 document.documentElement.lang = LOC.replace('_', '-');
+if (q.get('p') === '1') document.documentElement.classList.add('portrait');
 window.ready = fetch('/i18n.json').then(r => r.json()).then(all => {
   const T = all[LOC];
   const cards = {
@@ -66,7 +79,7 @@ window.ready = fetch('/i18n.json').then(r => r.json()).then(all => {
   return document.fonts.ready.then(() => document.querySelectorAll('h1').forEach(h => {
     let size = parseFloat(getComputedStyle(h).fontSize);
     const box = h.closest('.split > div') || h.parentElement;
-    while ((h.scrollWidth > h.clientWidth + 1 || h.getBoundingClientRect().height > 420) && size > 40) { size -= 4; h.style.fontSize = size + 'px'; }
+    while ((h.scrollWidth > h.clientWidth + 1 || h.getBoundingClientRect().height > (q.get('p') === '1' ? 640 : 420)) && size > 40) { size -= 4; h.style.fontSize = size + 'px'; }
   }));
 });
 </script>

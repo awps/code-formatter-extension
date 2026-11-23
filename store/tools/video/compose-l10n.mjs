@@ -8,7 +8,10 @@ const LOC = process.argv[2] || 'en';
 const T = JSON.parse(fs.readFileSync('i18n.json', 'utf8'))[LOC];
 const CLIPS = [['01-title'], ['02-raw'], ['03-formatted'], ['04-fold'], ['05-path'], ['06-original'], ['07-theme'], ['08-css', '09-js'], ['10-private'], ['11-end']];
 const FONT = { ja: 'Hiragino Sans', zh_CN: 'PingFang SC' }[LOC] || 'Helvetica Neue';
-const W = `work/${LOC}`, OUT = `out/${LOC}`;
+// SHORT=1: build the vertical YouTube Shorts version from scenes-short/
+const SHORT = process.env.SHORT === '1';
+const SCENES = SHORT ? 'scenes-short' : 'scenes';
+const W = `${SHORT ? 'work-short' : 'work'}/${LOC}`, OUT = `${SHORT ? 'out-short' : 'out'}/${LOC}`;
 fs.mkdirSync(W, { recursive: true }); fs.mkdirSync(OUT, { recursive: true });
 
 const run = (args) => execFileSync('ffmpeg', ['-v', 'error', '-y', ...args], { stdio: ['ignore', 'inherit', 'inherit'] });
@@ -20,7 +23,7 @@ for (const [i, clips] of CLIPS.entries()) {
   const id = String(i).padStart(2, '0');
   const voice = `../../audio/${LOC}/${id}.mp3`;
   run(['-i', voice, '-ar', '48000', '-ac', '2', '-af', 'loudnorm=I=-16:TP=-1.5:LRA=7', `${W}/a${id}.wav`]);
-  const inputs = clips.flatMap(c => ['-i', `scenes/${LOC}/${c}.webm`]);
+  const inputs = clips.flatMap(c => ['-i', `${SCENES}/${LOC}/${c}.webm`]);
   const concat = clips.map((_, k) => `[${k}:v]fps=30,setpts=PTS-STARTPTS,format=yuv420p[v${k}]`).join(';') +
     ';' + clips.map((_, k) => `[v${k}]`).join('') + `concat=n=${clips.length}:v=1:a=0[cat]`;
   run([...inputs, '-filter_complex', concat, '-map', '[cat]', '-c:v', 'libx264', '-preset', 'fast', '-crf', '16', `${W}/v${id}.mp4`]);
@@ -50,7 +53,7 @@ run(['-i', `${W}/joined.mov`, '-i', '../../audio/music/music.mp3', '-filter_comp
 function capText(text) {
   if (!['ja', 'zh_CN'].includes(LOC)) return text;
   let t = text.replace(/ /g, '\\h');
-  if ([...text].length <= 26) return t;
+  if ([...text].length <= (SHORT ? 14 : 26)) return t;
   const marks = [...text.matchAll(/[、。，；]/g)].map(m => m.index + 1).filter(i => i < text.length - 2);
   if (!marks.length) return t;
   const mid = text.length / 2;
@@ -60,13 +63,13 @@ function capText(text) {
 const ts = s => { const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), sec = (s % 60).toFixed(2).padStart(5, '0'); return `${h}:${String(m).padStart(2, '0')}:${sec}`; };
 fs.writeFileSync(`${W}/captions.ass`, `[Script Info]
 ScriptType: v4.00+
-PlayResX: 1920
-PlayResY: 1080
+PlayResX: ${SHORT ? 1080 : 1920}
+PlayResY: ${SHORT ? 1920 : 1080}
 WrapStyle: 0
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Cap,${FONT},46,&H00FFFFFF,&H00FFFFFF,&H1A2A1412,&H1A2A1412,1,0,0,0,100,100,0,0,3,20,0,2,200,200,96,1
+Style: Cap,${FONT},${SHORT ? 58 : 46},&H00FFFFFF,&H00FFFFFF,&H1A2A1412,&H1A2A1412,1,0,0,0,100,100,0,0,3,20,0,2,${SHORT ? '90,90,560' : '200,200,96'},1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text

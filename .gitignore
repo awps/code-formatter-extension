@@ -101,3 +101,6 @@ store/tools/images/sheet*.png
 store/tools/video/scenes/
 store/tools/video/work/
 store/tools/video/out/
+store/tools/video/scenes-short/
+store/tools/video/work-short/
+store/tools/video/out-short/
