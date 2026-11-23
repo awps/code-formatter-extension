@@ -7,7 +7,7 @@ import { execFileSync } from 'node:child_process';
 const LOC = process.argv[2] || 'en';
 const T = JSON.parse(fs.readFileSync('i18n.json', 'utf8'))[LOC];
 const CLIPS = [['01-title'], ['02-raw'], ['03-formatted'], ['04-fold'], ['05-path'], ['06-original'], ['07-theme'], ['08-css', '09-js'], ['10-private'], ['11-end']];
-const FONT = { ja: 'Hiragino Sans', zh_CN: 'PingFang SC' }[LOC] || 'Helvetica Neue';
+const FONT = { ja: 'Hiragino Sans', zh_CN: 'Hiragino Sans GB' }[LOC] || 'Helvetica Neue';
 // SHORT=1: build the vertical YouTube Shorts version from scenes-short/
 const SHORT = process.env.SHORT === '1';
 const SCENES = SHORT ? 'scenes-short' : 'scenes';
