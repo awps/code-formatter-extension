@@ -100,7 +100,7 @@
     ]
   },
   "author": "Andrei Surdu",
-  "license": "ISC",
+  "license": "GPL-3.0-only",
   "tagy": {
     "auto-release": false,
     "replace": [
