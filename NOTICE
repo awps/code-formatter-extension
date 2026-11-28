@@ -1,0 +1,15 @@
+Code Formatter
+Copyright (C) 2022-2026 Andrei Surdu
+
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License version 3, as published by the
+Free Software Foundation. See the LICENSE file for the full text.
+
+Additional term under GPL-3.0 section 7(b): attribution
+
+Any distributed copy or modified version of this program must keep this
+notice, and must show the following credit where users can see it (for
+example on the extension's store listing, and in its popup or about screen):
+
+    Based on Code Formatter by Andrei Surdu
+    https://github.com/awps/code-formatter-extension

@@ -102,3 +102,7 @@ The extension icon shows a **!** badge when a local code file could not be forma
 ![One extension for every code file](store/images/en/4-languages.jpg)
 
 ![Runs in your browser, nothing leaves it](store/images/en/5-private.jpg)
+
+## License
+
+[GPL-3.0](LICENSE), with one extra term (see [NOTICE](NOTICE)): if you publish a fork or modified version, keep the credit "Based on Code Formatter by Andrei Surdu" with a link to this repository, visible to users.
